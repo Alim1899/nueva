@@ -2,6 +2,7 @@
 
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
 }
 .map{
     width: 70%;
@@ -12,5 +13,14 @@
 }
 ::-webkit-scrollbar{
     width: 3px;
-    background-color: blanchedalmond;
+    height: 3px;
+    background-color: black;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
 }

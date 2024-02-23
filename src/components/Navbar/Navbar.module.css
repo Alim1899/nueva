@@ -1,0 +1,109 @@
+.main {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.main > img {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+.navbar {
+  position: absolute;
+  height: 90px;
+  display: flex;
+  align-items: center;
+}
+.mobile {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown {
+  margin-left: 5%;
+  z-index: 999;
+}
+.logo {
+  width: 50%;
+  max-width: 200px;
+  margin-right: 5%;
+  opacity: 0.8;
+}
+.dropList {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius:15px;
+  z-index: 997;
+}
+
+
+.dropList > ul {
+  background-color: #E8A87C;
+  margin: 0;
+  border-top-left-radius: 15px;
+}
+.dropList > ul>li {
+ margin-left: -10px;
+ margin-top: 40px;
+ border-bottom: 2px solid gray;
+ border-bottom-right-radius: 40px;
+ border-bottom-left-radius: 10px;
+text-align: center;
+ font-size: 2rem;
+ font-weight: 700;
+ color:#242582 ;
+list-style-type: none; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.dropList > ul>li:nth-child(1) {
+  margin-top: 100px;
+
+ }
+.dropList > div {
+  background-color: #E8A87C;
+border-bottom-right-radius: 15px;
+  opacity: 0.7;
+}
+
+
+.lines{
+  z-index: 999;
+}
+.line,
+.close {
+  margin: 7px;
+  background-color: aliceblue;
+  width: 12vw;
+  max-width: 70px;
+  min-width: 50px;
+  height: 7px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+/* ANIMATION */
+.close:nth-child(1) {
+  transform: translateY(14px) rotate(45deg);
+  transition: 0.5s ease-in-out;
+}
+.close:nth-child(2) {
+  transform: translateY(0px) rotate(135deg);
+  transition: 0.5s ease-in-out;
+}
+.close:nth-child(3) {
+  visibility: hidden;
+}
+.line:nth-child(1){
+  transition: 0.5s ease-in-out;
+}
+.line:nth-child(2){
+  transition: 0.5s ease-in-out;
+}
+.line:nth-child(3){
+  transition: 0.4s step-end;
+}

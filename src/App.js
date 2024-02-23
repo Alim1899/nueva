@@ -1,8 +1,8 @@
-import Leaflet from '../src/components/Map/Leaflet'
+import Layout from "./components/Layout/Layout"
 const App = () => {
   return (
-    <div>
-      <Leaflet/>
+    <div style={{padding:0,margin:0}}>
+    <Layout/>
     </div>
   )
 }
