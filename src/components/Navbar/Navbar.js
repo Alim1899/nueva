@@ -14,34 +14,57 @@ const Navbar = () => {
     setShowNavbar(!showNavbar);
   };
   return (
-    <div className={classes.main} >
+    <div className={classes.main}>
       <img alt="background" src={background}></img>
       <div className={classes.navbar}>
         <div className={classes.menu}>
-          {width < 750 && (
-            <div className={classes.mobile} >
-             <div className={classes.lines} onClick={showList}>
-              <div className={!showNavbar?classes.line:classes.close}></div>
-              <div className={!showNavbar?classes.line:classes.close}></div>
-              <div className={!showNavbar?classes.line:classes.close}></div>
-             </div>
-      <img className={classes.logo} alt="logo" src={logo}></img>
+          {width < 700 && (
+            <div className={classes.mobile}>
+              <div className={classes.lines} onClick={showList}>
+                <div
+                  className={!showNavbar ? classes.line : classes.close}
+                ></div>
+                <div
+                  className={!showNavbar ? classes.line : classes.close}
+                ></div>
+                <div
+                  className={!showNavbar ? classes.line : classes.close}
+                ></div>
+              </div>
+              <img className={classes.logo} alt="logo" src={logo}></img>
+            </div>
+          )}
+
+          {width > 699 && (
+            <div className={classes.menuList}>
+              <ul className={classes.menuItems}>
+                <li>მთავარი</li>
+                <li>სერვისები</li>
+                <li>პროექტები</li>
+                <li>ჩვენს შესახებ</li>
+                <li>კონტაქტი</li>
+              </ul>
+              <div className={classes.logoDiv}>
+                
+                <img className={classes.logo} alt="logo" src={logo}></img>
+              </div>
             </div>
           )}
         </div>
-      
-        <div className={classes.logo}></div>
       </div>
-      {width < 750 && showNavbar&&
-        <div className={classes.dropList} >
-              <ul className={classes.dropdown}>
-              <li>მთავარი</li>
-              <li>სერვისები</li>
-              <li>ჩვენს შესახებ</li>
-              <li>კონტაქტი</li>
-              </ul>
-              <div className={classes.blur} onClick={showList}></div>
-              </div>}
+
+      {width < 750 && showNavbar && (
+        <div className={classes.dropList}>
+          <ul className={classes.dropdown}>
+            <li>მთავარი</li>
+            <li>სერვისები</li>
+            <li>პროექტები</li>
+            <li>ჩვენს შესახებ</li>
+            <li>კონტაქტი</li>
+          </ul>
+          <div className={classes.blur} onClick={showList}></div>
+        </div>
+      )}
     </div>
   );
 };
