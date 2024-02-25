@@ -1,9 +1,8 @@
 import classes from "./Navbar.module.css";
 import React from "react";
-import background from "../../assets/photos/background.jpg";
 import logo from "../../assets/photos/logo.png";
 import { useState } from "react";
-
+import background from '../../assets/photos/background.jpg'
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -15,7 +14,7 @@ const Navbar = () => {
   };
   return (
     <div className={classes.main}>
-      <img alt="background" src={background}></img>
+    <img className={classes.background} src={background} alt="background"></img>
       <div className={classes.navbar}>
         <div className={classes.menu}>
           {width < 700 && (
@@ -38,14 +37,23 @@ const Navbar = () => {
           {width > 699 && (
             <div className={classes.menuList}>
               <ul className={classes.menuItems}>
-                <li>მთავარი</li>
-                <li>სერვისები</li>
-                <li>პროექტები</li>
-                <li>ჩვენს შესახებ</li>
-                <li>კონტაქტი</li>
+              <li>
+                  <a href="/">მთავარი</a>
+                </li>
+                <li>
+                  <a href="/services">სერვისები</a>
+                </li>
+                <li>
+                  <a href="/projects">პროექტები</a>
+                </li>
+                <li>
+                  <a href="/about">ჩვენს შესახებ</a>
+                </li>
+                <li>
+                  <a href="/contact">კონტაქტი</a>
+                </li>
               </ul>
               <div className={classes.logoDiv}>
-                
                 <img className={classes.logo} alt="logo" src={logo}></img>
               </div>
             </div>
@@ -56,11 +64,21 @@ const Navbar = () => {
       {width < 750 && showNavbar && (
         <div className={classes.dropList}>
           <ul className={classes.dropdown}>
-            <li>მთავარი</li>
-            <li>სერვისები</li>
-            <li>პროექტები</li>
-            <li>ჩვენს შესახებ</li>
-            <li>კონტაქტი</li>
+          <li>
+                  <a href="/">მთავარი</a>
+                </li>
+                <li>
+                  <a href="/services">სერვისები</a>
+                </li>
+                <li>
+                  <a href="/projects">პროექტები</a>
+                </li>
+                <li>
+                  <a href="/about">ჩვენს შესახებ</a>
+                </li>
+                <li>
+                  <a href="/contact">კონტაქტი</a>
+                </li>
           </ul>
           <div className={classes.blur} onClick={showList}></div>
         </div>

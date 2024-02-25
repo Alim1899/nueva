@@ -13,6 +13,7 @@
     "react-esri-leaflet": "^2.0.1",
     "react-leaflet": "^4.2.1",
     "react-leaflet-draw": "^0.20.4",
+    "react-router-dom": "^6.22.1",
     "react-scripts": "5.0.1",
     "react-simple-maps": "^3.0.0",
     "web-vitals": "^2.1.4"
