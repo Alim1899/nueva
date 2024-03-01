@@ -2,7 +2,6 @@ import classes from "./Navbar.module.css";
 import React from "react";
 import logo from "../../assets/photos/logo.png";
 import { useState } from "react";
-import background from '../../assets/photos/background.jpg'
 const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [width, setWidth] = useState(window.innerWidth);
@@ -14,7 +13,6 @@ const Navbar = () => {
   };
   return (
     <div className={classes.main}>
-    <img className={classes.background} src={background} alt="background"></img>
       <div className={classes.navbar}>
         <div className={classes.menu}>
           {width < 700 && (
