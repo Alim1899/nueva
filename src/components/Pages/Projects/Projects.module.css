@@ -4,7 +4,7 @@
 .header {
   text-align: center;
   font-size: clamp(1rem, 2vw, 3rem);
-  height: 170px;
+  height: clamp(100px,10vh,200px);
   margin-top: 90px;
   display: flex;
   justify-content: center;
@@ -12,7 +12,8 @@
 }
 
 .projects {
-  width: 90%;
+  color: rgb(60, 75, 90);
+  width: clamp(300px, 90vw,1500px);
   margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -21,6 +22,7 @@
   overflow: hidden;
   padding-bottom: 30px;
 }
+
 .project {
   border-radius: 15px;
   background-color: aliceblue;
@@ -49,16 +51,32 @@
   align-items: center;
 }
 .moreBtn {
-  width: 60%;
-  margin-left:20%;
+  width: 40%;
+  margin-left:30%;
   font-size:clamp(1rem,1.5vw,1.5rem);
-  height: 40px;
-  color: antiquewhite;
+  height:50px;
+  color: aliceblue;
   font-weight: 900;
   border: none;
-  background-color: rgb(134, 109, 75);
+  background-color: rgb(60, 75, 90);
+  border-radius: 20px;
+  margin-bottom: 10px;
 }
 .moreBtn:hover{
   cursor: pointer;
   opacity: 0.7;
+}
+
+
+
+/* Responsive */
+@media screen and (max-width:800px) {
+  .projects{
+    grid-template-columns: repeat(2,1fr);
+  }
+}
+@media screen and (max-width:500px) {
+  .projects{
+    grid-template-columns: repeat(1,1fr);
+  }
 }
