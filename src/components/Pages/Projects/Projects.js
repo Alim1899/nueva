@@ -17,8 +17,8 @@ const Projects = () => {
               <img alt="icon" className={classes.icon} src={locate}></img>
               <h5>სვანეთი, მესტია</h5>
             </div>
-            <button type="button" className={classes.moreBtn}>
-              სრულად
+            <button  type="button" className={classes.moreBtn}>
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -29,7 +29,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -40,7 +40,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -51,7 +51,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -62,7 +62,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -73,7 +73,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -84,7 +84,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -95,7 +95,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           <div className={classes.project}>
@@ -106,7 +106,7 @@ const Projects = () => {
               <h5>სვანეთი, მესტია</h5>
             </div>
             <button type="button" className={classes.moreBtn}>
-              სრულად
+             <a href='/project'>სრულად</a>
             </button>
           </div>
           

@@ -1,38 +1,12 @@
-import {
-  MapContainer,
-  TileLayer,
-  useMapEvent,
-  Marker,
-  Popup,
-  GeoJSON,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import classes from "./Leaflet.module.css";
 import marker from "../../assets/icons/marker.png";
-import { useState } from "react";
 import map from "../Data/Maps";
 import georgia from "../../assets/mygeodata/georgia.json";
 
-function Leaflet() {
-  const [position, setPosition] = useState(null);
-  function LocationMarker() {
-    const map = useMapEvent({
-      click() {
-        map.locate();
-      },
-      locationfound(e) {
-        setPosition(e.latlng);
-        map.flyTo(e.latlng, 17);
-      },
-    });
-
-    return position === null ? null : (
-      <Marker position={position} icon={icon}>
-        <Popup>You are here</Popup>
-      </Marker>
-    );
-  }
+function Leaflet(props) {
   const icon = L.icon({
     iconUrl: marker,
     iconSize: [35, 31],
@@ -41,15 +15,13 @@ function Leaflet() {
     shadowSize: [41, 41],
   });
 
-
-
   return (
     <div className={classes.main}>
       {/* This map shows shapefile and retrievs users location */}
       <div className={classes.map}>
         <MapContainer
-          center={[42.02, 43.9]}
-          zoom={7}
+          center={props.center}
+          zoom={props.zoom}
           style={{ height: "100%", width: "100%" }}
         >
           <TileLayer
@@ -58,13 +30,33 @@ function Leaflet() {
             maxZoom={20}
           />
 
+          <Marker position={props.marker} icon={icon}>
+            <Popup>{props.popup}</Popup>
+          </Marker>
+
           <GeoJSON data={georgia}></GeoJSON>
-          <LocationMarker />
         </MapContainer>
       </div>
-    
     </div>
   );
 }
 
 export default Leaflet;
+
+// function LocationMarker() {
+//   const map = useMapEvent({
+//     click() {
+//       map.locate();
+//     },
+//     locationfound(e) {
+//       setPosition(e.latlng);
+//       map.flyTo(e.latlng, 17);
+//     },
+//   });
+
+//   return position === null ? null : (
+//     <Marker position={position} icon={icon}>
+//       <Popup>You are here</Popup>
+//     </Marker>
+//   );
+// }

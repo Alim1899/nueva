@@ -1,0 +1,40 @@
+.project{
+   width: 100vw;
+    height: 100%;
+    background-color: var(--background-color);
+    padding-bottom: 50px;    
+}
+.content{
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+    background-color: var(--foreground-color);
+}
+
+.map{
+    padding-bottom: 50px;
+    z-index: 0;
+}
+.header{
+    color:var(--text-color);
+    font-size: clamp(0.9rem,3vw,2rem);
+    text-align: center;
+    padding-top: clamp(30px,11vh,200px);
+    width: 70%;
+    margin: auto;
+    font-weight: 700;
+}
+.description{
+    width: clamp(200px,90%, 1000px);
+    margin: auto;
+    margin-top: 5vh;
+    color: var(--text-color);
+    font-size: clamp(1rem,2vw,2rem);
+    background-color: var(--foreground-color);
+}
+.date{
+    width: clamp(200px,90%, 1000px);
+    margin: auto;
+    text-align: right;
+
+}

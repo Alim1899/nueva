@@ -1,31 +1,41 @@
+:root {
+  --background-color: #659dbd; /* Example primary color */
+  --foreground-color: #cafefe; /* Example secondary color */
+  --text-color: #2b0d04; /* Example background color */
+}
 .content {
-  background-color: rgb(224, 236, 201);
+  background-color: var(--background-color);
+  padding-bottom: 30px;
 }
 .header {
   text-align: center;
   font-size: clamp(1rem, 2vw, 3rem);
-  height: clamp(100px,10vh,200px);
-  margin-top: 90px;
+  height: clamp(100px, 10vh, 200px);
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--text-color);
+  
 }
 
 .projects {
-  color: rgb(60, 75, 90);
-  width: clamp(300px, 90vw,1500px);
+  color: var(--text-color);
+  width: clamp(300px, 90vw, 1500px);
   margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 3vw;
   row-gap: 15px;
+  padding: 20px;
   overflow: hidden;
-  padding-bottom: 30px;
+  background-color: #cafefe;
+  border-radius: 15px;
 }
 
 .project {
   border-radius: 15px;
-  background-color: aliceblue;
+  background-color: var(--background-color);
+  color:var(--text-color);
 }
 .contentImg {
   width: 96%;
@@ -38,7 +48,7 @@
 .projectHeader {
   margin: 0;
   height: 50px;
-  font-size: clamp(1rem, 1.5vw, 2rem);
+  font-size: clamp(1rem, 1.5vw, 1.9rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,31 +62,32 @@
 }
 .moreBtn {
   width: 40%;
-  margin-left:30%;
-  font-size:clamp(1rem,1.5vw,1.5rem);
-  height:50px;
-  color: aliceblue;
+  margin-left: 30%;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  height: 50px;
   font-weight: 900;
   border: none;
   background-color: rgb(60, 75, 90);
   border-radius: 20px;
   margin-bottom: 10px;
 }
-.moreBtn:hover{
+.moreBtn > a {
+  text-decoration: none;
+  color: aliceblue;
+}
+.moreBtn:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
-
-
 /* Responsive */
-@media screen and (max-width:800px) {
-  .projects{
-    grid-template-columns: repeat(2,1fr);
+@media screen and (max-width: 800px) {
+  .projects {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-@media screen and (max-width:500px) {
-  .projects{
-    grid-template-columns: repeat(1,1fr);
+@media screen and (max-width: 500px) {
+  .projects {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

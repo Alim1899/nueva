@@ -1,7 +1,8 @@
 import Layout from "./components/Layout/Layout";
+import './App.css'
 const App = () => {
   return (
-    <div style={{ padding: 0, margin: 0 }}>
+    <div className="main" style={{ padding: 0, margin: 0 }}>
       <Layout />
     </div>
   );
