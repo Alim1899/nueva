@@ -5,49 +5,25 @@
   position: absolute;
   display: flex;
   justify-content: center;
+  z-index: -1;
 }
-.slider {
-  background-color: #9290c3;
-  height: clamp(500px, 45vw, 650px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: clamp(300px, 90%, 1200px);
-  margin: auto;
-  border-radius: 15px;
-}
+
 .content {
-  width: 90%;
-  height: clamp(300px, 40vh, 1000px);
-  display: grid;
-  grid-template-rows: 10% 60% 5%;
-  row-gap: clamp(20px, 5vh, 100px);
+  height: clamp(250px, 40vh, 1000px);
+  display: flex;
+  flex-direction: column;
 }
 .head {
   color: whitesmoke;
-  font-size: clamp(1.5rem, 2vw, 3rem);
+  font-size: clamp(0.8rem, 3vw, 2rem);
   margin: auto;
-}
-.firstSlide > div,
-.secondSlide > div,
-.thirdSlide > div {
-  display: flex;
-}
-.firstSlide,
-.secondSlide,
-.thirdSlide {
- margin: auto;
-  animation-name: appear;
-  animation-duration: 1000ms;
+  font-weight: 400;
 }
 
 .leftArrow,
 .rightArrow {
   height: 50px;
   cursor: pointer;
-}
-.slide {
-  height: clamp(50px, 10vw, 200px);
 }
 
 .dots {
@@ -67,6 +43,24 @@
 .leftArrow:hover,
 .rightArrow:hover {
   opacity: 0.6;
+}
+
+.slider {
+  background-color: #9290c3;
+  height: clamp(400px, 55vh, 650px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: clamp(300px, 90vw, 800px);
+  margin: auto;
+  border-radius: 15px;
+}
+.slide {
+  margin: auto;
+  animation-name: appear;
+  animation-duration: 1000ms;
+  width: clamp(140px, 50vw, 500px);
+  height: 50%;
 }
 
 @keyframes appear {

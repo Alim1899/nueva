@@ -56,51 +56,41 @@ const Slider = () => {
 
   return (
     <div className={classes.main}>
-     <div className={classes.slider}>
-      <img
-        alt="leftArrow"
-        id="left"
-        onClick={changeByButtons}
-        className={classes.leftArrow}
-        src={leftSlide}
-      ></img>
-      <div className={classes.content}>
-        <h1 className={classes.head}>
-          ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს
-        </h1>
-        {showFirstSlide && (
-          <div className={classes.firstSlide}>
+      <div className={classes.slider}>
+        <img
+          alt="leftArrow"
+          id="left"
+          onClick={changeByButtons}
+          className={classes.leftArrow}
+          src={leftSlide}
+        ></img>
+        <div className={classes.content}>
+          <h1 className={classes.head}>
+            ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს
+          </h1>
+          {showFirstSlide && (
             <img className={classes.slide} src={scr1} alt="screen"></img>
-          </div>
-        )}
-        {showSecondSlide && (
-          <div className={classes.secondSlide}>
+          )}
+          {showSecondSlide && (
             <img className={classes.slide} src={scr4} alt="screem"></img>
-          </div>
-        )}
-        {showThirdSlide && (
-          <div className={classes.thirdSlide}>
-            <div></div>
-            <div>
-              <img className={classes.slide} src={scr3} alt="screem"></img>
-            </div>
-            <div></div>
-          </div>
-        )}
-        <ul className={classes.dots}>
-          <li onClick={() => setActiveSlide(1)} id="1"></li>
-          <li onClick={() => setActiveSlide(2)} id="2"></li>
-          <li onClick={() => setActiveSlide(3)} id="3"></li>
-        </ul>
+          )}
+          {showThirdSlide && (
+            <img className={classes.slide} src={scr3} alt="screem"></img>
+          )}
+          <ul className={classes.dots}>
+            <li onClick={() => setActiveSlide(1)} id="1"></li>
+            <li onClick={() => setActiveSlide(2)} id="2"></li>
+            <li onClick={() => setActiveSlide(3)} id="3"></li>
+          </ul>
+        </div>
+        <img
+          onClick={changeByButtons}
+          id="right"
+          alt="rightArrow"
+          className={classes.rightArrow}
+          src={rightSlide}
+        ></img>
       </div>
-      <img
-        onClick={changeByButtons}
-        id="right"
-        alt="rightArrow"
-        className={classes.rightArrow}
-        src={rightSlide}
-      ></img>
-    </div>
     </div>
   );
 };
