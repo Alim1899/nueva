@@ -1,14 +1,12 @@
 .main {
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  height: 100%;
   overflow-x: hidden;
-  z-index: 0;
+  border-radius: 15px;
 
 }
 .map {
-  width: clamp(300px, 95%, 1000px);
-  height: clamp(300px, 50vh, 800px);
-  margin: auto;
-  margin-top: 20px;
-  
+  position: inherit;
+  width: 100%;
+  height: 100%;
 }

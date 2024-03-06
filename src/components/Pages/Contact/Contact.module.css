@@ -1,28 +1,113 @@
-.main{
-    background-color: #070f2b;
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    z-index: -1;
-    color: aliceblue;
+.main {
+  background-color: #070f2b;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: -1;
 }
-.header{
-    
-    text-align:center;
+.header {
+  text-align: center;
+  color: #111;
+  font-size: clamp(1.3rem, 2vw, 3rem);
+  margin: auto;
+  min-height: 40px;
+  margin-bottom: 5px;
 }
-.contact{
-    margin-top: 5vh;
-display:grid;
-grid-template-rows: 10 90%;
+.contact {
+  width: clamp(250px, 90vw, 1500px);
+  height: clamp(250px, 70vh, 1500px);
+  margin: auto;
+  margin-top: clamp(50px, 5vh, 100px);
+  background-color: #b2bbb6;
+  border-radius: 15px;
 }
-.content{
-    background-color: #9290c3;
-    height: clamp(500px, 60vh, 800px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: clamp(300px, 90vw, 1000px);
+.content {
+  background-color: #3a3864;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 40% 60%;
+  border-radius: 15px;
+}
+
+.social {
+  font-size: clamp(1rem, 2vw, 2rem);
+}
+.socialIcon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
+
+.list {
+  height: 100%;
+  margin-top: 0;
+  list-style: none;
+  display: grid;
+  grid-template-rows: 25% 25% 25% 25%;
+  margin-top: clamp(10px,5vw,40px);
+}
+
+.listItem > a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  margin: 0;
+}
+.listItem > a > h4 {
+  margin-left: 20px;
+}
+.address {
+  display: grid;
+  grid-template-columns: 45% 55%;
+}
+.map {
+  height: 96%;
+  width: 96%;
+}
+.head {
+  font-size: clamp(1.1rem, 2vw, 3rem);
+  margin: 0;
+  text-align: center;
+  color: aliceblue;
+}
+.adres {
+  font-size: clamp(0.7rem, 2vw, 2rem);
+  margin: auto;
+  text-align: center;
+  color: aliceblue;
+  margin: 1vw;
+}
+.addressName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 750px) {
+  .list {
+    margin-left: -15px;
+  }
+  .address{
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 100%;
+    margin-top: clamp(30px,10vw,60px)
+  }
+  .map{
+    width: 90%;
+    height: 90%;
     margin: auto;
-    border-radius: 15px;
-    
+  }
+  .socialIcon {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .list {
+    margin-left: -35px;
+  }
 }
