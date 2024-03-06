@@ -29,13 +29,14 @@
 .dropdown > li > a {
   text-decoration: none;
   color: aliceblue;
+  font-size: clamp(1.5rem, 5vw,2rem);
 }
 
 .dropList {
   display: grid;
   grid-template-columns: 70% 30%;
   width: 100%;
-  height: clamp(200px, 100%, 500px);
+  height: clamp(220px, 100%, 500px);
   overflow-x: hidden;
   position: absolute;
   top: 0;

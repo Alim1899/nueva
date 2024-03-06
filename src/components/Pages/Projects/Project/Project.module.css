@@ -5,7 +5,7 @@
     padding-bottom: 50px;    
 }
 .content{
-    width: 80%;
+    width: clamp(270px,80%,1500px);
     margin: auto;
     border-radius: 15px;
     background-color: var(--foreground-color);
@@ -14,6 +14,9 @@
 .map{
     padding-bottom: 50px;
     z-index: 0;
+    margin: auto;
+    width:clamp(260px,60vw,700px);
+    height: clamp(260px,30vw,450px);
 }
 .header{
     color:var(--text-color);
