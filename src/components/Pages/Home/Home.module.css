@@ -1,6 +1,13 @@
-.home{
-    width: 100vw;
-    text-align: center;
-    height: 200px;
-    margin-top: 50px;
-}
+.main {
+    background-color: #070f2b;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+  }
+  .slider{
+    height: clamp(300px,60vh,800px);
+    width: clamp(250px,90vw,800px);
+    margin: auto;
+    margin-top: clamp(40px,3vh,60px);
+  }

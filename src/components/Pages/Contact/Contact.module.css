@@ -1,6 +1,28 @@
+.main{
+    background-color: #070f2b;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    color: aliceblue;
+}
+.header{
+    
+    text-align:center;
+}
 .contact{
-    width: 100vw;
-    text-align: center;
-    height: 200px;
-    margin-top: 50px;
+    margin-top: 5vh;
+display:grid;
+grid-template-rows: 10 90%;
+}
+.content{
+    background-color: #9290c3;
+    height: clamp(500px, 60vh, 800px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: clamp(300px, 90vw, 1000px);
+    margin: auto;
+    border-radius: 15px;
+    
 }

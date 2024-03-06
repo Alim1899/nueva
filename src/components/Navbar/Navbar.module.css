@@ -43,7 +43,7 @@
 }
 .mobile {
   width: 100%;
-  height: clamp(90px, 8vw, 100px);
+  height: 95px;
   position: absolute;
   overflow: hidden;
   background-color: lightblue;
@@ -99,7 +99,7 @@
 }
 .navbar {
   width: 100%;
-  height: clamp(90px, 8vw, 100px);
+  height: 95px;
   position: fixed;
   overflow: hidden;
   background-color: lightblue;

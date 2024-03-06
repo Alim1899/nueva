@@ -56,6 +56,7 @@ const Slider = () => {
 
   return (
     <div className={classes.main}>
+      <h1 className={classes.head}>ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს</h1>
       <div className={classes.slider}>
         <img
           alt="leftArrow"
@@ -65,9 +66,7 @@ const Slider = () => {
           src={leftSlide}
         ></img>
         <div className={classes.content}>
-          <h1 className={classes.head}>
-            ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს
-          </h1>
+        <div className={classes.slides}>
           {showFirstSlide && (
             <img className={classes.slide} src={scr1} alt="screen"></img>
           )}
@@ -77,12 +76,17 @@ const Slider = () => {
           {showThirdSlide && (
             <img className={classes.slide} src={scr3} alt="screem"></img>
           )}
-          <ul className={classes.dots}>
-            <li onClick={() => setActiveSlide(1)} id="1"></li>
-            <li onClick={() => setActiveSlide(2)} id="2"></li>
-            <li onClick={() => setActiveSlide(3)} id="3"></li>
-          </ul>
         </div>
+          
+          <div>
+            <ul className={classes.dots}>
+              <li onClick={() => setActiveSlide(1)} id="1"></li>
+              <li onClick={() => setActiveSlide(2)} id="2"></li>
+              <li onClick={() => setActiveSlide(3)} id="3"></li>
+            </ul>
+          </div>
+        </div>
+
         <img
           onClick={changeByButtons}
           id="right"
