@@ -1,9 +1,10 @@
 .main {
   background-color: #070f2b;
-  min-height: 100%;
-  min-width: 100%;
-  padding-bottom: 50px;
+  height: 100%;
+  width: 100%;
   overflow: hidden;
+  display: grid;
+  grid-template-rows: 10% 80% 10%;
 }
 .main::before {
   content: "";
@@ -15,76 +16,88 @@
   background-color: inherit; 
   z-index: -1; 
 }
-.list {
-  width: 98%;
-  height: clamp(400px, 100%, 800px);
-  border-radius: 15px;
-  margin-left: 0px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 10px;
-  row-gap: 10px;
-  list-style: none;
-  padding: 0;
-  margin: 1%;
-}
-.services {
-  width: clamp(250px, 90vw, 1500px);
-  height: clamp(250px, 100vh, 900px);
+.services{
+  background-color: var(--foreground-color);
+  width: 90%;
   margin: auto;
-  margin-top: clamp(50px, 5vh, 100px);
-  background-color: #b2bbb6;
   border-radius: 15px;
+  padding-bottom: 150px;
 }
-.services {
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
 .heading {
   text-align: center;
-  color: #111;
+  color: aliceblue;
   font-size: clamp(1.3rem, 4vw, 2.5rem);
   margin: auto;
-  min-height: 40px;
+  min-height: 70px;
 }
-
-.listItem {
+.list{
+  width: 97%;
+  margin: auto;
+  background-color: var(--background-color);
+  border-radius: 5px;
+  border-bottom: 2vw solid var(--foreground-color);
+  overflow: scroll;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap:wrap ;
+}
+.unordered{
+  margin: 0;
+  padding-left: 25px;
+  display: flex;
   flex-direction: column;
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  background-color: #3a3864;
+  justify-content: center;
+  align-items: left;
+}
+.listItem{
+color: aliceblue;
+font-size: clamp(0.7rem,1.2vw,1.2rem);
+
+}
+.service{
+  width:clamp(240px,25vw,500px);
+  height:clamp(250px,23vw,430px);
+  margin: 10px;
   border-radius: 15px;
+  background-color: var(--foreground-color);
+  border: 3px solid gold;
+}
+
+.serviceHeader{
+  width: 98%;
+  font-size: clamp(1rem,1.4vw,2rem);
+  color: aliceblue;
+  text-align: center;
 }
 
 .icon {
   height: 100px;
   width: 100px;
   border-radius: 20px;
-}
-.description {
-  display: none;
-}
-.type {
-  color: aliceblue;
+  margin-right: 20px;
 }
 
-@media screen and (max-width: 1025px) {
-  .list {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .heading {
-    padding-top: 15px;
-  }
+
+
+
+/* For maximum viewport size */
+@media (max-width: 1670px) and (min-width:900px) {
+ .listItem{
+  font-size: clamp(0.7rem,1.1vw,1rem)
+ }
 }
-@media screen and (max-width: 550px) {
- 
-  .list {
-    grid-template-columns: repeat(1, 1fr);
+@media (max-width:625px) and (min-width:200px) {
+  .listItem{
+   font-size: clamp(0.7rem,3vw,2rem)
   }
-  .listItem {
-    width: clamp(200px, 90vw, 350px);
-    margin: auto;
+  .service{
+    width: 90%;
   }
-}
+  .serviceHeader{
+    font-size: 0.9rem;
+  }
+  .services{
+    margin-top: -50px;
+  }
+ }
