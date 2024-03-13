@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./About.module.css";
 import Navbar from "../../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 import imageOne from "../../../assets/photos/lazy.jpg";
 const About = () => {
   const lorem =
@@ -35,6 +36,7 @@ const About = () => {
         </div>
       </div>
       </div>
+      <div className={classes.footer}><Footer/></div>
     </div>
   );
 };

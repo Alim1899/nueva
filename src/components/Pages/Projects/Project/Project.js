@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../../Navbar/Navbar";
 import classes from "./Project.module.css";
 import Leaflet from "../../../Map/Leaflet";
+import Footer from "../../Footer/Footer";
 const Project = () => {
   return (
     <div className={classes.project}>
@@ -29,8 +30,16 @@ const Project = () => {
         </p>
         <h4 className={classes.date}>თარიღი: 21.02.2020</h4>
         <div className={classes.map}>
-          <Leaflet popup="ნენსკრა" center={[43.149262, 42.261292]} zoom={10} marker={[43.149262, 42.261292]}/>
+          <Leaflet
+            popup="ნენსკრა"
+            center={[43.149262, 42.261292]}
+            zoom={10}
+            marker={[43.149262, 42.261292]}
+          />
         </div>
+      </div>
+      <div className={classes.footer}>
+        <Footer />
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
    width: 100vw;
     height: 100%;
     background-color: var(--background-color);
-    padding-bottom: 50px;    
+    padding-bottom: 50px; 
 }
 .content{
     width: clamp(270px,80%,1500px);
@@ -19,7 +19,7 @@
     height: clamp(260px,30vw,450px);
 }
 .header{
-    color:var(--text-color);
+    color: aliceblue;
     font-size: clamp(0.9rem,3vw,2rem);
     text-align: center;
     padding-top: clamp(30px,11vh,200px);
@@ -28,16 +28,25 @@
     font-weight: 700;
 }
 .description{
+    color: aliceblue;
     width: clamp(200px,90%, 1000px);
     margin: auto;
     margin-top: 5vh;
-    color: var(--text-color);
     font-size: clamp(1rem,2vw,2rem);
     background-color: var(--foreground-color);
 }
 .date{
     width: clamp(200px,90%, 1000px);
-    margin: auto;
-    text-align: right;
-
+    margin-left: 65%;
+    text-align: center;
+    border-radius: 50px;
+    width: 30%;
+    max-width: 270px;
+    background-color: var(--background-color);
+    color: aliceblue;
+font-size: clamp(0.5rem,2vw,1.5rem);
+}
+.footer{
+    position: static;
+    margin-top: 50px;
 }

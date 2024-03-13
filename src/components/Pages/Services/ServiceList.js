@@ -1,10 +1,12 @@
-import cadastro from "../../../assets/icons/services/cadastro.svg";
-import geology from "../../../assets/icons/services/geology.svg";
-import inside from "../../../assets/icons/services/inside.svg";
-import separate from "../../../assets/icons/services/separate.svg";
 import topo from "../../../assets/icons/services/topo.png";
-import trace from "../../../assets/icons/services/trace.svg";
-import List from "./ServiceList";
+import geodesy from '../../../assets/icons/services/geodesy.png'
+import disaster from '../../../assets/icons/services/disaster.png'
+import agro from '../../../assets/icons/services/agro.png'
+import building from '../../../assets/icons/services/building.png'
+import modeling from '../../../assets/icons/services/modeling.png'
+import gps from '../../../assets/icons/services/gps.png'
+
+
 export default function ServiceList () {
   return  [
     [
@@ -18,7 +20,7 @@ export default function ServiceList () {
         { subhead: "საკადასტრო მომსახურება" },
       ],
     },
-    { src: topo },
+    { src: geodesy },
   ],
   [
     { header: "პროექტირება" },
@@ -31,7 +33,7 @@ export default function ServiceList () {
         { subhead: "სანიაღვრე სისტემები" },
       ],
     },
-    { src: cadastro },
+    { src: topo },
   ],
   [
     { header: "სტიქიური მოვლენების შეფასება და პრევენცია" },
@@ -44,7 +46,7 @@ export default function ServiceList () {
         { subhead: "პროცესის პერმანენტული მონიტორინგი" },
       ],
     },
-    { src: geology },
+    { src: disaster },
   ],
   [
     { header: "აგრარული მეურნეობების ანალიზი" },
@@ -56,7 +58,7 @@ export default function ServiceList () {
         { subhead: "წყლის პრობლემის/დაჭაობების მიზეზების შესწავლა" },
       ],
     },
-    { src: inside },
+    { src: agro },
   ],
   [
     { header: "სამშენებლო სამუშაოების კონსულტირება" },
@@ -69,7 +71,7 @@ export default function ServiceList () {
         { subhead: "სამშენებლო სამუშაოების ზედამხედველობა" },
       ],
     },
-    { src: separate },
+    { src: building },
   ],
   [
     { header: "პროგრამული ანალიზი  და მოდელირება" },
@@ -81,7 +83,7 @@ export default function ServiceList () {
         { subhead: "ორთოფოტოების დამზადება PIX4Dmapper-ში" },
       ],
     },
-    { src: trace },
+    { src: modeling },
   ],
   [
     { header: "ინდივიდუალური მომსახურება საამზომველო ტექნიკით" },
@@ -94,7 +96,7 @@ export default function ServiceList () {
         { subhead: "აერო გადაღება RTK მულტისპეკტრული დრონით " },
       ],
     },
-    { src: List },
+    { src: gps },
   ],
 ]
 }

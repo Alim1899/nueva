@@ -5,6 +5,7 @@ import instagram from "../../../assets/icons/social/instagram.svg";
 import phone from "../../../assets/icons/social/phone.svg";
 import gmail from "../../../assets/icons/social/gmail.svg";
 import Leaflet from "../../Map/Leaflet";
+import Footer from "../Footer/Footer";
 const Contact = () => {
   return (
     <div className={classes.main}>
@@ -78,6 +79,9 @@ const Contact = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className={classes.footer}>
+      <Footer/>
       </div>
     </div>
   );

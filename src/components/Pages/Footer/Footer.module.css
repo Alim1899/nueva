@@ -1,18 +1,17 @@
-.main{
-    height: 5vh;
-    width: 100vw;
-    border: 1px solid gold;
-    margin-top: 40px;
-    border-radius: 15px;
-   color: goldenrod;
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
+.main {
+  height: 100px;
+  width: 100vw;
+  border: 1px solid gold;
+  margin: auto;
+  border-radius: 15px;
+  color: goldenrod;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: rgb(65, 45, 10);
-  position: absolute;
-  bottom: 0;
 }
-.main>h4{
-    width: 100%;
-text-align: center;
+.main > h4 {
+  width: 100%;
+  text-align: center;
+  font-size: clamp(1rem,2vw,2rem);
 }

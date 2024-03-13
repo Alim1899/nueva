@@ -3,6 +3,9 @@
     --foreground-color: #5f61acd3; /* Example secondary color */
     --text-color: #353935; /* Example background color */
   }
+  body{
+    overflow-x: hidden;
+  }
 ::-webkit-scrollbar{
     width: 4px;
     height: 3px;

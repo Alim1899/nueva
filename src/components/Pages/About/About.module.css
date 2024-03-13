@@ -20,7 +20,6 @@
     height: 40vw;
     margin: auto;
     margin-top: clamp(50px, 5vh, 100px);
-    background-color: #fff;;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,7 +33,7 @@
     display: grid;
     grid-template-columns: 40% 60%;
     background-color: var(--foreground-color);
-    border: 3px solid #070f2b;
+    border: 3px solid gold;
   }
   
  .img{
@@ -53,10 +52,11 @@
  display: flex;
  justify-content: center;
  align-items: center;
- background-color: rgba(122, 80, 1, 0.226);
  border-radius: 15px;
- color: var(--text-color);
+ background-color: var(--background-color);
  font-weight: 600;
+ color: aliceblue;
+
  }
  .text{
   margin:0 2vw 0 2vw;
@@ -81,6 +81,13 @@ margin-top: 10px;
   margin: auto;
   font-size: clamp(0.7rem,1.7vh,1rem);
  }
-
  }
+@media screen and (max-width:400px){
+  .img{
+    height: 86%;
+  }
+}
 
+.footer{
+  margin-top: 50px;
+}
