@@ -1,0 +1,122 @@
+
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: aliceblue;
+}
+.content {
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  width: 98vw;
+  height: 90vh;
+  border-radius: 15px;
+  border: 3px solid gold;
+}
+.projectHeader {
+  border-radius: 15px;
+  border: 1px solid gold;
+  background-color: var(--background-color);
+  outline: none;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  color: white;
+  height: 50px;
+  width: clamp(200px, 30%, 400px);
+}
+.upload,.preview{
+  background-color: var(--foreground-color);
+  border-radius: 15px;
+  border: 1px solid gold;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label {
+  font-size: clamp(1rem, 5vw, 2rem);
+}
+.description {
+min-height: 100px;
+min-width: 250px;
+width: 70%;
+height: 20vh;
+  border-radius: 15px;
+  border: 1px solid gold;
+  background-color: var(--background-color);
+  outline: none;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  color: white;
+}
+
+.location{
+  width: 30%;
+  height: 5vh;
+  background-color: var(--background-color);
+  color: aliceblue;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid gold;
+  cursor: pointer;
+}
+.imageLabel{
+  border: 1px solid gold;
+  display: inline-block;
+ margin-top: 10px;
+  cursor: pointer;
+  background-color: var(--background-color);
+  color: aliceblue;
+  border-radius: 15px;
+  font-size: 1.8rem;
+  width: 270px;
+  height: 50px;
+
+  text-align: center;
+}
+
+input[type='file'] {
+  display: none;
+}
+.saveButton {
+  width: 40%;
+  height: 5vh;
+  margin-top: 5vh;
+  background-color: var(--background-color);
+  color: aliceblue;
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  border-radius: 15px;
+  outline: none;
+  border: 1px solid gold;
+  cursor: pointer;
+}
+.map{
+  height: 40%;
+  width: 80%;
+
+}
+.photos{
+  text-align: center;
+  overflow-y: scroll;
+  height: 600px;
+}
+.descriptionPrev{
+  max-height: 250px;
+  overflow-y: auto;
+}
+.imagePrev{
+  height: 150px;
+  width: 150px;
+  
+}
+.preview{
+  overflow: scroll;
+
+}

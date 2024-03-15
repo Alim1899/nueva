@@ -3,6 +3,8 @@ import Navbar from "../../../Navbar/Navbar";
 import classes from "./Project.module.css";
 import Leaflet from "../../../Map/Leaflet";
 import Footer from "../../Footer/Footer";
+import marker from "../../../../assets/icons/marker.png";
+
 const Project = () => {
   return (
     <div className={classes.project}>
@@ -34,6 +36,7 @@ const Project = () => {
             popup="ნენსკრა"
             center={[43.149262, 42.261292]}
             zoom={10}
+            icon={marker}
             marker={[43.149262, 42.261292]}
           />
         </div>

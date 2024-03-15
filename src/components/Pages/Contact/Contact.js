@@ -6,6 +6,8 @@ import phone from "../../../assets/icons/social/phone.svg";
 import gmail from "../../../assets/icons/social/gmail.svg";
 import Leaflet from "../../Map/Leaflet";
 import Footer from "../Footer/Footer";
+import marker from "../../../assets/icons/marker.png";
+
 const Contact = () => {
   return (
     <div className={classes.main}>
@@ -74,6 +76,7 @@ const Contact = () => {
                 popup="ნენსკრა"
                 center={[42.259061, 42.66614]}
                 zoom={15}
+                icon={marker}
                 marker={[42.259061, 42.66614]}
               />
             </div>

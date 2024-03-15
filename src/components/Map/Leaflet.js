@@ -1,19 +1,38 @@
-import { MapContainer, TileLayer, Marker, Popup, GeoJSON } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMapEvent,
+  Popup,
+  GeoJSON,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import classes from "./Leaflet.module.css";
-import marker from "../../assets/icons/marker.png";
+import { useEffect } from "react";
 import map from "../Data/Maps";
 import georgia from "../../assets/mygeodata/georgia.json";
 
 function Leaflet(props) {
   const icon = L.icon({
-    iconUrl: marker,
-    iconSize: [35, 31],
+    iconUrl: props.icon,
+    iconSize: [50, 50],
     iconAnchor: [15, 20], //width, height
     popupAnchor: [1, -34],
     shadowSize: [41, 41],
   });
+  function LocationMarker({ location }) {
+    const map = useMapEvent({
+      move() {},
+    });
+    useEffect(() => {
+      if (location) {
+        map.flyTo(location, 9);
+      }
+    }, [location, map]);
+
+    return null;
+  }
 
   return (
     <div className={classes.main}>
@@ -33,6 +52,7 @@ function Leaflet(props) {
           <Marker position={props.marker} icon={icon}>
             <Popup>{props.popup}</Popup>
           </Marker>
+          <LocationMarker location={props.location} />
 
           <GeoJSON data={georgia}></GeoJSON>
         </MapContainer>
@@ -42,21 +62,3 @@ function Leaflet(props) {
 }
 
 export default Leaflet;
-
-// function LocationMarker() {
-//   const map = useMapEvent({
-//     click() {
-//       map.locate();
-//     },
-//     locationfound(e) {
-//       setPosition(e.latlng);
-//       map.flyTo(e.latlng, 17);
-//     },
-//   });
-
-//   return position === null ? null : (
-//     <Marker position={position} icon={icon}>
-//       <Popup>You are here</Popup>
-//     </Marker>
-//   );
-// }

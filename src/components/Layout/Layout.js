@@ -4,6 +4,7 @@ import Home from "../Pages/Home/Home";
 import Projects from "../Pages/Projects/Projects";
 import Services from "../Pages/Services/Services";
 import Error from '../Pages/Error/Error'
+import Admin from "../Admin/Admin";
 import Project from "../Pages/Projects/Project/Project";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([{
 path:'/about',
 element:<About/>
 },
+{
+  path:'/admin',
+  element:<Admin/>
+  },
 {
   path:'/projects',
   element:<Projects/>
