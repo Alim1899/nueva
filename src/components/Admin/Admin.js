@@ -7,7 +7,8 @@ import Leaflet from "../Map/Leaflet";
 import "leaflet/dist/leaflet.css";
 import office from "../../assets/icons/office.png";
 import markerIcon from "../../assets/icons/marker.png";
-import { getDatabase, set,get, ref, push } from "firebase/database";
+import recycle from "../../assets/icons/delete.png";
+import { getDatabase, set, get, ref, push, remove } from "firebase/database";
 
 const Admin = () => {
   const [projectName, setProjectName] = useState("");
@@ -21,22 +22,55 @@ const Admin = () => {
   const descriptionRef = useRef(null);
   const locationRef = useRef(null);
   const [keys, setKeys] = useState([]);
-  const imgs = [];
+  const handleMouseOver = (e) => {
+    const element = e.currentTarget.childNodes[1];
+    element.classList.add(classes.bindiv);
+    element.classList.remove(classes.none);
+  };
 
-  const retrieveImage = async() => {
-    const db = getDatabase(app);
-  
-     const dbRef = ref(db,'images')
-     
-     const snapshot = await get(dbRef)
-     if(snapshot.exists()){
-    Object.values(snapshot.val()).forEach(el=>{
-      if(!imgs.includes(el.url)){
-        imgs.push(el.url);
+  const handleMouseOut = (e) => {
+    const element = e.currentTarget.childNodes[1];
+    element.classList.remove(classes.bindiv);
+    element.classList.add(classes.none);
+  };
+  const deleteImage = async (e, imageId) => {
+    try {
+      // Extract imageId if not provided
+      if (!imageId) {
+        imageId = e.target.parentNode.parentNode.childNodes[0].alt;
       }
-    })
-     }
-     setKeys(imgs)
+      console.log(imageId);
+
+      // Remove the image from the database
+      const db = getDatabase(app);
+      const dbRef = ref(db, "images/" + imageId);
+      await remove(dbRef);
+
+      // Update the state of keys
+      const newKeys = keys.filter((item) => item.key !== imageId);
+      setKeys(newKeys);
+    } catch (error) {
+      console.error("Error deleting image:", error);
+    }
+  };
+  const retrieveImage = async () => {
+    const db = getDatabase(app);
+    console.log("Sent");
+    const dbRef = ref(db, "images");
+    const snapshot = await get(dbRef);
+    const imgs = []; // Define imgs array here
+    if (snapshot.exists()) {
+      Object.entries(snapshot.val()).forEach((el) => {
+        imgs.push({
+          key: el[0],
+          url: el[1].url,
+        });
+      });
+      setKeys(imgs.sort((a, b) => b - a));
+      console.log("Success");
+    } else {
+      console.log("cant find");
+    }
   };
 
   const save = async () => {
@@ -64,7 +98,7 @@ const Admin = () => {
         if (file.type.startsWith("image/")) {
           reader.onload = async () => {
             const dataURL = reader.result;
-            const key = "photo" + Date.now() + i; // Unique key for each photo
+            const key = "photo" + Date.now() + i;
             try {
               const db = getDatabase(app);
               const newDocRef = push(ref(db, "images"));
@@ -72,7 +106,8 @@ const Admin = () => {
                 key: key,
                 url: dataURL,
               });
-              retrieveImage();
+              // After each successful upload, retrieve the images
+              await retrieveImage();
             } catch (error) {
               console.error("Something went wrong:", error);
             }
@@ -88,7 +123,6 @@ const Admin = () => {
     if (e.target.id === "projectHeader") {
       setProjectName(e.target.value);
     } else if (e.target.id === "description") {
-      console.log(e.target.value);
       setProjectDescription(e.target.value);
     } else if (e.target.id === "location") {
       setProjectLocation(e.target.value);
@@ -124,8 +158,9 @@ const Admin = () => {
               className={classes.projectHeader}
               type="text"
               ref={projectHeaderRef}
+              maxLength={75}
             ></input>
-            <label htmlFor="description">პროექტის აღწერილობა</label>
+            <label htmlFor="description">პროექტის აღწერილობა </label>
             <textarea
               id="description"
               placeholder="პროექტის დეტალები რამდენიმე აბზაცი..."
@@ -142,20 +177,23 @@ const Admin = () => {
               className={classes.location}
             ></input>
             <label htmlFor="image" className={classes.imageLabel}>
-              ფოტოს ატვირთვა
-              <input
-                id="image"
-                onChange={imageUploadHandler}
-                className={classes.imageUpload}
-                type="file"
-                multiple
-              ></input>{" "}
+              ფოტოს ატვირთვა{" "}
             </label>
+            <input
+              id="image"
+              onChange={imageUploadHandler}
+              className={classes.imageUpload}
+              type="file"
+              multiple
+            ></input>{" "}
           </div>
           <div className={classes.preview}>
+            {" "}
             <h1>გადახედეთ პროექტს </h1>
-            <h2 className={classes.headerPrev}>{projectName}</h2>
-            <h5 className={classes.descriptionPrev}>{projectDescription}</h5>
+            <div className={classes.headers}>
+              <h2 className={classes.headerPrev}>{projectName}</h2>
+              <h5 className={classes.descriptionPrev}>{projectDescription}</h5>
+            </div>
             <div className={classes.map}>
               <Leaflet
                 popup="ნენსკრა"
@@ -166,27 +204,42 @@ const Admin = () => {
                 location={flyTo}
               />
             </div>
-
             <div className={classes.photos}>
-              {keys.length > 0 && (
-                <div id="photo">
-                  <h2>ფოტოები</h2>
-                  {keys.map((el) => {
-                    return (
+              <h1 className={classes.photoPreviewHeader}>ფოტოები</h1>
+              <div className={classes.photoScroll}>
+                {keys.length > 0 &&
+                  keys.map((el) => (
+                    <div
+                      key={el.key}
+                      className={classes.photo}
+                      onMouseOver={handleMouseOver}
+                      onMouseOut={handleMouseOut}
+                    >
                       <img
-                        src={el}
-                        key={el}
-                        alt={el}
+                        src={el.url}
+                        alt={el.key}
                         className={classes.imagePrev}
-                      ></img>
-                    );
-                  })}
-                </div>
-              )}
+                      />
+                      <div className={classes.none}>
+                        {" "}
+                        <img
+                          className={classes.bin}
+                          onClick={deleteImage}
+                          src={recycle}
+                          alt="bin"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                {keys.length === 0 && (
+                  <div className={classes.beforeUpload}>
+                    ატვირთული ფოტოები გამოჩნდება აქ
+                  </div>
+                )}
+              </div>
             </div>
-
             <button className={classes.saveButton} type="submit" onClick={save}>
-              ატვირთვა
+              შენახვა
             </button>
           </div>
         </div>

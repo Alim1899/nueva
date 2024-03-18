@@ -1,5 +1,3 @@
-
-
 .main {
   width: 100vw;
   height: 100vh;
@@ -29,7 +27,7 @@
   height: 50px;
   width: clamp(200px, 30%, 400px);
 }
-.upload,.preview{
+.upload {
   background-color: var(--foreground-color);
   border-radius: 15px;
   border: 1px solid gold;
@@ -44,10 +42,10 @@ label {
   font-size: clamp(1rem, 5vw, 2rem);
 }
 .description {
-min-height: 100px;
-min-width: 250px;
-width: 70%;
-height: 20vh;
+  min-height: 100px;
+  min-width: 250px;
+  width: 70%;
+  height: 20vh;
   border-radius: 15px;
   border: 1px solid gold;
   background-color: var(--background-color);
@@ -56,9 +54,9 @@ height: 20vh;
   color: white;
 }
 
-.location{
-  width: 30%;
-  height: 5vh;
+.location {
+  width: 300px;
+  height: 50px;
   background-color: var(--background-color);
   color: aliceblue;
   font-size: clamp(1rem, 2vw, 1.8rem);
@@ -67,56 +65,113 @@ height: 20vh;
   border: 1px solid gold;
   cursor: pointer;
 }
-.imageLabel{
+.imageLabel {
   border: 1px solid gold;
-  display: inline-block;
- margin-top: 10px;
+  margin-top: 10px;
   cursor: pointer;
   background-color: var(--background-color);
   color: aliceblue;
   border-radius: 15px;
   font-size: 1.8rem;
-  width: 270px;
-  height: 50px;
+  width: 300px;
+  height: 100px;
+  display: grid;
+  place-content: center;
+  margin-top: 50px;
 
   text-align: center;
 }
 
-input[type='file'] {
+input[type="file"] {
   display: none;
 }
 .saveButton {
-  width: 40%;
-  height: 5vh;
+  height: 100px;
   margin-top: 5vh;
-  background-color: var(--background-color);
+  background-color: var(--foreground-color);
   color: aliceblue;
   font-size: clamp(1rem, 2vw, 1.8rem);
-  border-radius: 15px;
+  border-radius: 50px;
   outline: none;
   border: 1px solid gold;
   cursor: pointer;
+width: 100%;  
 }
-.map{
-  height: 40%;
-  width: 80%;
-
+.map {
+  margin: auto;
+  height: 30%;
+  min-height: 300px;
+  min-width: 250px;
+  width: 75%;
 }
-.photos{
+.photos {
   text-align: center;
-  overflow-y: scroll;
-  height: 600px;
+  height: 400px;
+  width: 98%;
+  display: grid;
+  grid-template-rows: 25% 75%;
+  border: 2px solid gold;
+  border-radius: 15px;
+  margin-top: 20px;
 }
-.descriptionPrev{
-  max-height: 250px;
-  overflow-y: auto;
+.photoScroll {
+  display: flex;
+  overflow-y: hidden;
 }
-.imagePrev{
-  height: 150px;
-  width: 150px;
-  
-}
-.preview{
-  overflow: scroll;
 
+.headers{
+  display: grid;
+  place-items: center;
+}
+.descriptionPrev {
+  max-height: 200px;
+  width: 70%;
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
+.imagePrev {
+  height: 280px;
+  width: 280px;
+  margin: 0 20px;
+ 
+}
+.photo {
+  display: inline-flex;
+  cursor: pointer;
+}
+.bin {
+  height: 50px;
+  position: absolute;
+  left: -70px;
+  top: 225px;
+  display: block;
+}
+
+.bindiv{
+  position: relative;
+}
+.bindiv:hover{
+  opacity: 0.5;
+}
+
+.preview {
+  overflow: scroll;
+}
+.none{
+  display: none;
+}
+
+.beforeUpload{
+  width: 100%;
+  height: 50%;
+  margin-top:10%;
+  font-size: 2rem;
+  border-radius: 50px;
+  border: 3px solid var(--foreground-color);
+  display: grid;
+  place-content: center;
+  background-color: var(--background-color);
+}
+.preview>h1{
+  text-align: center;
 }
