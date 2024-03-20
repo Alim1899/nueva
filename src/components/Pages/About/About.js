@@ -10,6 +10,22 @@ const About = () => {
     <div className={classes.main}>
       <Navbar />
       <div className={classes.content}>
+
+         <div className={classes.section}>
+        <img src={imageOne} className={classes.img} alt="img"></img>
+        <div className={classes.description}>
+        <p className={classes.text}>{lorem}</p>
+         
+        </div>
+      </div>
+<div className={classes.section}>
+        <img src={imageOne} className={classes.img} alt="img"></img>
+        <div className={classes.description}>
+        <p className={classes.text}>{lorem}</p>
+         
+        
+      </div>
+      </div>
          <div className={classes.section}>
         <img src={imageOne} className={classes.img} alt="img"></img>
         <div className={classes.description}>
@@ -19,24 +35,9 @@ const About = () => {
       </div>
       </div>
      
-      <div className={classes.content}>
-         <div className={classes.section}>
-        <img src={imageOne} className={classes.img} alt="img"></img>
-        <div className={classes.description}>
-        <p className={classes.text}>{lorem}</p>
-         
-        </div>
-      </div>
-      </div>  <div className={classes.content}>
-         <div className={classes.section}>
-        <img src={imageOne} className={classes.img} alt="img"></img>
-        <div className={classes.description}>
-        <p className={classes.text}>{lorem}</p>
-         
-        </div>
-      </div>
-      </div>
-      <div className={classes.footer}><Footer/></div>
+      
+     
+     <Footer/>
     </div>
   );
 };

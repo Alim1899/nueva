@@ -12,7 +12,7 @@
   border-top-left-radius: 15px;
   position:fixed;
 bottom:0;
-z-index: -2;
+z-index: 999999;
 }
 .main > h4 {
   width: 100%;

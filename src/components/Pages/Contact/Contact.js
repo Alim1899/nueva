@@ -68,7 +68,7 @@ const Contact = () => {
           </div>
           <div className={classes.address}>
           <div className={classes.addressName}> <h4 className={classes.head}>მისამართი:</h4>
-            <h4 className={classes.adres}>ქუთაისი, 9 აპრილის ქუჩა: 133</h4></div>
+            <h4 className={classes.street}>ქუთაისი, 9 აპრილის ქუჩა: 133</h4></div>
            
             <div className={classes.map}>
               {" "}
@@ -83,9 +83,8 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className={classes.footer}>
       <Footer/>
-      </div>
+    
     </div>
   );
 };
