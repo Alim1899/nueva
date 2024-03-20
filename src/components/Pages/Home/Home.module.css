@@ -1,22 +1,29 @@
 .main {
-    background-color: #070f2b;
-    height: 100vh;
-    width: 100%;
- display: grid;
- grid-template-rows: 5% 90% 5%;
+    height: 100%;
+    width: 100vw;
     z-index: -1;
-    place-items: center;
+    display: grid;
+  }
+  .content{
+    height: 100vh;
+    margin-top: 90px;
+display: grid;
+place-content: center;
   }
   .slider{
-    height: clamp(300px,70%,800px);
+    height: 100vh;
     width: clamp(250px,90vw,800px);
-    margin: auto;
-    margin-top: clamp(40px,3vh,60px);
-    overflow: scroll;
+    overflow: hidden;
+    z-index: -12;
   }
 
-  .footer{
+
+  .background{
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -11;
     position: absolute;
-    bottom:0;
   }
  

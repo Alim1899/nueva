@@ -11,10 +11,7 @@ const Home = () => {
           <Slider />
         </div>
       </div>
-
-      <div className={classes.footer}>
         <Footer />
-      </div>
     </div>
   );
 };

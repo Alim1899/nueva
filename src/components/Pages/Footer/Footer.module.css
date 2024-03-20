@@ -1,14 +1,18 @@
 .main {
-  height: 100px;
-  width: 100vw;
-  border: 1px solid gold;
-  margin: auto;
-  border-radius: 15px;
-  color: goldenrod;
+ height: 50px;
+ width: 100vw;
+  background-color: #333; /* You can change the background color as per your design */
+  color: white; /* You can change the text color as per your design */
+  text-align: center; /* Align content to center */
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: rgb(65, 45, 10);
+  border-top: 2px solid gold;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  position:fixed;
+bottom:0;
+z-index: -2;
 }
 .main > h4 {
   width: 100%;

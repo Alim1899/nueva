@@ -5,6 +5,10 @@
   }
   body{
     overflow-x: hidden;
+    background-image: url('./assets/photos/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
   }
 ::-webkit-scrollbar{
     width: 4px;
