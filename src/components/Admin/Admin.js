@@ -1,6 +1,5 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import classes from "./Admin.module.css";
-
 import app from "../../firebaseConfig";
 import Leaflet from "../Map/Leaflet";
 import "leaflet/dist/leaflet.css";
@@ -21,6 +20,22 @@ const Admin = () => {
   const descriptionRef = useRef(null);
   const locationRef = useRef(null);
   const [keys, setKeys] = useState([]);
+  const deleteAllData = async () => {
+    try {
+      const db = getDatabase(app);
+      const imagesRef = ref(db, 'images');
+      await remove(imagesRef);
+
+      // Optionally, you can reset your state variables here if needed
+    } catch (error) {
+      console.error("Error deleting all data:", error);
+    }
+  };
+
+  // Run deleteAllData function when the component mounts
+  useEffect(() => {
+    deleteAllData();
+  }, []);
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -34,18 +49,15 @@ const Admin = () => {
   };
   const deleteImage = async (e, imageId) => {
     try {
-      // Extract imageId if not provided
       if (!imageId) {
         imageId = e.target.parentNode.parentNode.childNodes[0].alt;
       }
       console.log(imageId);
 
-      // Remove the image from the database
       const db = getDatabase(app);
       const dbRef = ref(db, "images/" + imageId);
       await remove(dbRef);
 
-      // Update the state of keys
       const newKeys = keys.filter((item) => item.key !== imageId);
       setKeys(newKeys);
     } catch (error) {
