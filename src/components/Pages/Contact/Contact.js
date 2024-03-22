@@ -1,19 +1,16 @@
 import classes from "./Contact.module.css";
-import Navbar from "../../Navbar/Navbar";
 import facebook from "../../../assets/icons/social/facebook.svg";
 import instagram from "../../../assets/icons/social/instagram.svg";
 import phone from "../../../assets/icons/social/phone.svg";
 import gmail from "../../../assets/icons/social/gmail.svg";
 import Leaflet from "../../Map/Leaflet";
-import Footer from "../Footer/Footer";
 import marker from "../../../assets/icons/marker.png";
 
 const Contact = () => {
   return (
     <div className={classes.main}>
-      <Navbar />
+            <h2 className={classes.header}>საკონტაქტო ინფორმაცია</h2>
       <div className={classes.contact}>
-        <h2 className={classes.header}>საკონტაქტო ინფორმაცია</h2>
         <div className={classes.content}>
         
           <div className={classes.social}>
@@ -83,7 +80,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <Footer/>
     
     </div>
   );

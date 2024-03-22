@@ -1,5 +1,5 @@
 .main {
- height: 50px;
+ height: 100px;
  width: 100vw;
   background-color: #333; /* You can change the background color as per your design */
   color: white; /* You can change the text color as per your design */
@@ -10,8 +10,6 @@
   border-top: 2px solid gold;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  position:fixed;
-bottom:0;
 z-index: 999999;
 }
 .main > h4 {

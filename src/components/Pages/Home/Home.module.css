@@ -1,29 +1,15 @@
 .main {
-    height: 100%;
+    height: 90vh;
     width: 100vw;
     z-index: -1;
     display: grid;
+    place-content: center;
   }
-  .content{
-    height: 100vh;
-    margin-top: 90px;
-display: grid;
-place-content: center;
-  }
+ 
   .slider{
-    height: 100vh;
+    height: clamp(250px,70vh,800px);
     width: clamp(250px,90vw,800px);
     overflow: hidden;
     z-index: -12;
-  }
-
-
-  .background{
-    width: 100vw;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -11;
-    position: absolute;
   }
  

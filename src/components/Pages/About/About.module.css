@@ -4,12 +4,23 @@
   padding-bottom: 50px;
   margin-top: 115px;
 }
-
+.header{
+  font-size: var(--header-font-size);
+  color: var(--background-color);
+  border: 1px solid gold;
+  width: var(--header-width);
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
+  background-color: var(--navbar-dark);
+  color: aliceblue;
+  margin-top: calc(var(--navbar-height) + 1vw);
+}
 .content {
   width: 90vw;
   margin: auto;
-  margin-top: clamp(40px, 2vh, 70px);
   border-radius: 15px;
+  margin-top: 20px;
 }
 
 .section {
@@ -21,6 +32,7 @@
   grid-template-columns: 50% 50%;
   background-color: var(--foreground-color);
   border: 3px solid gold;
+  margin-top: 5px;
 }
 
 .img {

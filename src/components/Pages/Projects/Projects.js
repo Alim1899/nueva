@@ -1,13 +1,11 @@
 import classes from "./Projects.module.css";
-import Navbar from "../../Navbar/Navbar";
 import img from "./img.jpg";
 import img1 from "./img1.jpg";
 import img2 from "./img2.jpg";
 import locate from "./location.svg";
-import Footer from "../Footer/Footer";
 import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
-import { Fragment, useState } from "react";
+import { useState } from "react";
 
 const Projects = () => {
   const slides = [
@@ -72,27 +70,22 @@ const Projects = () => {
     </div>
   );
   return (
-    <Fragment>
-      <div className={classes.main}>
-        {" "}
-        <Navbar />
-        <div className={classes.projects}>
-          <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
-          <div className={classes.projectList}>
-            {project}
-            {project}
-            {project}
-            {project}
-            {project}
-            {project}
-            {project}
-            {project}
-            {project}
-          </div>
+    <div className={classes.main}>
+        <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
+      
+        <div className={classes.projectList}>
+          {project}
+          {project}
+          {project}
+          {project}
+          {project}
+          {project}
+          {project}
+          {project}
+          {project}
         </div>
-      </div>{" "}
-      <Footer />
-    </Fragment>
+    
+    </div>
   );
 };
 

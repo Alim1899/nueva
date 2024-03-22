@@ -1,23 +1,24 @@
-
-
-.dropdown {
-  background-color: #002026;
+.main {
+  background-color: #260800;
   height: 100%;
-  margin-top: 90px;
-  border-top-right-radius: 15px;
-  border-top: 2px solid gold;
+  z-index: 999999;
+
 }
-.dropdown> li {
+.dropdown {
+margin: 0;
+border-top-right-radius: 50px;
+z-index: 999999;
+}
+.dropdown > li {
   margin-left: -10px;
   margin-top: 40px;
-  border-bottom: 2px solid gray;
+  border-bottom: 1px solid gold;
   border-bottom-right-radius: 40px;
   border-bottom-left-radius: 10px;
   text-align: center;
 
-
   list-style-type: none;
-padding: 0;
+  padding: 0;
   text-decoration: none;
 }
 
@@ -28,7 +29,7 @@ padding: 0;
 .dropdown > li > a {
   text-decoration: none;
   color: aliceblue;
-  font-size: clamp(1rem, 5vw,2rem);
+  font-size: clamp(1rem, 5vw, 2rem);
   cursor: pointer;
 }
 
@@ -36,22 +37,14 @@ padding: 0;
   display: grid;
   grid-template-columns: 30% 70%;
   width: 100%;
-  height: 110vh;
+  height: 100vh;
   z-index: -1;
+  background-color: var(--navbar-dark);
+  border-top: 2px dashed #002026;
 }
-.main{
-  position: fixed;
-  width: 100vw;
-  top: 0;
-  left: 0;
-  bottom: 0;
-}
+
 .mobile {
-  width: 100%;
-  height: 90px;
-  position: fixed;
-  top: 0;
-  left: 0;
+height: 100%;
   display: flex;
   align-items: center;
   background-color: #004956;
@@ -61,7 +54,6 @@ padding: 0;
 /* X AND MENU ICON */
 .lines {
   z-index: 999;
- 
 }
 .line,
 .close {
@@ -76,13 +68,6 @@ padding: 0;
   background-color: white;
   cursor: pointer;
 }
-
-
-
-
-
-
-
 
 /* ANIMATION */
 .close:nth-child(1) {
@@ -108,31 +93,38 @@ padding: 0;
   transition: 0.1s step-end;
 }
 
-
-
-@media screen and (max-width:1300px){
-.dropList{
-  grid-template-columns: 35% 65%;
+@media screen and (max-width: 1350px) {
+  .dropList {
+    grid-template-columns: 35% 65%;
+  }
 }
-}
-@media screen and (max-width:1000px){
-  .dropList{
+@media screen and (max-width: 1025px) {
+  .dropList {
     grid-template-columns: 40% 60%;
   }
+}
+@media screen and (max-width: 850px) {
+  .dropList {
+    grid-template-columns: 50% 50%;
   }
-  @media screen and (max-width:800px){
-    .dropList{
-      grid-template-columns: 50% 50%;
-    }
-    }
-    @media screen and (max-width:600px){
-      .dropList{
-        grid-template-columns: 65% 35%;
-      }
-      }
-@media screen and (max-width:500px){
-  .dropList{
+}
+@media screen and (max-width: 600px) {
+  .dropList {
+    grid-template-columns: 65% 35%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .dropList {
     grid-template-columns: 70% 30%;
   }
+}
+@media screen and (max-width: 400px) {
+  .dropList {
+    grid-template-columns: 80% 20%;
   }
-  
+}
+@media screen and (max-width: 300px) {
+  .dropList {
+    grid-template-columns: 90% 10%;
+  }
+}

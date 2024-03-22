@@ -1,7 +1,5 @@
 import classes from "./Services.module.css";
-import Navbar from "../../Navbar/Navbar";
 import ServiceList from "./ServiceList";
-import Footer from "../Footer/Footer";
 import down from "../../../assets/icons/services/down.svg";
 import up from "../../../assets/icons/services/up.svg";
 
@@ -19,7 +17,6 @@ const Services = () => {
   };
   return (
     <div className={classes.main}>
-      <Navbar />
       <div className={classes.services}>
         <h2 className={classes.header}>სერვისების ჩამონათვალი</h2>
         <div className={classes.serviceList}>
@@ -54,9 +51,6 @@ const Services = () => {
           })}
         </div>
       </div>{" "}
-      <div className={classes.footer}>
-        <Footer />
-      </div>
     </div>
   );
 };

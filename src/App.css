@@ -1,15 +1,33 @@
 :root {
-    --background-color: #070f2b; /* Example primary color */
-    --foreground-color: #5f61acd3; /* Example secondary color */
-    --text-color: #353935; /* Example background color */
+    --background-color: #070f2b; 
+    --foreground-color: #5f61acd3; 
+    --navbar-light:#004956;
+    --navbar-dark:#002026;
+    --text-color: #fff;
+    --header-font-size:clamp(0.8rem, 5vw, 2.5rem);
+    --navbar-height:clamp(90px,10vw,120px);
+    --header-width: clamp(200px,90vw,700px);
   }
-  body{
+  body {
     overflow-x: hidden;
+    position: relative; /* Necessary for positioning pseudo-element */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('./assets/photos/background.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-  }
+    filter: blur(1px); /* Adjust the blur radius as needed */
+    z-index: -1; /* Ensure the pseudo-element is behind other content */
+}
+  
 ::-webkit-scrollbar{
     width: 4px;
     height: 3px;

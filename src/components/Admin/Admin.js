@@ -1,7 +1,6 @@
-import React, { Fragment, useRef, useState } from "react";
-import Navbar from "../Navbar/Navbar";
+import React, { useRef, useState } from "react";
 import classes from "./Admin.module.css";
-import Footer from "../Pages/Footer/Footer";
+
 import app from "../../firebaseConfig";
 import Leaflet from "../Map/Leaflet";
 import "leaflet/dist/leaflet.css";
@@ -144,108 +143,104 @@ const Admin = () => {
   };
 
   return (
-    <Fragment>
-      <Navbar />
-      <div className={classes.main}>
-        <h2 className={classes.header}>ახალი პროექტის ატვირთვა</h2>
-        <div className={classes.content}>
-          <div className={classes.upload} onChange={changehandler}>
-            <h1>პროექტის დეტალები</h1>
-            <label htmlFor="projectHeader">პროექტის სახელი</label>
-            <input
-              id="projectHeader"
-              placeholder="მოკლე სათაური..."
-              className={classes.projectHeader}
-              type="text"
-              ref={projectHeaderRef}
-              maxLength={75}
-            ></input>
-            <label htmlFor="description">პროექტის აღწერილობა </label>
-            <textarea
-              id="description"
-              placeholder="პროექტის დეტალები რამდენიმე აბზაცი..."
-              className={classes.description}
-              ref={descriptionRef}
-            ></textarea>
-            <label htmlFor="location">ლოკაცია</label>
-            <input
-              type="text"
-              id="location"
-              ref={locationRef}
-              onBlur={handleLocation}
-              placeholder="42.016644, 43.907403"
-              className={classes.location}
-            ></input>
-            <label htmlFor="image" className={classes.imageLabel}>
-              ფოტოს ატვირთვა{" "}
-            </label>
-            <input
-              id="image"
-              onChange={imageUploadHandler}
-              className={classes.imageUpload}
-              type="file"
-              multiple
-            ></input>{" "}
+    <div className={classes.main}>
+      <h2 className={classes.header}>ახალი პროექტის ატვირთვა</h2>
+      <div className={classes.content}>
+        <div className={classes.upload} onChange={changehandler}>
+          <h1>პროექტის დეტალები</h1>
+          <label htmlFor="projectHeader">პროექტის სახელი</label>
+          <input
+            id="projectHeader"
+            placeholder="მოკლე სათაური..."
+            className={classes.projectHeader}
+            type="text"
+            ref={projectHeaderRef}
+            maxLength={75}
+          ></input>
+          <label htmlFor="description">პროექტის აღწერილობა </label>
+          <textarea
+            id="description"
+            placeholder="პროექტის დეტალები რამდენიმე აბზაცი..."
+            className={classes.description}
+            ref={descriptionRef}
+          ></textarea>
+          <label htmlFor="location">ლოკაცია</label>
+          <input
+            type="text"
+            id="location"
+            ref={locationRef}
+            onBlur={handleLocation}
+            placeholder="42.016644, 43.907403"
+            className={classes.location}
+          ></input>
+          <label htmlFor="image" className={classes.imageLabel}>
+            ფოტოს ატვირთვა{" "}
+          </label>
+          <input
+            id="image"
+            onChange={imageUploadHandler}
+            className={classes.imageUpload}
+            type="file"
+            multiple
+          ></input>{" "}
+        </div>
+        <div className={classes.preview}>
+          {" "}
+          <h1>გადახედეთ პროექტს </h1>
+          <div className={classes.headers}>
+            <h2 className={classes.headerPrev}>{projectName}</h2>
+            <h5 className={classes.descriptionPrev}>{projectDescription}</h5>
           </div>
-          <div className={classes.preview}>
-            {" "}
-            <h1>გადახედეთ პროექტს </h1>
-            <div className={classes.headers}>
-              <h2 className={classes.headerPrev}>{projectName}</h2>
-              <h5 className={classes.descriptionPrev}>{projectDescription}</h5>
-            </div>
-            <div className={classes.map}>
-              <Leaflet
-                popup="ნენსკრა"
-                center={position}
-                zoom={7}
-                icon={icon}
-                marker={marker}
-                location={flyTo}
-              />
-            </div>
-            <div className={classes.photos}>
-              <h1 className={classes.photoPreviewHeader}>ფოტოები</h1>
-              <div className={classes.photoScroll}>
-                {keys.length > 0 &&
-                  keys.map((el) => (
-                    <div
-                      key={el.key}
-                      className={classes.photo}
-                      onMouseOver={handleMouseOver}
-                      onMouseOut={handleMouseOut}
-                    >
+          <div className={classes.map}>
+            <Leaflet
+              popup="ნენსკრა"
+              center={position}
+              zoom={7}
+              icon={icon}
+              marker={marker}
+              location={flyTo}
+            />
+          </div>
+          <div className={classes.photos}>
+            <h1 className={classes.photoPreviewHeader}>ფოტოები</h1>
+            <div className={classes.photoScroll}>
+              {keys.length > 0 &&
+                keys.map((el) => (
+                  <div
+                    key={el.key}
+                    className={classes.photo}
+                    onMouseOver={handleMouseOver}
+                    onMouseOut={handleMouseOut}
+                  >
+                    <img
+                      src={el.url}
+                      alt={el.key}
+                      className={classes.imagePrev}
+                    />
+                    <div className={classes.none}>
+                      {" "}
                       <img
-                        src={el.url}
-                        alt={el.key}
-                        className={classes.imagePrev}
+                        className={classes.bin}
+                        onClick={deleteImage}
+                        src={recycle}
+                        alt="bin"
                       />
-                      <div className={classes.none}>
-                        {" "}
-                        <img
-                          className={classes.bin}
-                          onClick={deleteImage}
-                          src={recycle}
-                          alt="bin"
-                        />
-                      </div>
                     </div>
-                  ))}
-                {keys.length === 0 && (
-                  <div className={classes.beforeUpload}>
-                    ატვირთული ფოტოები გამოჩნდება აქ
                   </div>
-                )}
-              </div>
+                ))}
+              {keys.length === 0 && (
+                <div className={classes.beforeUpload}>
+                  ატვირთული ფოტოები გამოჩნდება აქ
+                </div>
+              )}
             </div>
-            <button className={classes.saveButton} type="submit" onClick={save}>
-              შენახვა
-            </button>
           </div>
+          <button className={classes.saveButton} type="submit" onClick={save}>
+            შენახვა
+          </button>
         </div>
       </div>
-      <Footer />
-    </Fragment>
+    </div>
   );
 };
 
