@@ -1,41 +1,53 @@
 .main {
   width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: var(--background-color);
+height: 100%;
+
+}
+.header{
+  font-size: var(--header-font-size);
+  color: var(--background-color);
+  border: 1px solid gold;
+  width: var(--header-width);
+  margin: auto;
+  text-align: center;
+  border-radius: 15px;
+  background-color: var(--navbar-dark);
   color: aliceblue;
+  margin-top: calc(var(--navbar-height) + 1vw);
+  margin-bottom: 20px;
 }
 .content {
   display: grid;
-  grid-template-columns: 50% 50%;
-
+  grid-template-columns: 35% 65%;
   width: 98vw;
   height: 90vh;
   border-radius: 15px;
   border: 3px solid gold;
+  background-color: rgba(255, 123, 0, 0.226);
+  color: aliceblue;
+  margin: auto;
 }
 .projectHeader {
   border-radius: 15px;
   border: 1px solid gold;
-  background-color: var(--background-color);
   outline: none;
   font-size: clamp(1rem, 2vw, 1.8rem);
-  color: white;
   height: 50px;
-  width: clamp(200px, 30%, 400px);
+  width: clamp(200px, 50%, 400px);
 }
 .upload {
-  background-color: var(--foreground-color);
   border-radius: 15px;
   border: 1px solid gold;
-  margin: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  margin: 10px;
+  display: grid;
+  grid-template-rows: 7% 79% 10%;
+  background-color: var(--navbar-dark);
+}
+.form{
+  border-top: 1px solid gold;
+  height: 100%;
+  display: grid;
+  place-items: center;
 }
 
 label {
@@ -43,50 +55,47 @@ label {
 }
 .description {
   min-height: 100px;
-  min-width: 250px;
-  width: 70%;
-  height: 20vh;
+  width: clamp(200px, 90%, 700px);
+  height: 15vh;
   border-radius: 15px;
   border: 1px solid gold;
-  background-color: var(--background-color);
   outline: none;
   font-size: clamp(1rem, 2vw, 1.8rem);
-  color: white;
+
 }
 
 .location {
-  width: 300px;
   height: 50px;
-  background-color: var(--background-color);
-  color: aliceblue;
   font-size: clamp(1rem, 2vw, 1.8rem);
   border-radius: 15px;
   outline: none;
   border: 1px solid gold;
   cursor: pointer;
+  width: clamp(200px, 50%, 400px);
+
 }
 .imageLabel {
   border: 1px solid gold;
   margin-top: 10px;
   cursor: pointer;
-  background-color: var(--background-color);
+  background-color: var(--foreground-color);
   color: aliceblue;
-  border-radius: 15px;
-  font-size: 1.8rem;
-  width: 300px;
-  height: 100px;
+  border-radius: 50px;
+  font-size: clamp(1rem,5vw,2.1rem);
+  width: clamp(220px, 70%, 600px);
+  height: 70px;
   display: grid;
   place-content: center;
   margin-top: 50px;
-
   text-align: center;
+  font-weight: 900;
 }
 
 input[type="file"] {
   display: none;
 }
 .saveButton {
-  height: 100px;
+  height: 70px;
   margin-top: 5vh;
   background-color: var(--foreground-color);
   color: aliceblue;
@@ -95,29 +104,31 @@ input[type="file"] {
   outline: none;
   border: 1px solid gold;
   cursor: pointer;
-width: 100%;  
+width: 50%;
+margin-left: 25%;
 }
 .map {
-  margin: auto;
-  height: 30%;
-  min-height: 300px;
+  margin:5px auto;
+  height: 25%;
+  min-height: 220px;
   min-width: 250px;
-  width: 75%;
+  width: 96%;
 }
-.photos {
+.prevHeader, .uploadHeader{
+  width: 25vw;
   text-align: center;
-  height: 400px;
-  width: 98%;
-  display: grid;
-  grid-template-rows: 25% 75%;
-  border: 2px solid gold;
   border-radius: 15px;
-  margin-top: 20px;
+  background-color: var(--navbar-light);
+  margin: auto;
+  margin-top: 10px;
 }
-.photoScroll {
+.photoInput{
   display: flex;
-  overflow-y: hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+
 
 .headers{
   display: grid;
@@ -129,12 +140,7 @@ width: 100%;
   overflow-x:hidden;
   overflow-y:scroll;
 }
-.imagePrev {
-  height: 280px;
-  width: 280px;
-  margin: 0 20px;
- 
-}
+
 .photo {
   display: inline-flex;
   cursor: pointer;
@@ -155,23 +161,56 @@ width: 100%;
 }
 
 .preview {
-  overflow: scroll;
+  background-color: var(--background-color);
+  overflow-x: hidden;
+  margin: 10px;
+  border-radius: 15px;
+  display: grid;
+  grid-template-rows: 7% 79% 10%;
 }
 .none{
   display: none;
 }
 
-.beforeUpload{
-  width: 100%;
+.uploadedImages{
+  width: 70%;
   height: 50%;
   margin-top:10%;
-  font-size: 2rem;
+  font-size: clamp(1.4rem,7vw,2.4rem);
   border-radius: 50px;
-  border: 3px solid var(--foreground-color);
+  border: 1px solid gold;
   display: grid;
   place-content: center;
-  background-color: var(--background-color);
+  margin: auto;
+
 }
 .preview>h1{
   text-align: center;
+}
+.prevContent{
+  border-top: 1px solid gold;
+}
+.photos {
+  text-align: center;
+  height: 35vh;
+  width: 98%;
+  display: grid;
+  grid-template-rows: 15% 85%;
+  border: 2px solid gold;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+.photoScroll {
+  display: flex;
+  overflow-y: hidden;
+  height: 100%;
+}
+.photoPreviewHeader{
+  margin: 0 auto;
+}
+.imagePrev {
+  height: 270px;
+  width: 270px;
+  margin:auto 10px ;
+ 
 }

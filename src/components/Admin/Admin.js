@@ -23,7 +23,7 @@ const Admin = () => {
   const deleteAllData = async () => {
     try {
       const db = getDatabase(app);
-      const imagesRef = ref(db, 'images');
+      const imagesRef = ref(db, "images");
       await remove(imagesRef);
 
       // Optionally, you can reset your state variables here if needed
@@ -147,11 +147,8 @@ const Admin = () => {
       setFlyTo(projectLocation.split(","));
       setIcon(markerIcon);
     } else {
-      alert("აკრიფე სწორი ფორმატით - 42.422222,43.433333");
+      alert("აკრიფე სწორი ფორმატით - 42.123456,43.123456");
     }
-
-    console.log(marker);
-    console.log(position);
   };
 
   return (
@@ -159,96 +156,101 @@ const Admin = () => {
       <h2 className={classes.header}>ახალი პროექტის ატვირთვა</h2>
       <div className={classes.content}>
         <div className={classes.upload} onChange={changehandler}>
-          <h1>პროექტის დეტალები</h1>
-          <label htmlFor="projectHeader">პროექტის სახელი</label>
-          <input
-            id="projectHeader"
-            placeholder="მოკლე სათაური..."
-            className={classes.projectHeader}
-            type="text"
-            ref={projectHeaderRef}
-            maxLength={75}
-          ></input>
-          <label htmlFor="description">პროექტის აღწერილობა </label>
-          <textarea
-            id="description"
-            placeholder="პროექტის დეტალები რამდენიმე აბზაცი..."
-            className={classes.description}
-            ref={descriptionRef}
-          ></textarea>
-          <label htmlFor="location">ლოკაცია</label>
-          <input
-            type="text"
-            id="location"
-            ref={locationRef}
-            onBlur={handleLocation}
-            placeholder="42.016644, 43.907403"
-            className={classes.location}
-          ></input>
-          <label htmlFor="image" className={classes.imageLabel}>
-            ფოტოს ატვირთვა{" "}
-          </label>
-          <input
-            id="image"
-            onChange={imageUploadHandler}
-            className={classes.imageUpload}
-            type="file"
-            multiple
-          ></input>{" "}
+          <h1 className={classes.uploadHeader}>პროექტის დეტალები</h1>
+          <div className={classes.form}>
+            <label htmlFor="projectHeader">პროექტის სათაური</label>
+            <input
+              id="projectHeader"
+              placeholder="მოკლე სათაური..."
+              className={classes.projectHeader}
+              type="text"
+              ref={projectHeaderRef}
+              maxLength={75}
+            ></input>
+            <label htmlFor="description">პროექტის აღწერილობა </label>
+            <textarea
+              id="description"
+              placeholder="პროექტის დეტალები რამდენიმე აბზაცი..."
+              className={classes.description}
+              ref={descriptionRef}
+            ></textarea>
+            <label htmlFor="location">ლოკაცია</label>
+            <input
+              type="text"
+              id="location"
+              ref={locationRef}
+              onBlur={handleLocation}
+              placeholder="42.016644, 43.907403"
+              className={classes.location}
+            ></input>
+            <div className={classes.map}>
+              <Leaflet
+                popup="ოფისი"
+                center={position}
+                zoom={7}
+                icon={icon}
+                marker={marker}
+                location={flyTo}
+              />
+            </div>
+            
+          </div>
+          <div className={classes.photoInput}><label htmlFor="image" className={classes.imageLabel}>
+              ფოტოს ატვირთვა{" "}
+            </label>
+            <input
+              id="image"
+              onChange={imageUploadHandler}
+              className={classes.imageUpload}
+              type="file"
+              multiple
+            ></input>{" "}</div>
         </div>
         <div className={classes.preview}>
-          {" "}
-          <h1>გადახედეთ პროექტს </h1>
-          <div className={classes.headers}>
-            <h2 className={classes.headerPrev}>{projectName}</h2>
-            <h5 className={classes.descriptionPrev}>{projectDescription}</h5>
-          </div>
-          <div className={classes.map}>
-            <Leaflet
-              popup="ნენსკრა"
-              center={position}
-              zoom={7}
-              icon={icon}
-              marker={marker}
-              location={flyTo}
-            />
-          </div>
-          <div className={classes.photos}>
-            <h1 className={classes.photoPreviewHeader}>ფოტოები</h1>
-            <div className={classes.photoScroll}>
-              {keys.length > 0 &&
-                keys.map((el) => (
-                  <div
-                    key={el.key}
-                    className={classes.photo}
-                    onMouseOver={handleMouseOver}
-                    onMouseOut={handleMouseOut}
-                  >
-                    <img
-                      src={el.url}
-                      alt={el.key}
-                      className={classes.imagePrev}
-                    />
-                    <div className={classes.none}>
-                      {" "}
+          <h1 className={classes.prevHeader}>გადახედეთ პროექტს </h1>
+          <div className={classes.prevContent}>
+            <div className={classes.headers}>
+              <h2 className={classes.headerPrev}>{projectName}</h2>
+              <h5 className={classes.descriptionPrev}>{projectDescription}</h5>
+            </div>
+
+            <div className={classes.photos}>
+              <h1 className={classes.photoPreviewHeader}>ფოტოები</h1>
+              <div className={classes.photoScroll}>
+                {keys.length > 0 &&
+                  keys.map((el) => (
+                    <div
+                      key={el.key}
+                      className={classes.photo}
+                      onMouseOver={handleMouseOver}
+                      onMouseOut={handleMouseOut}
+                    >
                       <img
-                        className={classes.bin}
-                        onClick={deleteImage}
-                        src={recycle}
-                        alt="bin"
+                        src={el.url}
+                        alt={el.key}
+                        className={classes.imagePrev}
                       />
+                      <div className={classes.none}>
+                        {" "}
+                        <img
+                          className={classes.bin}
+                          onClick={deleteImage}
+                          src={recycle}
+                          alt="bin"
+                        />
+                      </div>
                     </div>
+                  ))}
+                {keys.length === 0 && (
+                  <div className={classes.uploadedImages}>
+                    ატვირთული ფოტოები გამოჩნდება აქ
                   </div>
-                ))}
-              {keys.length === 0 && (
-                <div className={classes.beforeUpload}>
-                  ატვირთული ფოტოები გამოჩნდება აქ
-                </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
           <button className={classes.saveButton} type="submit" onClick={save}>
-            შენახვა
+            პროექტის დამატება
           </button>
         </div>
       </div>
