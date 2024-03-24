@@ -1,9 +1,10 @@
 .main {
   width: 100vw;
-height: 100%;
-
+  height: 100%;
+  margin-bottom: 40px;
 }
-.header{
+
+.header {
   font-size: var(--header-font-size);
   color: var(--background-color);
   border: 1px solid gold;
@@ -16,201 +17,99 @@ height: 100%;
   margin-top: calc(var(--navbar-height) + 1vw);
   margin-bottom: 20px;
 }
+
 .content {
   display: grid;
-  grid-template-columns: 35% 65%;
+  grid-template-columns: 100%; /* Modify grid-template-columns for responsiveness */
   width: 98vw;
   height: 90vh;
   border-radius: 15px;
-  border: 3px solid gold;
-  background-color: rgba(255, 123, 0, 0.226);
+  background-color: rgb(24, 12, 0);
   color: aliceblue;
   margin: auto;
+  grid-template-columns: 50% 50%;
 }
-.projectHeader {
-  border-radius: 15px;
-  border: 1px solid gold;
-  outline: none;
-  font-size: clamp(1rem, 2vw, 1.8rem);
-  height: 50px;
-  width: clamp(200px, 50%, 400px);
-}
+
+
+
 .upload {
   border-radius: 15px;
   border: 1px solid gold;
-  margin: 10px;
-  display: grid;
-  grid-template-rows: 7% 79% 10%;
+  margin: 3px;
   background-color: var(--navbar-dark);
+  display: grid;
+  grid-template-rows: 10% 37% 38% 9%;
+  column-gap: 1%;
 }
-.form{
-  border-top: 1px solid gold;
+.uploadHeader{
+  text-align: center;
+ 
+  margin: 0;
+}
+
+.form {
   height: 100%;
   display: grid;
-  place-items: center;
+  grid-template-rows: 25% 70%
+ 
 }
-
-label {
-  font-size: clamp(1rem, 5vw, 2rem);
+.formWrapper,.description{
+  height: 100%;
 }
-.description {
-  min-height: 100px;
-  width: clamp(200px, 90%, 700px);
-  height: 15vh;
-  border-radius: 15px;
-  border: 1px solid gold;
-  outline: none;
-  font-size: clamp(1rem, 2vw, 1.8rem);
-
-}
-
-.location {
-  height: 50px;
-  font-size: clamp(1rem, 2vw, 1.8rem);
-  border-radius: 15px;
-  outline: none;
-  border: 1px solid gold;
-  cursor: pointer;
-  width: clamp(200px, 50%, 400px);
-
-}
-.imageLabel {
-  border: 1px solid gold;
-  margin-top: 10px;
-  cursor: pointer;
-  background-color: var(--foreground-color);
-  color: aliceblue;
-  border-radius: 50px;
-  font-size: clamp(1rem,5vw,2.1rem);
-  width: clamp(220px, 70%, 600px);
-  height: 70px;
-  display: grid;
-  place-content: center;
-  margin-top: 50px;
-  text-align: center;
-  font-weight: 900;
-}
-
-input[type="file"] {
-  display: none;
-}
-.saveButton {
-  height: 70px;
-  margin-top: 5vh;
-  background-color: var(--foreground-color);
-  color: aliceblue;
-  font-size: clamp(1rem, 2vw, 1.8rem);
-  border-radius: 50px;
-  outline: none;
-  border: 1px solid gold;
-  cursor: pointer;
-width: 50%;
-margin-left: 25%;
-}
-.map {
-  margin:5px auto;
-  height: 25%;
-  min-height: 220px;
-  min-width: 250px;
-  width: 96%;
-}
-.prevHeader, .uploadHeader{
-  width: 25vw;
-  text-align: center;
-  border-radius: 15px;
-  background-color: var(--navbar-light);
-  margin: auto;
-  margin-top: 10px;
-}
-.photoInput{
+.formWrapper{
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
 }
-
-
-.headers{
-  display: grid;
-  place-items: center;
-}
-.descriptionPrev {
-  max-height: 200px;
-  width: 70%;
-  overflow-x:hidden;
-  overflow-y:scroll;
-}
-
-.photo {
-  display: inline-flex;
-  cursor: pointer;
-}
-.bin {
-  height: 50px;
-  position: absolute;
-  left: -70px;
-  top: 225px;
-  display: block;
-}
-
-.bindiv{
-  position: relative;
-}
-.bindiv:hover{
-  opacity: 0.5;
-}
-
-.preview {
-  background-color: var(--background-color);
-  overflow-x: hidden;
-  margin: 10px;
+.formWrapper>input{
+  height: 30px;
+  width: 10vw;
   border-radius: 15px;
-  display: grid;
-  grid-template-rows: 7% 79% 10%;
+  border: 1px solid gold;
 }
-.none{
+.formWrapper>label:nth-child(3){
+  margin-left: 5px;
+}
+.description{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.description>textarea{
+  height: 70%;
+  width: 80%;
+
+  border-radius: 15px;
+  overflow-y: scroll;
+}
+
+/* Add more media queries as needed for other elements */
+.map{
+  height: 100%;
+  width: 90%;
+  margin: auto;
+}
+
+.photoInput{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 90%;
+height: 90%;
+margin:auto;
+margin-top: 5%;
+background-color: var(--navbar-light);
+font-size: clamp(1rem,2vw,2.5rem);
+font-weight: 900;
+border-radius: 15px;
+border-top: 1px solid gold;
+}
+.imageUpload{
   display: none;
 }
+.photoInput:hover{
+  cursor: pointer;
+  opacity: 0.7;
+}
 
-.uploadedImages{
-  width: 70%;
-  height: 50%;
-  margin-top:10%;
-  font-size: clamp(1.4rem,7vw,2.4rem);
-  border-radius: 50px;
-  border: 1px solid gold;
-  display: grid;
-  place-content: center;
-  margin: auto;
-
-}
-.preview>h1{
-  text-align: center;
-}
-.prevContent{
-  border-top: 1px solid gold;
-}
-.photos {
-  text-align: center;
-  height: 35vh;
-  width: 98%;
-  display: grid;
-  grid-template-rows: 15% 85%;
-  border: 2px solid gold;
-  border-radius: 15px;
-  margin-top: 20px;
-}
-.photoScroll {
-  display: flex;
-  overflow-y: hidden;
-  height: 100%;
-}
-.photoPreviewHeader{
-  margin: 0 auto;
-}
-.imagePrev {
-  height: 270px;
-  width: 270px;
-  margin:auto 10px ;
- 
-}
