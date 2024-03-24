@@ -21,12 +21,26 @@
   text-align: center;
 }
 .descriptionPrev {
-  overflow-y: scroll;
-  max-height: 300px;
+  overflow-y: auto;
+  margin-top: 10px;
+  height:90%;
+  max-height: 100px;
+  white-space: wrap;
+  padding: 0;
+  display: grid;
+  place-content: center;
 }
-.headerPrev {
+.headerPrev,.date {
   max-width: 100%;
-  font-size: clamp(1rem, 1.2vw, 2rem);
+  font-size: clamp(0.6rem, 1vw, 2rem);
+  margin: 0;
+}
+.headerWrapper{
+  display: flex;
+ width: 90%;
+  justify-content: space-between;
+  margin: auto;
+
 }
 
 
@@ -41,6 +55,7 @@
   border: 1px solid;
   margin-left: -55px;
   margin-bottom: 10px;
+  border: none;
 }
 
 

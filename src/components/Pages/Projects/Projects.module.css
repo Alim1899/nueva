@@ -121,9 +121,12 @@
 @media screen and (max-width: 550px) {
   .projectList {
     grid-template-columns: repeat(1, 1fr);
-    border: 1px solid red;
-    width: 100%
+    width: 100%;
+    column-gap: unset;
+    row-gap: unset;
+    padding: unset;
   }
+ 
  
   .projectHeader {
     font-size: clamp(1rem, 5vw, 2rem);

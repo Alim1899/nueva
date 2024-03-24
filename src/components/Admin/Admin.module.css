@@ -57,15 +57,40 @@
   height: 100%;
 }
 .formWrapper{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 33% 34% 33%;
 }
-.formWrapper>input{
+.formWrapper>div>input{
   height: 30px;
   width: 10vw;
+  min-width: 120px;
   border-radius: 15px;
   border: 1px solid gold;
+}
+.wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+.formWrapper>div>div>select{
+  height: 30px;
+  width: 7vw;
+  min-width: 60px;
+  border-radius: 15px;
+  border: 1px solid gold;
+}
+.datePicker{
+  display: grid;
+  grid-template-rows: 40% 60%;
+}
+.datePicker>h4{
+  margin: 0 auto;
+}
+.datePicker>div{
+  display: flex;
+  justify-content: space-between;
 }
 .formWrapper>label:nth-child(3){
   margin-left: 5px;

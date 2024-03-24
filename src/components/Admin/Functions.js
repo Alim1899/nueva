@@ -92,7 +92,9 @@ export const changehandler = (
   e,
   setProjectName,
   setProjectDescription,
-  setProjectLocation
+  setProjectLocation,
+  setYear,
+  setMonth
 ) => {
   if (e.target.id === "projectHeader") {
     setProjectName(e.target.value);
@@ -100,7 +102,11 @@ export const changehandler = (
     setProjectDescription(e.target.value);
   } else if (e.target.id === "location") {
     setProjectLocation(e.target.value);
-  }
+  }else if (e.target.id==='years'){
+    setYear(e.target.value)
+  }else if (e.target.id==='months'){
+    setMonth(e.target.value)
+  } else return;
 };
 export const deleteAllData = async () => {
   try {

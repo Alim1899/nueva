@@ -4,6 +4,7 @@ import Leaflet from "../Map/Leaflet";
 import "leaflet/dist/leaflet.css";
 import office from "../../assets/icons/office.png";
 import ProjectPreview from "./Review/Preview";
+import DatePicker from './DatePicker'
 import {
   deleteAllData,
   changehandler,
@@ -16,14 +17,19 @@ const Admin = () => {
   const [projectName, setProjectName] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
   const [projectLocation, setProjectLocation] = useState("");
+  const [keys, setKeys] = useState([]);
   const [position, setPosition] = useState([42.259061, 43.00614]);
   const [marker, setmarker] = useState([42.259061, 42.66614]);
   const [flyTo, setFlyTo] = useState(null);
   const [icon, setIcon] = useState(office);
+  const [year,setYear] =useState(null);
+  const [month,setMonth] =useState(null);
   const projectHeaderRef = useRef(null);
   const descriptionRef = useRef(null);
   const locationRef = useRef(null);
-  const [keys, setKeys] = useState([]);
+  const monthref = useRef(null);
+  const yearref = useRef(null);
+
   //Refresh database
   useEffect(() => {
     deleteAllData();
@@ -42,24 +48,29 @@ const Admin = () => {
               e,
               setProjectName,
               setProjectDescription,
-              setProjectLocation
+              setProjectLocation,
+              setYear,
+              setMonth
             )
           }
         >
           <h1 className={classes.uploadHeader}>პროექტის დეტალები</h1>
           <div className={classes.form}>
             <div className={classes.formWrapper}>
-              <label htmlFor="projectHeader">პროექტის სათაური</label>
+            <div className={classes.wrap}>
+               <label htmlFor="projectHeader">პროექტის სათაური</label>
               <input
                 id="projectHeader"
                 placeholder="მოკლე სათაური..."
                 className={classes.projectHeader}
                 type="text"
                 ref={projectHeaderRef}
-                maxLength={75}
+                maxLength={50}
               ></input>
-              <label htmlFor="location">ლოკაცია</label>
-              <input
+            </div>
+             <div className={classes.wrap}>
+             <label htmlFor="location">ლოკაცია</label>
+             <input
                 type="text"
                 id="location"
                 ref={locationRef}
@@ -76,6 +87,10 @@ const Admin = () => {
                 placeholder="42.016644, 43.907403"
                 className={classes.location}
               ></input>
+             </div>
+              
+            
+              <DatePicker className={classes.datePicker} yearref={yearref} monthref={monthref} />
             </div>
             <div className={classes.description}>
               <label htmlFor="description">პროექტის აღწერილობა </label>
@@ -116,6 +131,8 @@ const Admin = () => {
           projectName={projectName}
           projectDescription={projectDescription}
          setKeys={setKeys}
+         month={month}
+         year={year}
           save={save}
         />
       </div>

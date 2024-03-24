@@ -15,7 +15,6 @@ const Projects = () => {
   ];
   const [activeSlide, setActiveSlide] = useState(slides[0]);
   const leftSlide = () => {
-    console.log(activeSlide.id);
     if (activeSlide.id === 1) {
       setActiveSlide(slides[2]);
     } else if (activeSlide.id === 2) {
@@ -25,8 +24,6 @@ const Projects = () => {
     }
   };
   const rightslide = () => {
-    console.log(activeSlide.id);
-
     if (activeSlide.id === 1) {
       setActiveSlide(slides[1]);
     } else if (activeSlide.id === 2) {
@@ -71,20 +68,19 @@ const Projects = () => {
   );
   return (
     <div className={classes.main}>
-        <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
-      
-        <div className={classes.projectList}>
-          {project}
-          {project}
-          {project}
-          {project}
-          {project}
-          {project}
-          {project}
-          {project}
-          {project}
-        </div>
-    
+      <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
+
+      <div className={classes.projectList}>
+        {project}
+        {project}
+        {project}
+        {project}
+        {project}
+        {project}
+        {project}
+        {project}
+        {project}
+      </div>
     </div>
   );
 };

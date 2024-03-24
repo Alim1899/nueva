@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Preview.module.css";
 import recycle from "../../../assets/icons/delete.png";
 import {deleteImage} from "../Functions"
-const ProjectPreview = ({ keys, projectName, projectDescription, save,setKeys }) => {
+
+const ProjectPreview = ({month,year, keys, projectName, projectDescription,projectDate, save,setKeys }) => {
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -19,8 +20,12 @@ const ProjectPreview = ({ keys, projectName, projectDescription, save,setKeys })
       <h1 className={classes.prevHeader}>გადახედეთ პროექტს </h1>
       <div className={classes.prevContent}>
         <div className={classes.headers}>
-          <h2 className={classes.headerPrev}>{projectName?projectName:"შეიყვანეთ პროექტის სათაური"}</h2>
-          <h5 className={classes.descriptionPrev}>{projectDescription?projectDescription:"შეიყვანეთ პროექტის აღწერილობა"}</h5>
+        <div className={classes.headerWrapper}>
+               <h2 className={classes.headerPrev}>{projectName?projectName:"შეიყვანეთ პროექტის სათაური"}</h2>
+          <h5 className={classes.date}>თარიღი: {year?year:"წელი"}:{month?month:'თვე'}</h5>
+        </div>
+     
+          <h5 className={classes.descriptionPrev}>{projectDescription?projectDescription:"პროექტის აღწერა"}</h5>
         </div>
 
         <div className={classes.photos}>
