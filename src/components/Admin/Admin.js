@@ -10,7 +10,6 @@ import {
   changehandler,
   handleLocation, 
   imageUploadHandler,
-  save,
 } from "./Functions"; // Import the functions
 
 const Admin = () => {
@@ -18,6 +17,7 @@ const Admin = () => {
   const [projectDescription, setProjectDescription] = useState("");
   const [projectLocation, setProjectLocation] = useState("");
   const [keys, setKeys] = useState([]);
+  const [allImages,setAllImages] = useState([]);
   const [position, setPosition] = useState([42.259061, 43.00614]);
   const [marker, setmarker] = useState([42.259061, 42.66614]);
   const [flyTo, setFlyTo] = useState(null);
@@ -119,7 +119,7 @@ const Admin = () => {
             </label>
             <input
               id="image"
-              onChange={(e)=>imageUploadHandler(e,setKeys)}
+              onChange={(e)=>imageUploadHandler(e,setKeys,setAllImages,monthref,yearref)}
               className={classes.imageUpload}
               type="file"
               multiple
@@ -133,7 +133,8 @@ const Admin = () => {
          setKeys={setKeys}
          month={month}
          year={year}
-          save={save}
+         allImages={allImages}
+         coords={flyTo}
         />
       </div>
     </div>

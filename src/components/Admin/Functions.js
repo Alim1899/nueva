@@ -3,15 +3,19 @@ import markerIcon from "../../assets/icons/marker.png";
 
 import { getDatabase, set, get, ref, push, remove } from "firebase/database";
 
-export const save = async (projectHeaderRef, descriptionRef) => {
-  try {
-    const projectHeader = projectHeaderRef.current.value;
-    const description = descriptionRef.current.value;
+export const save = async (e,projectHeader, description, year,month,allImages,coords) => {
+  console.log(e.target.id,projectHeader,description,month,year,allImages,coords);
+
+    try {
     const db = getDatabase(app);
     const newDocRef = push(ref(db, "projects"));
     await set(newDocRef, {
-      header: projectHeader,
-      description: description,
+      id:`project${new Date().getTime()}`,
+      header:projectHeader,
+      description:description,
+      date:{month:month, year:year},
+      images:allImages,
+      coords:coords
     });
     console.log("success");
   } catch (error) {
@@ -20,12 +24,12 @@ export const save = async (projectHeaderRef, descriptionRef) => {
 };
 
 // TESTED WORKING
-export const retrieveImage = async (setKeys) => {
+export const retrieveImage = async (setKeys,setAllImages) => {
   const db = getDatabase(app);
   console.log("Sent");
   const dbRef = ref(db, "images");
   const snapshot = await get(dbRef);
-  const imgs = []; // Define imgs array here
+  const imgs = []; 
   if (snapshot.exists()) {
     Object.entries(snapshot.val()).forEach((el) => {
       imgs.push({
@@ -34,9 +38,10 @@ export const retrieveImage = async (setKeys) => {
       });
     });
     setKeys(imgs.sort((a, b) => b - a));
+setAllImages(imgs);
     console.log("Success");
   } else {
-    console.log("cant find");
+    console.error("cant find");
   }
 };
 export const handleLocation = (
@@ -57,7 +62,7 @@ export const handleLocation = (
     alert("აკრიფე სწორი ფორმატით - 42.123456,43.123456");
   }
 };
-export const imageUploadHandler = async (e, setKeys) => {
+export const imageUploadHandler = async (e, setKeys,setAllImages) => {
   if (e.target.files) {
     const fileList = e.target.files;
     for (let i = 0; i < fileList.length; i++) {
@@ -76,7 +81,7 @@ export const imageUploadHandler = async (e, setKeys) => {
               url: dataURL,
             });
             // After each successful upload, retrieve the images
-            await retrieveImage(setKeys);
+            await retrieveImage(setKeys,setAllImages);
           } catch (error) {
             console.error("Something went wrong:", error);
           }

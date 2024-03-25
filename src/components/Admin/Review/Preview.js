@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./Preview.module.css";
 import recycle from "../../../assets/icons/delete.png";
-import {deleteImage} from "../Functions"
+import {deleteImage, save} from "../Functions"
 
-const ProjectPreview = ({month,year, keys, projectName, projectDescription,projectDate, save,setKeys }) => {
+const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImages,month,year,coords}) => {
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -65,7 +65,7 @@ const ProjectPreview = ({month,year, keys, projectName, projectDescription,proje
           </div>
         </div>
       </div>
-      <button className={classes.saveButton} type="submit" onClick={save}>
+      <button className={classes.saveButton} type="submit" onClick={(e)=>save(e,projectName,projectDescription,month,year,allImages,coords)}>
         პროექტის დამატება
       </button>
     </div>

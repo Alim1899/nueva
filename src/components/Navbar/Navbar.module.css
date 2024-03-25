@@ -128,3 +128,6 @@ height: 100%;
     grid-template-columns: 90% 10%;
   }
 }
+.logo{
+  margin-right: 1vw;
+}
