@@ -3,7 +3,7 @@ import classes from "./Preview.module.css";
 import recycle from "../../../assets/icons/delete.png";
 import {deleteImage, save} from "../Functions"
 
-const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImages,month,year,coords}) => {
+const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImages,month,year,projectLocation,coords}) => {
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -21,8 +21,9 @@ const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImage
       <div className={classes.prevContent}>
         <div className={classes.headers}>
         <div className={classes.headerWrapper}>
-               <h2 className={classes.headerPrev}>{projectName?projectName:"შეიყვანეთ პროექტის სათაური"}</h2>
-          <h5 className={classes.date}>თარიღი: {year?year:"წელი"}:{month?month:'თვე'}</h5>
+               <h2 className={classes.headerPrev}>{projectName?projectName:"პროექტის სათაური"}</h2>
+               <h2 className={classes.locationPrev}>{projectLocation?projectLocation:"პროექტის ლოკაცია"}</h2>
+          <h4 className={classes.date}>თარიღი: {year?year:"წელი"}:{month?month:'თვე'}</h4>
         </div>
      
           <h5 className={classes.descriptionPrev}>{projectDescription?projectDescription:"პროექტის აღწერა"}</h5>
@@ -65,7 +66,7 @@ const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImage
           </div>
         </div>
       </div>
-      <button className={classes.saveButton} type="submit" onClick={(e)=>save(e,projectName,projectDescription,year,month,allImages,coords)}>
+      <button className={classes.saveButton} type="submit" onClick={(e)=>save(e,projectName,projectDescription,year,month,allImages,coords,projectLocation)}>
         პროექტის დამატება
       </button>
     </div>

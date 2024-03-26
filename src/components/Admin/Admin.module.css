@@ -50,28 +50,30 @@
 .form {
   height: 100%;
   display: grid;
-  grid-template-rows: 25% 70%
+  grid-template-columns: 36% 61%
  
 }
 .formWrapper,.description{
   height: 100%;
 }
 .formWrapper{
-  display: grid;
-  grid-template-columns: 33% 34% 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .formWrapper>div>input{
   height: 30px;
-  width: 10vw;
+  width: 15vw;
   min-width: 120px;
   border-radius: 15px;
   border: 1px solid gold;
 }
 .wrap{
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   
 }
 .formWrapper>div>div>select{
@@ -83,13 +85,16 @@
 }
 .datePicker{
   display: grid;
-  grid-template-rows: 40% 60%;
+  grid-template-rows: 50% 50%;
+
 }
 .datePicker>h4{
   margin: 0 auto;
 }
 .datePicker>div{
   display: flex;
+  width: 102%;
+  margin-left: -1%;
   justify-content: space-between;
 }
 .formWrapper>label:nth-child(3){
@@ -103,7 +108,7 @@
 }
 .description>textarea{
   height: 70%;
-  width: 80%;
+  width: 100%;
 
   border-radius: 15px;
   overflow-y: scroll;

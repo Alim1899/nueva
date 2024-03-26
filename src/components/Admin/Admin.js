@@ -22,6 +22,7 @@ const Admin = () => {
   const [marker, setmarker] = useState([42.259061, 42.66614]);
   const [flyTo, setFlyTo] = useState(null);
   const [icon, setIcon] = useState(office);
+  const [coords,setCoords] = useState([]);
   const [year,setYear] =useState(null);
   const [month,setMonth] =useState(null);
   const projectHeaderRef = useRef(null);
@@ -29,6 +30,7 @@ const Admin = () => {
   const locationRef = useRef(null);
   const monthref = useRef(null);
   const yearref = useRef(null);
+  const coordsRef = useRef(null)
 
   //Refresh database
   useEffect(() => {
@@ -50,7 +52,8 @@ const Admin = () => {
               setProjectDescription,
               setProjectLocation,
               setYear,
-              setMonth
+              setMonth,
+              setCoords
             )
           }
         >
@@ -69,15 +72,16 @@ const Admin = () => {
               ></input>
             </div>
              <div className={classes.wrap}>
-             <label htmlFor="location">ლოკაცია</label>
+             
+             <label htmlFor="coords">კოორდინატები</label>
              <input
                 type="text"
-                id="location"
-                ref={locationRef}
+                id="coords"
+                ref={coordsRef}
                 onBlur={(e) =>
                   handleLocation(
                     e,
-                    projectLocation,
+                    coords,
                     setPosition,
                     setmarker,
                     setFlyTo,
@@ -85,8 +89,11 @@ const Admin = () => {
                   )
                 }
                 placeholder="42.016644, 43.907403"
-                className={classes.location}
+                className={classes.coords}
               ></input>
+              <label htmlFor="location">ლოკაცია</label>
+              <input className={classes.location} id="location" ref={locationRef} placeholder="ითხვისი,ჭიათურა"></input>
+             
              </div>
               
             
@@ -134,6 +141,7 @@ const Admin = () => {
          month={month}
          year={year}
          allImages={allImages}
+         projectLocation={projectLocation}
          coords={flyTo}
         />
       </div>

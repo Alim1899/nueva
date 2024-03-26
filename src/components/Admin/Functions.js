@@ -3,7 +3,7 @@ import markerIcon from "../../assets/icons/marker.png";
 
 import { getDatabase, set, get, ref, push, remove } from "firebase/database";
 
-export const save = async (e,projectHeader, description, year,month,allImages,coords) => {
+export const save = async (e,projectHeader, description, year,month,allImages,coords,location) => {
 
     try {
     const db = getDatabase(app);
@@ -14,12 +14,14 @@ export const save = async (e,projectHeader, description, year,month,allImages,co
       description:description,
       date:{month:month, year:year},
       images:allImages,
-      coords:coords
+      coords:coords,
+      location:location
     });
     console.log("success");
   } catch (error) {
     console.error("Error saving data:", error);
   }
+  
 };
 
 // TESTED WORKING
@@ -55,17 +57,18 @@ export const retrieveData = async(setProjects)=>{
 }
 export const handleLocation = (
   e,
-  projectLocation,
+  coords,
   setPosition,
   setmarker,
   setFlyTo,
   setIcon
 ) => {
+  console.log(coords);
   var pattern = /^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/;
-  if (pattern.test(projectLocation)) {
-    setPosition(projectLocation.split(","));
-    setmarker(projectLocation.split(","));
-    setFlyTo(projectLocation.split(","));
+  if (pattern.test(coords)) {
+    setPosition(coords.split(","));
+    setmarker(coords.split(","));
+    setFlyTo(coords.split(","));
     setIcon(markerIcon);
   } else {
     alert("აკრიფე სწორი ფორმატით - 42.123456,43.123456");
@@ -110,19 +113,22 @@ export const changehandler = (
   setProjectDescription,
   setProjectLocation,
   setYear,
-  setMonth
+  setMonth,
+  setCoords
 ) => {
   if (e.target.id === "projectHeader") {
     setProjectName(e.target.value);
   } else if (e.target.id === "description") {
     setProjectDescription(e.target.value);
-  } else if (e.target.id === "location") {
-    setProjectLocation(e.target.value);
+  } else if (e.target.id === "coords") {
+    setCoords(e.target.value);
   }else if (e.target.id==='years'){
     setYear(e.target.value)
   }else if (e.target.id==='months'){
     setMonth(e.target.value)
-  } else return;
+  } else if(e.target.id==='location'){
+    setProjectLocation(e.target.value)
+  }else  return;
 };
 export const deleteAllData = async () => {
   try {

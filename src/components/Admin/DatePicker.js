@@ -2,6 +2,7 @@ import React from 'react'
 
 const DatePicker = (props) => {
     const months = [
+
         {id:1,key:'იან',name:'იანვარი'},
         {id:1,key:'თებ.',name:'თებერვალი'},
         {id:1,key:'მარ.',name:'მარტი'},
@@ -17,18 +18,21 @@ const DatePicker = (props) => {
     ]
     const currentYear = new Date().getFullYear();
     const years = [];
-    for (let year = 1970; year <= currentYear; year++) {
+    for (let year = 2010; year <= currentYear; year++) {
       years.push(year);
     }
   return (
     <div className={props.className} >
     <h4>თარიღი</h4>
     <div><select id='months' name='months' monthref={props.monthref}>
-        {months.map(el=>
-        <option key={el.key}>{el.name}</option>)}
-        
-      </select>
+  
+    <option disabled>აირჩიე თვე</option>
+  {months.map(el => (
+    <option key={el.key}>{el.name}</option>
+  ))}
+</select>
       <select id='years' name='years' yearref={props.yearref}>
+      <option disabled>აირჩიე წელი</option>
         {years.map(year =>
           <option key={year}>{year}</option>
         )}

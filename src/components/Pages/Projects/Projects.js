@@ -47,7 +47,7 @@ const Project = ({ project }) => {
         <h3 className={classes.projectHeader}>{project.header}</h3>
         <div className={classes.location}>
           <img alt="icon" className={classes.icon} src={locate} />
-          <h5>{project.coords[0]}, {project.coords[1]}</h5>
+          <h5>{project.location}</h5>
         </div>
         <button type="button" className={classes.moreBtn}>
           <a href="/project">სრულად</a>
@@ -67,11 +67,21 @@ const Projects = () => {
   return (
     <div className={classes.main}>
       <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
-      <div className={classes.projectList}>
+      
+        {projects.length===0&&(
+          <div className={classes.animation}>
+          <h2>იტვირთება პროექტები</h2>
+          <div className={classes.loader}></div>
+        </div>)}
+      
+      {projects.length>0&&(
+        <div className={classes.projectList}>
         {projects.map((project) => (
           <Project key={project[0]} project={project[1]} />
         ))}
       </div>
+      )}
+      
     </div>
   );
 };
