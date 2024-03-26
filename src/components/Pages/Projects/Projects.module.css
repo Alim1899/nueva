@@ -1,10 +1,11 @@
-.main{
+.main {
   width: 100vw;
   height: 100%;
 }
+
 .header {
   font-size: var(--header-font-size);
-  color: var(--background-color);
+  color: aliceblue;
   border: 1px solid gold;
   width: var(--header-width);
   margin: auto;
@@ -13,11 +14,9 @@
   background-color: var(--navbar-dark);
   color: aliceblue;
   margin-top: calc(var(--navbar-height) + 1vw);
-  
 }
 
-
-.projectList{
+.projectList {
   margin: auto;
   width: clamp(200px, 90vw, 2000px);
   display: grid;
@@ -44,18 +43,40 @@
   border-radius: 15px;
   margin-top: 2vh;
 }
+
 .icon {
   width: 30px;
 }
-.arrow{
-  height: 50px;
+
+.arrow {
   cursor: pointer;
+  z-index: 1;
 }
-.slider{
+
+.slider {
+  position: relative;
   display: grid;
-  place-items: center;
   grid-template-columns: 7% 86% 7%;
+  align-items: center; /* Center items vertically */
 }
+
+.slides {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.slides img {
+  flex: 0 0 100%;
+}
+
+.leftArrow {
+  grid-column: 1; /* Position left arrow at the start */
+}
+
+.rightArrow {
+  grid-column: 3; /* Position right arrow at the end */
+}
+
 .projectHeader {
   margin: 0;
   height: 50px;
@@ -67,6 +88,7 @@
   font-weight: 900;
   margin-top: 15px;
 }
+
 .location {
   height: 50px;
   width: 100%;
@@ -77,6 +99,7 @@
   align-items: center;
   color: aliceblue;
 }
+
 .moreBtn {
   width: 40%;
   margin: auto;
@@ -91,15 +114,18 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
 .moreBtn > a {
   text-decoration: none;
   color: aliceblue;
 }
+
 .moreBtn:hover {
   cursor: pointer;
   opacity: 0.7;
 }
-.footer{
+
+.footer {
   margin-top: 50px;
 }
 
@@ -109,11 +135,11 @@
   .projectList {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .projectHeader {
     font-size: clamp(0.9rem, 2.3vw, 2rem);
   }
-  .project{
+  .project {
     margin: 5px;
   }
 }
@@ -126,8 +152,7 @@
     row-gap: unset;
     padding: unset;
   }
- 
- 
+
   .projectHeader {
     font-size: clamp(1rem, 5vw, 2rem);
   }

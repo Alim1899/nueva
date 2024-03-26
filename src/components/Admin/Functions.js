@@ -4,7 +4,6 @@ import markerIcon from "../../assets/icons/marker.png";
 import { getDatabase, set, get, ref, push, remove } from "firebase/database";
 
 export const save = async (e,projectHeader, description, year,month,allImages,coords) => {
-  console.log(e.target.id,projectHeader,description,month,year,allImages,coords);
 
     try {
     const db = getDatabase(app);
@@ -26,7 +25,6 @@ export const save = async (e,projectHeader, description, year,month,allImages,co
 // TESTED WORKING
 export const retrieveImage = async (setKeys,setAllImages) => {
   const db = getDatabase(app);
-  console.log("Sent");
   const dbRef = ref(db, "images");
   const snapshot = await get(dbRef);
   const imgs = []; 
@@ -39,11 +37,22 @@ export const retrieveImage = async (setKeys,setAllImages) => {
     });
     setKeys(imgs.sort((a, b) => b - a));
 setAllImages(imgs);
-    console.log("Success");
   } else {
     console.error("cant find");
   }
 };
+export const retrieveData = async(setProjects)=>{
+  const db = getDatabase(app);
+  const dbRef = ref(db, "projects");
+  const snapshot = await get(dbRef);
+
+  if (snapshot.exists()) {
+    setProjects(Object.entries(snapshot.val()))
+  } else {
+    console.error("cant find");
+  }
+
+}
 export const handleLocation = (
   e,
   projectLocation,
@@ -63,6 +72,7 @@ export const handleLocation = (
   }
 };
 export const imageUploadHandler = async (e, setKeys,setAllImages) => {
+
   if (e.target.files) {
     const fileList = e.target.files;
     for (let i = 0; i < fileList.length; i++) {
@@ -79,6 +89,7 @@ export const imageUploadHandler = async (e, setKeys,setAllImages) => {
             await set(newDocRef, {
               key: key,
               url: dataURL,
+              id:localStorage.getItem("id")
             });
             // After each successful upload, retrieve the images
             await retrieveImage(setKeys,setAllImages);

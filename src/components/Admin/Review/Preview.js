@@ -65,7 +65,7 @@ const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImage
           </div>
         </div>
       </div>
-      <button className={classes.saveButton} type="submit" onClick={(e)=>save(e,projectName,projectDescription,month,year,allImages,coords)}>
+      <button className={classes.saveButton} type="submit" onClick={(e)=>save(e,projectName,projectDescription,year,month,allImages,coords)}>
         პროექტის დამატება
       </button>
     </div>
