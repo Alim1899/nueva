@@ -5,7 +5,7 @@ import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
 import { retrieveData } from "../../Admin/Functions";
 
-const Project = ({ project }) => {
+const Project = ({ project,id }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const leftSlide = (length) => {
     setActiveSlide((prevIndex) => (prevIndex === 0 ? length - 1 : prevIndex - 1));
@@ -49,9 +49,9 @@ const Project = ({ project }) => {
           <img alt="icon" className={classes.icon} src={locate} />
           <h5>{project.location}</h5>
         </div>
-        <button type="button" className={classes.moreBtn}>
-          <a href="/project">სრულად</a>
-        </button>
+        
+          <a href={`/project/${id}`}><button type="button" className={classes.moreBtn}>სრულად</button></a>
+        
       </div>
     </div>
   );
@@ -59,10 +59,9 @@ const Project = ({ project }) => {
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-
   useEffect(() => {
     retrieveData(setProjects);
-  }, []);
+  }, [projects]);
 
   return (
     <div className={classes.main}>
@@ -77,7 +76,7 @@ const Projects = () => {
       {projects.length>0&&(
         <div className={classes.projectList}>
         {projects.map((project) => (
-          <Project key={project[0]} project={project[1]} />
+          <Project key={project[0]}  project={project[1]} id={project[0]} />
         ))}
       </div>
       )}

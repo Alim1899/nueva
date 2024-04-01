@@ -117,12 +117,10 @@
   border-radius: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
-}
-
-.moreBtn > a {
-  text-decoration: none;
   color: aliceblue;
 }
+
+
 
 .moreBtn:hover {
   cursor: pointer;

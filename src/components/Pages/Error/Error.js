@@ -1,9 +1,7 @@
 import classes from "./Error.module.css";
-import Navbar from "../../Navbar/Navbar";
 const Error = () => {
   return (
     <div className={classes.main}>
-      <Navbar />
       <div className={classes.content}>
       <div className={classes.errors}>
       <h1>დაფიქსირდა შეცდომა!</h1>

@@ -2,34 +2,39 @@ import app from "../../firebaseConfig";
 import markerIcon from "../../assets/icons/marker.png";
 
 import { getDatabase, set, get, ref, push, remove } from "firebase/database";
-
-export const save = async (e,projectHeader, description, year,month,allImages,coords,location) => {
-
-    try {
+// TESTED WORKING
+export const save = async (
+  e,
+  projectHeader,
+  description,
+  year,
+  month,
+  allImages,
+  coords,
+  location
+) => {
+  try {
     const db = getDatabase(app);
     const newDocRef = push(ref(db, "projects"));
     await set(newDocRef, {
-      id:`project${new Date().getTime()}`,
-      header:projectHeader,
-      description:description,
-      date:{month:month, year:year},
-      images:allImages,
-      coords:coords,
-      location:location
+      id: `project${new Date().getTime()}`,
+      header: projectHeader,
+      description: description,
+      date: { month: month, year: year },
+      images: allImages,
+      coords: coords,
+      location: location,
     });
     console.log("success");
   } catch (error) {
     console.error("Error saving data:", error);
   }
-  
 };
-
-// TESTED WORKING
-export const retrieveImage = async (setKeys,setAllImages) => {
+export const retrieveImage = async (setKeys, setAllImages) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "images");
   const snapshot = await get(dbRef);
-  const imgs = []; 
+  const imgs = [];
   if (snapshot.exists()) {
     Object.entries(snapshot.val()).forEach((el) => {
       imgs.push({
@@ -38,23 +43,22 @@ export const retrieveImage = async (setKeys,setAllImages) => {
       });
     });
     setKeys(imgs.sort((a, b) => b - a));
-setAllImages(imgs);
+    setAllImages(imgs);
   } else {
     console.error("cant find");
   }
 };
-export const retrieveData = async(setProjects)=>{
+export const retrieveData = async (setProjects) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "projects");
   const snapshot = await get(dbRef);
 
   if (snapshot.exists()) {
-    setProjects(Object.entries(snapshot.val()))
+    setProjects(Object.entries(snapshot.val()));
   } else {
     console.error("cant find");
   }
-
-}
+};
 export const handleLocation = (
   e,
   coords,
@@ -74,8 +78,7 @@ export const handleLocation = (
     alert("აკრიფე სწორი ფორმატით - 42.123456,43.123456");
   }
 };
-export const imageUploadHandler = async (e, setKeys,setAllImages) => {
-
+export const imageUploadHandler = async (e, setKeys, setAllImages) => {
   if (e.target.files) {
     const fileList = e.target.files;
     for (let i = 0; i < fileList.length; i++) {
@@ -92,10 +95,10 @@ export const imageUploadHandler = async (e, setKeys,setAllImages) => {
             await set(newDocRef, {
               key: key,
               url: dataURL,
-              id:localStorage.getItem("id")
+              id: localStorage.getItem("id"),
             });
             // After each successful upload, retrieve the images
-            await retrieveImage(setKeys,setAllImages);
+            await retrieveImage(setKeys, setAllImages);
           } catch (error) {
             console.error("Something went wrong:", error);
           }
@@ -122,13 +125,13 @@ export const changehandler = (
     setProjectDescription(e.target.value);
   } else if (e.target.id === "coords") {
     setCoords(e.target.value);
-  }else if (e.target.id==='years'){
-    setYear(e.target.value)
-  }else if (e.target.id==='months'){
-    setMonth(e.target.value)
-  } else if(e.target.id==='location'){
-    setProjectLocation(e.target.value)
-  }else  return;
+  } else if (e.target.id === "years") {
+    setYear(e.target.value);
+  } else if (e.target.id === "months") {
+    setMonth(e.target.value);
+  } else if (e.target.id === "location") {
+    setProjectLocation(e.target.value);
+  } else return;
 };
 export const deleteAllData = async () => {
   try {
@@ -155,3 +158,15 @@ export const deleteImage = async (e, imageId, setKeys, keys) => {
   setKeys(newKeys);
   console.log(keys);
 };
+export const getData = async(id,setProject,setDataArrived)=>{
+  const db = getDatabase(app);
+  const dbRef = ref(db, `projects/${id}`);
+  const snapshot = await get(dbRef);
+
+  if (snapshot.exists()) {
+    setProject(snapshot.val());
+    setDataArrived(true);
+  } else {
+    console.error("cant find");
+  }
+}
