@@ -1,97 +1,124 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Project.module.css";
 import Leaflet from "../../../Map/Leaflet";
-import { useState, useEffect } from "react";
-import {getData} from '../../../Admin/Functions'
-import  {useParams} from 'react-router-dom';
-// import left from "../../../../assets/icons/leftslide.svg";
-// import right from "../../../../assets/icons/rightslide.svg";
+import { getData } from "../../../Admin/Functions";
+import { useParams } from "react-router-dom";
+import enlarge from "../../../../assets/icons/larger.png";
 import marker from "../../../../assets/icons/marker.png";
+import left from "../../../../assets/icons/leftslide.svg";
+import right from "../../../../assets/icons/rightslide.svg";
 
 const Project = () => {
   const [project, setProject] = useState([]);
-  const [dataArrived, setDataArrived] = useState(false); // New state to track if data has arrived
+  const [slider, showSlider] = useState(false);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [dataArrived, setDataArrived] = useState(false);
+  const { id } = useParams();
 
-
-
-  const {id} = useParams();
-
-  
   useEffect(() => {
-    if (!dataArrived) { 
-      getData(id,setProject,setDataArrived);
+    if (!dataArrived) {
+      getData(id, setProject, setDataArrived);
     }
-    console.log(project);
-  }, [id,project,dataArrived]);
-  
+  }, [id, project, dataArrived]);
 
+  const leftSlide = () => {
+    setActiveSlide((prevIndex) =>
+      prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const rightSlide = () => {
+    setActiveSlide((prevIndex) =>
+      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const openSlider = (index) => {
+    setActiveSlide(index);
+    showSlider(true);
+  };
 
   return (
     <div className={classes.project}>
-      {project.length===0&&(
-          <div className={classes.animation}>
-          <h2>იტვირთება პროექტები</h2>
+      {!dataArrived && (
+        <div className={classes.animation}>
+          <h2>იტვირთება</h2>
           <div className={classes.loader}></div>
-        </div>)}
-   { dataArrived&&  <div className={classes.content}>
-    
-        <header className={classes.header}>
-          {project.header}
-        </header>
-        <p className={classes.description}>
-          {project.description}
-        </p>
-        <h4 className={classes.date}>{project.date.month}, {project.date.year} </h4>
-        <div className={classes.map}>
-          <Leaflet
-            popup="ნენსკრა"
-            center={project.coords}
-            zoom={10}
-            icon={marker}
-            marker={project.coords}
-          />
         </div>
-         <div className={classes.gallery}>
-         <h1 className={classes.sliderHeader}>გალერეა</h1>
+      )}
+      {dataArrived && (
+        <div className={classes.content}>
+          <header className={classes.header}>{project.header}</header>
+          <p className={classes.description}>{project.description}</p>
+          <h4 className={classes.date}>
+            {project.date.month}, {project.date.year}{" "}
+          </h4>
+          <div className={classes.map}>
+            <Leaflet
+              popup="ნენსკრა"
+              center={project.coords}
+              zoom={10}
+              icon={marker}
+              marker={project.coords}
+            />
+          </div>
+          <div className={classes.gallery}>
+            <h1 className={classes.sliderHeader}>გალერეა</h1>
+            <div className={classes.photos}>
+              {project.images.map((img, index) => {
+                return (
+                  <div key={img.key} className={classes.imgs}>
+                    <img
+                      className={classes.img}
+                      alt="project-img"
+                      src={img.url}
+                      
+                    ></img>
+                    <div className={classes.enlarge}>
+                    <img src={enlarge}  alt="enlarge" onClick={() => openSlider(index)}></img>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+      {slider && (
+        <div className={classes.slider}>
+        <div className={classes.arrows} onClick={leftSlide}>
+          <img
+            alt="left"
+            
+            src={left}
+            className={`${classes.arrow} ${classes.leftArrow}`}
+          />
+          </div>
+          <div className={classes.slides}>
+            {project.images.map((image, index) => (
+              <img
+                key={index}
+                className={classes.contentImg}
+                alt={image.key}
+                src={image.url}
+                onClick={() => showSlider(false)}
+                style={{
+                  transform: `translateX(-${activeSlide * 100}%)`,
+                }}
+              />
+            ))}
+          </div>
+          <div className={classes.arrows} onClick={rightSlide}> <img
+            alt="right"
+            src={right}
+            
+            className={`${classes.arrow} ${classes.rightArrow}`}
+          /></div>
          
-      </div>
-      </div>}
-     
-     
+        </div>
+      )}
     </div>
   );
 };
 
 export default Project;
-
-
-
-/* <div className={classes.slider}>
-
-  const [activeSlide, setActiveSlide] = useState(null);
-  const leftSlide = () => {
-    console.log('LEFT');
-
-  };
-  const rightslide = () => {
-console.log('RIGHT');
-  };
-     
-     <img
-       alt="left"
-       onClick={leftSlide}
-       src={left}
-       className={classes.arrow}
-     ></img>{" "}
-     <img
-       alt="img"
-       className={classes.contentImg}
-       src={activeSlide.src}
-     ></img>
-     <img
-       alt="right"
-       src={right}
-       onClick={rightslide}
-       className={classes.arrow}
-     ></img>{" "}
-   </div> */
