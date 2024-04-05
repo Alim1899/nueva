@@ -5,7 +5,7 @@
     --navbar-dark:#236570;
     --navbar:#5b9ad4;
     --text-color: aliceblue;
-    --header-font-size:clamp(0.8rem, 5vw, 2.5rem);
+    --header-font-size:clamp(0.9rem, 5vw, 2.5rem);
     --navbar-height:clamp(90px,10vw,120px);
     --header-width: clamp(200px,90vw,700px);
   }

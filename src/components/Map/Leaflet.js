@@ -30,7 +30,6 @@ function Leaflet(props) {
         map.flyTo(location, 9);
       }
     }, [location, map]);
-console.log(maps.satellite);
     return null;
   }
 

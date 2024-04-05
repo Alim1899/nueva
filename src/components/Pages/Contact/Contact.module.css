@@ -1,30 +1,26 @@
 .main {
   min-height: 100%;
   min-width: 100%;
-  margin-top: 115px;
+ padding:2vh 0;
 }
 
 .header {
   font-size: var(--header-font-size);
-  color: var(--background-color);
-  border: 1px solid gold;
+  border-bottom: 2px solid gold;
   width: var(--header-width);
   margin: auto;
   text-align: center;
   border-radius: 15px;
-  background-color: var(--navbar-dark);
   color: aliceblue;
-  margin-top: calc(var(--navbar-height) + 1vw);
 }
 
 .contact {
-  width: clamp(250px, 90vw, 1500px);
+  width: clamp(275px, 90vw, 2400px);
   margin: auto;
   height: 100%;
-  margin-bottom:70px;
   border-radius: 15px;
   background-color: var(--navbar-dark);
-  margin-top: 50px;
+  margin-top: 5vh
 
 }
 
@@ -36,16 +32,17 @@
 }
 
 .social {
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-size: clamp(1rem, 5vw, 2rem);
   margin-left: clamp(5px,1vw,40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .socialIcon {
   height: 50px;
   width: 50px;
   border-radius: 50px;
 }
-
 .list {
   margin-top: clamp(10px, 5vw, 40px);
   padding: 0; 
@@ -74,20 +71,20 @@
 .map {
   height:clamp(300px,50vh,600px);
   width: 98%;
-  max-width: 650px;
+
 margin: auto;
-margin-bottom:1%;
+margin-bottom:1vh;
 }
 
 .head {
-  font-size: clamp(1.1rem, 2vw, 3rem);
-  margin: 0;
+  font-size: clamp(1.1rem, 5vw, 2rem);
+
   text-align: center;
   color: aliceblue;
 }
 
 .street {
-  font-size: clamp(0.7rem, 2vw, 2rem);
+  font-size: clamp(0.7rem, 4vw, 2rem);
   text-align: center;
   color: aliceblue;
   margin: 1vw;
@@ -95,7 +92,7 @@ margin-bottom:1%;
 
 
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1100px) {
   .content {
     flex-direction: row; 
     justify-content: space-between; 
@@ -103,7 +100,7 @@ margin-bottom:1%;
   }
   .social,
   .address {
-    width: 45%; 
+    width: 50%; 
     height: 100%;
   }
 }

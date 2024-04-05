@@ -42,7 +42,7 @@ const Contact = () => {
                 </a>
               </li>
               <li className={classes.listItem}>
-                <a href="mailto:nueva@gmail.com" target="blank">
+                <a href="mailto:ltd.nueva@gmail.com" target="blank">
                   <img
                     className={classes.socialIcon}
                     src={gmail}
@@ -52,20 +52,30 @@ const Contact = () => {
                 </a>
               </li>
               <li className={classes.listItem}>
-                <a href="tel:555 100 200" target="blank">
+                <a href="tel:+995593065588" target="blank">
                   <img
                     className={classes.socialIcon}
                     src={phone}
                     alt="phone"
                   ></img>
-                  <h4> 555 100 200</h4>
+                  <h4> (+995) 593 065 588</h4>
+                </a>
+              </li>
+              <li className={classes.listItem}>
+                <a href="tel:+995431230367," target="blank">
+                  <img
+                    className={classes.socialIcon}
+                    src={phone}
+                    alt="phone"
+                  ></img>
+                  <h4> (+995) 431 230 367</h4>
                 </a>
               </li>
             </ul>
           </div>
           <div className={classes.address}>
           <div className={classes.addressName}> <h4 className={classes.head}>მისამართი:</h4>
-            <h4 className={classes.street}>ქუთაისი, 9 აპრილის ქუჩა: 133</h4></div>
+            <h4 className={classes.street}>4600 ქუთაისი, აკ. წერეთლის N67</h4></div>
            
             <div className={classes.map}>
               {" "}
