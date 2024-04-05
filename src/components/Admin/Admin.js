@@ -17,6 +17,7 @@ const Admin = () => {
   const [projectDescription, setProjectDescription] = useState("");
   const [projectLocation, setProjectLocation] = useState("");
   const [keys, setKeys] = useState([]);
+  const [savedSucces,setSavedSucces] = useState(false);
   const [allImages,setAllImages] = useState([]);
   const [position, setPosition] = useState([42.259061, 43.00614]);
   const [marker, setmarker] = useState([42.259061, 42.66614]);
@@ -32,11 +33,9 @@ const Admin = () => {
   const yearref = useRef(null);
   const coordsRef = useRef(null)
 
-  //Refresh database
   useEffect(() => {
     deleteAllData();
   }, []);
-  // Handling Mouse
 
 
   return (
@@ -143,8 +142,15 @@ const Admin = () => {
          allImages={allImages}
          projectLocation={projectLocation}
          coords={flyTo}
+         setSavedSucces={setSavedSucces}
         />
       </div>
+      {
+        savedSucces&&<div className={classes.popup}>
+        <h1>პროექტი შენახულია ✅</h1>
+      </div>
+      }
+      
     </div>
   );
 };

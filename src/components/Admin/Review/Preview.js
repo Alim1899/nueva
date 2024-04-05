@@ -3,7 +3,7 @@ import classes from "./Preview.module.css";
 import recycle from "../../../assets/icons/delete.png";
 import {deleteImage, save} from "../Functions"
 
-const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImages,month,year,projectLocation,coords}) => {
+const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImages,month,year,projectLocation,coords,setSavedSucces}) => {
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -66,7 +66,7 @@ const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,allImage
           </div>
         </div>
       </div>
-      <button className={classes.saveButton} type="submit" onClick={(e)=>save(e,projectName,projectDescription,year,month,allImages,coords,projectLocation)}>
+      <button className={classes.saveButton} type="submit" onClick={(e)=>save(e,projectName,projectDescription,year,month,allImages,coords,projectLocation,setSavedSucces)}>
         პროექტის დამატება
       </button>
     </div>

@@ -11,7 +11,8 @@ export const save = async (
   month,
   allImages,
   coords,
-  location
+  location,
+  setSavedSucces
 ) => {
   try {
     const db = getDatabase(app);
@@ -25,7 +26,10 @@ export const save = async (
       coords: coords,
       location: location,
     });
+    setSavedSucces(true);
     console.log("success");
+    window.location.reload();
+
   } catch (error) {
     console.error("Error saving data:", error);
   }
