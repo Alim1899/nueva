@@ -1,8 +1,6 @@
 .main {
-  background-color: #260800;
   height: 100%;
   z-index: 999999;
-
 }
 .dropdown {
 margin: 0;
@@ -12,18 +10,17 @@ z-index: 999999;
 .dropdown > li {
   margin-left: -10px;
   margin-top: 40px;
-  border-bottom: 1px solid gold;
+  border-bottom: 2px solid gold;
   border-bottom-right-radius: 40px;
   border-bottom-left-radius: 10px;
   text-align: center;
-
   list-style-type: none;
   padding: 0;
   text-decoration: none;
 }
 
 .blur {
-  background-color: #004956;
+  background-color: var(--navbar);
   border-bottom-right-radius: 15px;
 }
 .dropdown > li > a {
@@ -40,14 +37,14 @@ z-index: 999999;
   height: 100vh;
   z-index: -1;
   background-color: var(--navbar-dark);
-  border-top: 2px dashed #002026;
+  border-top: 2px solid var(--navbar-dark);
 }
 
 .mobile {
 height: 100%;
   display: flex;
   align-items: center;
-  background-color: #004956;
+  background-color: var(--navbar);
   justify-content: space-between;
 }
 

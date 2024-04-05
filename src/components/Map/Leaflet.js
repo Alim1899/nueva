@@ -10,7 +10,7 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import classes from "./Leaflet.module.css";
 import { useEffect } from "react";
-import map from "../Data/Maps";
+import maps from "../Data/Maps";
 import georgia from "../../assets/mygeodata/georgia.json";
 
 function Leaflet(props) {
@@ -30,7 +30,7 @@ function Leaflet(props) {
         map.flyTo(location, 9);
       }
     }, [location, map]);
-
+console.log(maps.satellite);
     return null;
   }
 
@@ -44,8 +44,8 @@ function Leaflet(props) {
           style={{ height: "100%", width: "100%" }}
         >
           <TileLayer
-            attribution={map.maptiler.attribution}
-            url={map.maptiler.url}
+            attribution={maps.maptiler.attribution}
+            url={maps.maptiler.url}
             maxZoom={20}
           />
 
