@@ -4,39 +4,40 @@ import Leaflet from "../Map/Leaflet";
 import "leaflet/dist/leaflet.css";
 import office from "../../assets/icons/office.png";
 import ProjectPreview from "./Review/Preview";
-import DatePicker from './DatePicker'
+import DatePicker from "./DatePicker";
 import {
   deleteAllData,
   changehandler,
-  handleLocation, 
-  imageUploadHandler,
-} from "./Functions"; // Import the functions
-
+  handleLocation,
+  imageUploadHandler
+} from "./Functions"; 
 const Admin = () => {
   const [projectName, setProjectName] = useState("");
   const [projectDescription, setProjectDescription] = useState("");
   const [projectLocation, setProjectLocation] = useState("");
   const [keys, setKeys] = useState([]);
-  const [savedSucces,setSavedSucces] = useState(false);
-  const [allImages,setAllImages] = useState([]);
+  const [savedSucces, setSavedSucces] = useState(false);
+  const [allImages, setAllImages] = useState([]);
   const [position, setPosition] = useState([42.259061, 43.00614]);
   const [marker, setmarker] = useState([42.259061, 42.66614]);
   const [flyTo, setFlyTo] = useState(null);
   const [icon, setIcon] = useState(office);
-  const [coords,setCoords] = useState([]);
-  const [year,setYear] =useState(null);
-  const [month,setMonth] =useState(null);
+  const [coords, setCoords] = useState([]);
+  const [year, setYear] = useState(null);
+  const [month, setMonth] = useState(null);
   const projectHeaderRef = useRef(null);
   const descriptionRef = useRef(null);
   const locationRef = useRef(null);
-  const monthref = useRef(null);
-  const yearref = useRef(null);
-  const coordsRef = useRef(null)
+  const monthRef = useRef(null);
+  const yearRef = useRef(null);
+  const coordsRef = useRef(null);
+  const [btnEnabled,setBtnEnabler]= useState(true);
 
   useEffect(() => {
     deleteAllData();
   }, []);
-
+  
+ 
 
   return (
     <div className={classes.main}>
@@ -52,51 +53,65 @@ const Admin = () => {
               setProjectLocation,
               setYear,
               setMonth,
-              setCoords
+              setCoords,
+              projectHeaderRef.current.value,
+              descriptionRef.current.value,
+              coordsRef.current.value,
+              locationRef.current.value,
+              monthRef.current.value,
+              yearRef.current.value,
+              setBtnEnabler,
+              allImages
             )
           }
         >
           <h1 className={classes.uploadHeader}>პროექტის დეტალები</h1>
           <div className={classes.form}>
             <div className={classes.formWrapper}>
-            <div className={classes.wrap}>
-               <label htmlFor="projectHeader">პროექტის სათაური</label>
-              <input
-                id="projectHeader"
-                placeholder="მოკლე სათაური..."
-                className={classes.projectHeader}
-                type="text"
-                ref={projectHeaderRef}
-                maxLength={50}
-              ></input>
-            </div>
-             <div className={classes.wrap}>
-             
-             <label htmlFor="coords">კოორდინატები</label>
-             <input
-                type="text"
-                id="coords"
-                ref={coordsRef}
-                onBlur={(e) =>
-                  handleLocation(
-                    e,
-                    coords,
-                    setPosition,
-                    setmarker,
-                    setFlyTo,
-                    setIcon
-                  )
-                }
-                placeholder="42.016644, 43.907403"
-                className={classes.coords}
-              ></input>
-              <label htmlFor="location">ლოკაცია</label>
-              <input className={classes.location} id="location" ref={locationRef} placeholder="ითხვისი,ჭიათურა"></input>
-             
-             </div>
-              
-            
-              <DatePicker className={classes.datePicker} yearref={yearref} monthref={monthref} />
+              <div className={classes.wrap}>
+                <label htmlFor="projectHeader">პროექტის სათაური</label>
+                <input
+                  id="projectHeader"
+                  placeholder="მოკლე სათაური..."
+                  className={classes.projectHeader}
+                  type="text"
+                  ref={projectHeaderRef}
+                  maxLength={50}
+                ></input>
+              </div>
+              <div className={classes.wrap}>
+                <label htmlFor="coords">კოორდინატები</label>
+                <input
+                  type="text"
+                  id="coords"
+                  ref={coordsRef}
+                  onBlur={(e) =>
+                    handleLocation(
+                      e,
+                      coords,
+                      setPosition,
+                      setmarker,
+                      setFlyTo,
+                      setIcon
+                    )
+                  }
+                  placeholder="42.016644, 43.907403"
+                  className={classes.coords}
+                ></input>
+                <label htmlFor="location">ლოკაცია</label>
+                <input
+                  className={classes.location}
+                  id="location"
+                  ref={locationRef}
+                  placeholder="ითხვისი,ჭიათურა"
+                ></input>
+              </div>
+
+              <DatePicker
+                className={classes.datePicker}
+                yearref={yearRef}
+                monthref={monthRef}
+              />
             </div>
             <div className={classes.description}>
               <label htmlFor="description">პროექტის აღწერილობა </label>
@@ -108,7 +123,6 @@ const Admin = () => {
             </div>
           </div>
 
-          
           <div className={classes.map}>
             <Leaflet
               popup="ოფისი"
@@ -125,7 +139,9 @@ const Admin = () => {
             </label>
             <input
               id="image"
-              onChange={(e)=>imageUploadHandler(e,setKeys,setAllImages,monthref,yearref)}
+              onChange={(e) =>
+                imageUploadHandler(e, setKeys, setAllImages, monthRef, yearRef)
+              }
               className={classes.imageUpload}
               type="file"
               multiple
@@ -136,21 +152,21 @@ const Admin = () => {
           keys={keys}
           projectName={projectName}
           projectDescription={projectDescription}
-         setKeys={setKeys}
-         month={month}
-         year={year}
-         allImages={allImages}
-         projectLocation={projectLocation}
-         coords={flyTo}
-         setSavedSucces={setSavedSucces}
+          setKeys={setKeys}
+          month={month}
+          year={year}
+          allImages={allImages}
+          projectLocation={projectLocation}
+          coords={flyTo}
+          setSavedSucces={setSavedSucces}
+          btnEnabler={btnEnabled}
         />
       </div>
-      {
-        savedSucces&&<div className={classes.popup}>
-        <h1>პროექტი შენახულია ✅</h1>
-      </div>
-      }
-      
+      {savedSucces && (
+        <div className={classes.popup}>
+          <h1>პროექტი შენახულია ✅</h1>
+        </div>
+      )}
     </div>
   );
 };

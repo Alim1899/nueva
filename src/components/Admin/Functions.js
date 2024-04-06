@@ -121,8 +121,18 @@ export const changehandler = (
   setProjectLocation,
   setYear,
   setMonth,
-  setCoords
+  setCoords,
+  header,
+  description,
+  coords,
+  location,
+  month,
+  year,
+  setBtnEnabler,
+  allImages
 ) => {
+  console.log(header,description,coords,location,month,year,allImages.length);
+  btnEnabler(header,description,coords,location,month,year,setBtnEnabler,allImages)
   if (e.target.id === "projectHeader") {
     setProjectName(e.target.value);
   } else if (e.target.id === "description") {
@@ -172,5 +182,13 @@ export const getData = async(id,setProject,setDataArrived)=>{
     setDataArrived(true);
   } else {
     console.error("cant find");
+  }
+}
+
+const btnEnabler = (header,description,coords,location,month,year,setBtnEnable,allImages)=>{
+  if(header&&description&&coords&&location&&month&&year&&allImages.length>=3){
+    setBtnEnable(false)
+  }else{
+    setBtnEnable(true)
   }
 }
