@@ -18,6 +18,8 @@ const Project = () => {
   useEffect(() => {
     if (!dataArrived) {
       getData(id, setProject, setDataArrived);
+    } else {
+      console.log(project);
     }
   }, [id, project, dataArrived]);
 
@@ -56,10 +58,10 @@ const Project = () => {
           <div className={classes.map}>
             <Leaflet
               popup="ნენსკრა"
-              center={project.coords}
+              center={project.coords.split(",")}
               zoom={10}
               icon={marker}
-              marker={project.coords}
+              marker={project.coords.split(",")}
             />
           </div>
           <div className={classes.gallery}>
