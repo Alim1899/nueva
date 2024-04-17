@@ -1,46 +1,25 @@
-const DatePicker = (props) => {
-  const months = [
-    { id: 1, key: "იან", name: "იანვარი" },
-    { id: 2, key: "თებ.", name: "თებერვალი" },
-    { id: 3, key: "მარ.", name: "მარტი" },
-    { id: 4, key: "აპრ.", name: "აპრილი" },
-    { id: 5, key: "მაი.", name: "მაისი" },
-    { id: 6, key: "ივნ.", name: "ივნისი" },
-    { id: 7, key: "ივლ.", name: "ივლისი" },
-    { id: 8, key: "აგვ.", name: "აგვისტო" },
-    { id: 9, key: "სექტ.", name: "სექტემბერი" },
-    { id: 10, key: "ოქტ.", name: "ოქტომბერი" },
-    { id: 11, key: "ნოემ.", name: "ნოემბერი" },
-    { id: 12, key: "დეკ.", name: "დეკემბერი" },
-  ];
-  const currentYear = new Date().getFullYear();
-  const years = [];
-  for (let year = 2010; year <= currentYear; year++) {
-    years.push(year);
-  }
-  return (
-    <div className={props.className}>
-      <h4>თარიღი</h4>
-      <div>
-        <select id="months" ref={props.monthref} name="months">
-          <option disabled>აირჩიე თვე</option>
-          {months.map((el) => (
-            <option key={el.key} value={el.name}>
-              {el.name}
-            </option>
-          ))}
-        </select>
-        <select ref={props.yearref} id="years" name="years">
-          <option disabled>აირჩიე წელი</option>
-          {years.map((year) => (
-            <option value={year} key={year}>
-              {year}
-            </option>
-          ))}
-        </select>
-      </div>
-    </div>
-  );
-};
+const currentYear = new Date().getFullYear();
+const years = [
+  { id: 0, key: "წელი", value: "" },
+];
+for (let year = 2010; year <= currentYear; year++) {
+  years.push({ value: year, key: year });
+}
 
-export default DatePicker;
+export const year = years;
+
+export const months = [
+  { id: 0, key: "თვე", value: "" },
+  { id: 1, key: "იან", value: "იანვარი" },
+  { id: 2, key: "თებ.", value: "თებერვალი" },
+  { id: 3, key: "მარ.", value: "მარტი" },
+  { id: 4, key: "აპრ.", value: "აპრილი" },
+  { id: 5, key: "მაი.", value: "მაისი" },
+  { id: 6, key: "ივნ.", value: "ივნისი" },
+  { id: 7, key: "ივლ.", value: "ივლისი" },
+  { id: 8, key: "აგვ.", value: "აგვისტო" },
+  { id: 9, key: "სექტ.", value: "სექტემბერი" },
+  { id: 10, key: "ოქტ.", value: "ოქტომბერი" },
+  { id: 11, key: "ნოემ.", value: "ნოემბერი" },
+  { id: 12, key: "დეკ.", value: "დეკემბერი" },
+];

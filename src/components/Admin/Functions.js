@@ -5,7 +5,7 @@ import { getDatabase, set, get, ref, push, remove } from "firebase/database";
 // TESTED WORKING
 export const save = async (
   e,
-  projectHeader,
+  header,
   description,
   year,
   month,
@@ -19,7 +19,7 @@ export const save = async (
     const newDocRef = push(ref(db, "projects"));
     await set(newDocRef, {
       id: `project${new Date().getTime()}`,
-      header: projectHeader,
+      header: header,
       description: description,
       date: { month: month, year: year },
       images: allImages,
@@ -114,39 +114,7 @@ export const imageUploadHandler = async (e, setKeys, setAllImages) => {
     }
   }
 };
-export const changehandler = (
-  e,
-  setProjectName,
-  setProjectDescription,
-  setProjectLocation,
-  setYear,
-  setMonth,
-  setCoords,
-  header,
-  description,
-  coords,
-  location,
-  month,
-  year,
-  setBtnEnabler,
-  allImages
-) => {
-  console.log(header,description,coords,location,month,year,allImages.length);
-  btnEnabler(header,description,coords,location,month,year,setBtnEnabler,allImages)
-  if (e.target.id === "projectHeader") {
-    setProjectName(e.target.value);
-  } else if (e.target.id === "description") {
-    setProjectDescription(e.target.value);
-  } else if (e.target.id === "coords") {
-    setCoords(e.target.value);
-  } else if (e.target.id === "years") {
-    setYear(e.target.value);
-  } else if (e.target.id === "months") {
-    setMonth(e.target.value);
-  } else if (e.target.id === "location") {
-    setProjectLocation(e.target.value);
-  } else return;
-};
+
 export const deleteAllData = async () => {
   try {
     const db = getDatabase(app);
@@ -185,10 +153,4 @@ export const getData = async(id,setProject,setDataArrived)=>{
   }
 }
 
-const btnEnabler = (header,description,coords,location,month,year,setBtnEnable,allImages)=>{
-  if(header&&description&&coords&&location&&month&&year&&allImages.length>=3){
-    setBtnEnable(false)
-  }else{
-    setBtnEnable(true)
-  }
-}
+
