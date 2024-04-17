@@ -1,15 +1,14 @@
 .main {
-    height: 90vh;
     width: 100vw;
     z-index: -1;
-    display: grid;
-    place-content: center;
   }
+ 
  
   .slider{
     height: clamp(250px,80vh,1800px);
     width: clamp(250px,80vw,1800px);
     overflow: hidden;
     z-index: -12;
+    margin: auto;
   }
  
