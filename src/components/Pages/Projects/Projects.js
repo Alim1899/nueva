@@ -3,6 +3,7 @@ import classes from "./Projects.module.css";
 import locate from "./location.svg";
 import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
+import Pagination from './Pagination/Pagination'
 import { retrieveData } from "../../Admin/Functions";
 
 const Project = ({ project,id }) => {
@@ -80,7 +81,7 @@ const Projects = () => {
         ))}
       </div>
       )}
-      
+      <Pagination count={60} numOfItems={10}/>
     </div>
   );
 };
