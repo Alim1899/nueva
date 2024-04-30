@@ -6,14 +6,14 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDpxLoVsO_yrVNFK5g-GRdvMOhXdA3TUcM",
-  authDomain: "nuevadb-777bc.firebaseapp.com",
-  databaseURL: "https://nuevadb-777bc-default-rtdb.firebaseio.com",
-  projectId: "nuevadb-777bc",
-  storageBucket: "nuevadb-777bc.appspot.com",
-  messagingSenderId: "180783480080",
-  appId: "1:180783480080:web:b5d7b4d26f6381106b7995",
-  measurementId: "G-WK7Y052X18"
+  apiKey: "AIzaSyCDMeuKh18qbU8XW5yApa-syrbmo7fRiTU",
+  authDomain: "nueva-bec93.firebaseapp.com",
+  databaseURL: "https://nueva-bec93-default-rtdb.firebaseio.com",
+  projectId: "nueva-bec93",
+  storageBucket: "nueva-bec93.appspot.com",
+  messagingSenderId: "770525187197",
+  appId: "1:770525187197:web:7e2f3825efc261c5b7f514",
+  measurementId: "G-J4E94ZL4CY"
 };
 
 // Initialize Firebase
