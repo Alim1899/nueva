@@ -1,8 +1,10 @@
 .main{
     border: 1px solid gold;
     background-color: var(--foreground-color);
-    width: 70%;
-    margin-left: 29%;
+    width: 90%;
+    max-width: 1000px;
+    min-width: 300px;
+    margin: auto;
     color: aliceblue;
     border-radius: 15px;
     display: flex;
@@ -10,22 +12,26 @@
     align-items: center;
     flex-direction: column;
     margin-bottom: 50px;
+    border-radius: 50px;
+    height: 12vh;
+    min-height: 100px;
 }
 .main>p{
     margin: 0;
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem,5vw,2rem);
 }
 .buttons{
     color: aliceblue;
     height: 60px;
-    width: 50%;
+    width: 80%;
     display: grid;
     grid-template-columns: 50% 50%;
+
 }
 button{
     height: 60px;
     
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: aliceblue;
     font-weight: 900;
     background-color: rgb(24, 122, 122);
@@ -50,5 +56,5 @@ button:disabled {
     opacity: 0.5;
 }
 .icon{
-    height: 60px;
+    height: 50px;
 }

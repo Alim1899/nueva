@@ -3,17 +3,22 @@ import classes from "./Projects.module.css";
 import locate from "./location.svg";
 import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
-import Pagination from './Pagination/Pagination'
+import Pagination from "./Pagination/Pagination";
 import { retrieveData } from "../../Admin/Functions";
 
-const Project = ({ project,id }) => {
+const Project = ({ project, id }) => {
   const [activeSlide, setActiveSlide] = useState(0);
+
   const leftSlide = (length) => {
-    setActiveSlide((prevIndex) => (prevIndex === 0 ? length - 1 : prevIndex - 1));
+    setActiveSlide((prevIndex) =>
+      prevIndex === 0 ? length - 1 : prevIndex - 1
+    );
   };
 
   const rightSlide = (length) => {
-    setActiveSlide((prevIndex) => (prevIndex === length - 1 ? 0 : prevIndex + 1));
+    setActiveSlide((prevIndex) =>
+      prevIndex === length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   return (
@@ -26,7 +31,7 @@ const Project = ({ project,id }) => {
             src={left}
             className={`${classes.arrow} ${classes.leftArrow}`}
           />
-          <div className={classes.slides} >
+          <div className={classes.slides}>
             {project.images.map((image, index) => (
               <img
                 key={index}
@@ -50,9 +55,12 @@ const Project = ({ project,id }) => {
           <img alt="icon" className={classes.icon} src={locate} />
           <h5>{project.location}</h5>
         </div>
-        
-          <a href={`/project/${id}`}><button type="button" className={classes.moreBtn}>სრულად</button></a>
-        
+
+        <button type="button" className={classes.moreBtn}>
+          <a href={`/project/${id}`} className={classes.toProject}>
+            სრულად
+          </a>
+        </button>
       </div>
     </div>
   );
@@ -60,28 +68,40 @@ const Project = ({ project,id }) => {
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
+  const [count, setCount] = useState([0]);
+  const [startIndex, setStartIndex] = useState(0);
+  const [endIndex, setEndIndex] = useState(5);
   useEffect(() => {
     retrieveData(setProjects);
+    setCount(projects.length);
   }, [projects]);
 
   return (
     <div className={classes.main}>
       <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
-      
-        {projects.length===0&&(
-          <div className={classes.animation}>
+
+      {projects.length === 0 && (
+        <div className={classes.animation}>
           <h2>იტვირთება პროექტები</h2>
           <div className={classes.loader}></div>
-        </div>)}
-      
-      {projects.length>0&&(
-        <div className={classes.projectList}>
-        {projects.map((project) => (
-          <Project key={project[0]}  project={project[1]} id={project[0]} />
-        ))}
-      </div>
+        </div>
       )}
-      <Pagination count={60} numOfItems={10}/>
+
+      {projects.length > 0 && (
+        <div className={classes.projectList}>
+          {projects.slice(startIndex, endIndex).map((project) => (
+            <Project key={project[0]} project={project[1]} id={project[0]} />
+          ))}
+        </div>
+      )}
+      <Pagination
+        count={count}
+        numOfItems={5}
+        setStartIndex={setStartIndex}
+        setEndIndex={setEndIndex}
+        startIndex={startIndex}
+        endIndex={endIndex}
+      />
     </div>
   );
 };
