@@ -1,0 +1,30 @@
+.main{
+    min-height: 80vh;
+}
+.header {
+    font-size: var(--header-font-size);
+    border-bottom: 2px solid gold;
+    width: var(--header-width);
+    margin: auto;
+    text-align: center;
+    border-radius: 15px;
+    color: aliceblue;
+  }
+  .photos{
+  
+    max-width: 2300px;
+    margin:  auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+.img{
+    height: 35vh;
+    min-height: 300px;
+    max-width: 700px;
+    max-height: 600px;
+    min-width: 280px;
+    width: 35vw;
+  margin: 1%;
+}

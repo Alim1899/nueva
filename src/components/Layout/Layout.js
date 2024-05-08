@@ -4,6 +4,7 @@ import Contact from "../Pages/Contact/Contact";
 import Home from "../Pages/Home/Home";
 import Projects from "../Pages/Projects/Projects";
 import Services from "../Pages/Services/Services";
+import Gallery from "../Pages/Gallery/Gallery";
 import Error from "../Pages/Error/Error";
 import Admin from "../Admin/Admin";
 import { Fragment } from "react";
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/gallery",
+    element: <Gallery />,
   },
   {
     path: "/admin",
