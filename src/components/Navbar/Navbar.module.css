@@ -1,6 +1,6 @@
 .main {
-  height: 100%;
   z-index: 999999;
+height: var(--navbar-height);
 }
 .dropdown {
 margin: 0;
@@ -41,7 +41,7 @@ z-index: 999999;
 }
 
 .mobile {
-height: 100%;
+  height: var(--navbar-height);
   display: flex;
   align-items: center;
   background-color: var(--navbar);
@@ -128,3 +128,22 @@ height: 100%;
 .logo{
   margin-right: 1vw;
 }
+
+
+
+
+  .navlinks{
+    height: var(--navbar-height);
+    background-color: var(--navbar);
+margin: 0;
+padding: 0;
+list-style-type: none;
+display: flex;
+justify-content: space-around;
+align-items: center;
+  }
+  .navlinks>li>a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: clamp(1rem,2vw,2rem)
+  }
