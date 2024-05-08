@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import classes from "./Projects.module.css";
 import locate from "./location.svg";
 import left from "../../../assets/icons/leftslide.svg";
@@ -68,34 +68,37 @@ const Project = ({ project, id }) => {
 
 const Projects = () => {
   const [projects, setProjects] = useState([]);
-  const [count, setCount] = useState([0]);
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(5);
+
   useEffect(() => {
     retrieveData(setProjects);
-    setCount(projects.length);
-  }, [projects]);
+  }, []);
+
+  const memoizedProjects = useMemo(() => projects, [projects]);
 
   return (
     <div className={classes.main}>
       <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
 
-      {projects.length === 0 && (
+      {memoizedProjects.length === 0 && (
         <div className={classes.animation}>
           <h2>იტვირთება პროექტები</h2>
           <div className={classes.loader}></div>
         </div>
       )}
 
-      {projects.length > 0 && (
+      {memoizedProjects.length > 0 && (
         <div className={classes.projectList}>
-          {projects.slice(startIndex, endIndex).map((project) => (
-            <Project key={project[0]} project={project[1]} id={project[0]} />
-          ))}
+          {memoizedProjects
+            .slice(startIndex, endIndex)
+            .map((project, index) => (
+              <Project key={index} project={project[1]} id={project[0]} />
+            ))}
         </div>
       )}
       <Pagination
-        count={count}
+        count={memoizedProjects.length}
         numOfItems={5}
         setStartIndex={setStartIndex}
         setEndIndex={setEndIndex}
