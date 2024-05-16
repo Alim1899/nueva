@@ -6,12 +6,13 @@ import Projects from "../Pages/Projects/Projects";
 import Services from "../Pages/Services/Services";
 import Gallery from "../Pages/Gallery/Gallery";
 import Error from "../Pages/Error/Error";
-import Admin from "../Admin/Admin";
 import { Fragment } from "react";
 import Footer from "../Pages/Footer/Footer";
 import Project from "../Pages/Projects/Project/Project";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import Newproject from "../Admin/NewProject/NewProject";
+import Admin from "../Admin/Admin/Admin";
 
 const router = createBrowserRouter([
   {
@@ -27,12 +28,16 @@ const router = createBrowserRouter([
     element: <Gallery />,
   },
   {
-    path: "/admin",
-    element: <Admin />,
+    path: "/newProject",
+    element: <Newproject />,
   },
   {
     path: "/projects",
     element: <Projects />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
   },
   {
     path: "/project/:id",

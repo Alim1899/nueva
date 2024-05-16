@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import classes from "./Admin.module.css";
+import classes from "./NewProject.module.css";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
-import Control from "../Inputs/Control";
-import Leaflet from "../Map/Leaflet";
+import Control from "../../Inputs/Control";
+import Leaflet from "../../Map/Leaflet";
 import "leaflet/dist/leaflet.css";
-import office from "../../assets/icons/office.png";
-import ProjectPreview from "./Review/Preview";
+import office from "../../../assets/icons/office.png";
+import ProjectPreview from "../Review/Preview";
 import {
   deleteAllData,
   handleLocation,
   imageUploadHandler,
   save,
-} from "./Functions";
+} from "../Functions";
 import { months, year } from "./DatePicker";
 
-const Admin = () => {
+const NewProject = () => {
   const [keys, setKeys] = useState([]);
   const [savedSucces, setSavedSucces] = useState(false);
   const [allImages, setAllImages] = useState([]);
@@ -185,4 +185,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default NewProject;
