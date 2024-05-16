@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./Admin.module.css";
-import edit from "../../../assets/AdminIcons/edit.png";
 import plus from "../../../assets/AdminIcons/plus.png";
 import list from "../../../assets/AdminIcons/tasks.png";
 

@@ -5,6 +5,8 @@ import * as Yup from "yup";
 import Control from "../../Inputs/Control";
 import Leaflet from "../../Map/Leaflet";
 import "leaflet/dist/leaflet.css";
+import add from "../../../assets/AdminIcons/plus.png";
+import admin from "../../../assets/AdminIcons/admin.png";
 import office from "../../../assets/icons/office.png";
 import ProjectPreview from "../Review/Preview";
 import {
@@ -49,8 +51,17 @@ const NewProject = () => {
 
   return (
     <div className={classes.main}>
-      <h2 className={classes.header}>ახალი პროექტის ატვირთვა</h2>
-
+<div className={classes.headers}>
+        <a className={classes.link} href="projectList">
+          <img className={classes.iconl} src={add} alt="addproject"></img>
+          პროექტების ნახვა
+        </a>
+        <h1 className={classes.header}>პროექტის დეტალები</h1>
+        <a className={classes.link} href="admin">
+          <img className={classes.iconl} src={admin} alt="addproject"></img>{" "}
+          ადმინის პანელი
+        </a>
+      </div>
       <Formik
         validateOnChange
         initialValues={{

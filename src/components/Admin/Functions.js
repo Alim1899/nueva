@@ -27,7 +27,6 @@ export const save = async (
       location: location,
     });
     setSavedSucces(true);
-    console.log("success");
     window.location.reload();
 
   } catch (error) {
@@ -71,7 +70,6 @@ export const handleLocation = (
   setFlyTo,
   setIcon
 ) => {
-  console.log(coords);
   var pattern = /^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/;
   if (pattern.test(coords)) {
     setPosition(coords.split(","));
@@ -138,8 +136,13 @@ export const deleteImage = async (e, imageId, setKeys, keys) => {
 
   const newKeys = keys.filter((item) => item.key !== imageId);
   setKeys(newKeys);
-  console.log(keys);
 };
+export const deleteProject = async(id)=>{
+  const db = getDatabase(app);
+  const dbRef = ref(db, "projects/" + id);
+  await remove(dbRef);
+  console.log(id);
+}
 export const getData = async(id,setProject,setDataArrived)=>{
   const db = getDatabase(app);
   const dbRef = ref(db, `projects/${id}`);

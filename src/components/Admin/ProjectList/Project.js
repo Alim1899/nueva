@@ -5,7 +5,7 @@ import right from "../../../assets/icons/rightslide.svg";
 import locate from "../../../assets/icons/location.svg";
 import edit from "../../../assets/AdminIcons/edit.png";
 import remove from "../../../assets/icons/delete.png";
-const Project = ({ project, id }) => {
+const Project = ({ project, id, deleteProject }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
   const leftSlide = (length) => {
@@ -63,7 +63,7 @@ const Project = ({ project, id }) => {
               <h3>ცვლილება</h3>
             </a>
           </div>
-          <div type="button" className={classes.deleteBtn}>
+          <div onClick={deleteProject} className={classes.deleteBtn}>
             <img className={classes.icona} src={remove} alt="delete"></img>
             <h3>წაშლა</h3>
           </div>
