@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import classes from "./Projects.module.css";
-import locate from "./location.svg";
+import locate from "../../../assets/icons/location.svg"
 import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
 import Pagination from "./Pagination/Pagination";

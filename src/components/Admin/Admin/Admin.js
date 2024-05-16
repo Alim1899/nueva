@@ -9,16 +9,13 @@ const Admin = () => {
     <div className={classes.main}>
       <a href="newProject" className={classes.header}>
         <img className={classes.icon} src={plus} alt="add"></img>
-        <h1 className={classes.head}>ახალი პროექტი</h1>
+        <h1 className={classes.head}> ახალი პროექტი</h1>
       </a>
       <a href="projectList" className={classes.header}>
         <img className={classes.icon} src={list} alt="show"></img>
-        <h1 className={classes.head}>პროექტების ნახვა</h1>
+        <h1 className={classes.head}>წაშლა - ცვლილება</h1>
       </a>
-      <a href="editProject" className={classes.header}>
-        <img className={classes.icon} src={edit} alt="edit/delete"></img>
-        <h1 className={classes.head}>წაშლა/ჩასწორება</h1>
-      </a>
+   
     </div>
   );
 };

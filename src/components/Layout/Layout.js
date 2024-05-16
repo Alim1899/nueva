@@ -13,6 +13,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Newproject from "../Admin/NewProject/NewProject";
 import Admin from "../Admin/Admin/Admin";
+import ProjectList from "../Admin/ProjectList/ProjectList";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Admin />,
+  },
+  {
+    path: "/projectList",
+    element: <ProjectList />,
   },
   {
     path: "/project/:id",
