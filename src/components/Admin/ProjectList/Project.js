@@ -58,7 +58,7 @@ const Project = ({ project, id, deleteProject }) => {
         
           <div  className={classes.editBtn}>
             {" "}
-            <a href={`/project/${id}`} className={classes.toProject}>
+            <a href={`/edit/${id}`} className={classes.toProject}>
               <img className={classes.icona} src={edit} alt="edit"></img>
               <h3>ცვლილება</h3>
             </a>

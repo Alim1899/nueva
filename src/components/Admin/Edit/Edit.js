@@ -1,78 +1,89 @@
-import React, { useState, useEffect } from "react";
-import classes from "./NewProject.module.css";
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
-import * as Yup from "yup";
 import Control from "../../Inputs/Control";
+import { getData, handleLocation,save } from "../Functions";
+import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
-import "leaflet/dist/leaflet.css";
-import edit from "../../../assets/AdminIcons/tasks.png";
+import add from "../../../assets/AdminIcons/plus.png";
 import admin from "../../../assets/AdminIcons/admin.png";
 import office from "../../../assets/icons/office.png";
-import ProjectPreview from "../Review/Preview";
-import {
-  deleteAllData,
-  handleLocation,
-  imageUploadHandler,
-  save,
-} from "../Functions";
-import { months, year } from "./DatePicker";
+import location from '../../../assets/icons/location.svg';
+import {year, months} from '../NewProject/DatePicker'
+import recycle from '../../../assets/icons/delete.png';
 
-const NewProject = () => {
-  const [keys, setKeys] = useState([]);
-  const [savedSucces, setSavedSucces] = useState(false);
-  const [allImages, setAllImages] = useState([]);
+const Edit = () => {
+  const [project, setProject] = useState(null);
+  const [dataArrived, setDataArrived] = useState(false);
   const [position, setPosition] = useState([42.259061, 43.00614]);
-  const [marker, setmarker] = useState([42.259061, 42.66614]);
+  const [marker, setMarker] = useState([42.259061, 42.66614]);
   const [flyTo, setFlyTo] = useState(null);
   const [icon, setIcon] = useState(office);
-  const [btnDisabled, setBtnDisabled] = useState(true);
-  const btnEnabler = (values) => {
-    if (
-      values.header &&
-      values.description &&
-      values.coords &&
-      values.month &&
-      values.year
-    )
-      setBtnDisabled(false);
-    else setBtnDisabled(true);
-  };
+  const { id } = useParams();
+  const [allImages, setAllImages] = useState([]);
+  const [savedSucces, setSavedSucces] = useState(false);
+
+  // MUST DELETE
+if(savedSucces)window.reload(); 
+
   useEffect(() => {
-    deleteAllData();
-  }, []);
-  const Schema = Yup.object().shape({
-    header: Yup.string().min(5, "სათაური მოკლეა").max(50, "სათაური გრძელია"),
-    description: Yup.string().min(30, "მინ. 30 სიმბოლო"),
-    coords: Yup.string().matches(
-      /^(-?\d+(\.\d+)?),\s*(-?\d+(\.\d+)?)$/,
-      "აკრიფეთ სწორი ფორმატით"
-    ),
-  });
+    if (!dataArrived) {
+      getData(id, setProject, setDataArrived);
+    }else{
+      console.log(project);
+      setAllImages(project.images)
+       setPosition(project.coords.split(','))
+       setMarker(project.coords.split(','))
+       setIcon(location)
+       console.log(allImages);
+    }
+  }, [id, dataArrived,project,allImages]);
+  const handleMouseOver = (e) => {
+    const element = e.currentTarget.childNodes[1];
+    element.classList.add(classes.bindiv);
+    element.classList.remove(classes.none);
+  };
+
+  const handleMouseOut = (e) => {
+    const element = e.currentTarget.childNodes[1];
+    element.classList.remove(classes.bindiv);
+    element.classList.add(classes.none);
+  };
+  if (!dataArrived) {
+    return (
+      <div className={classes.animation}>
+        <h2>იტვირთება</h2>
+        <div className={classes.loader}></div>
+      </div>
+    );
+  }
 
   return (
     <div className={classes.main}>
-<div className={classes.headers}>
-        <a className={classes.link} href="projectList">
-          <img className={classes.iconl} src={edit} alt="addproject"></img>
+      <div className={classes.headers}>
+        <a className={classes.link} href="/projectList">
+          <img className={classes.iconl} src={add} alt="addproject" />
           პროექტების ნახვა
         </a>
         <h1 className={classes.header}>პროექტის დეტალები</h1>
-        <a className={classes.link} href="admin">
-          <img className={classes.iconl} src={admin} alt="addproject"></img>{" "}
+        <a className={classes.link} href="/admin">
+          <img className={classes.iconl} src={admin} alt="adminpanel" />
           ადმინის პანელი
         </a>
       </div>
+
+      <div className={classes.content}>
       <Formik
         validateOnChange
         initialValues={{
-          header: "",
-          coords: "",
-          description: "",
-          location: "",
-          month: "",
-          year: "",
-        }}
-        validationSchema={Schema}
+    header: project.header || "",
+    coords: project.coords || "",
+    description: project.description || "",
+    location: project.location || "",
+    month: project.date.month || "",
+    year: project.date.year || "",
+  }}
+        
         onSubmit={(values) => {
           console.log(values);
         }}
@@ -81,7 +92,7 @@ const NewProject = () => {
           console.log(values);
           return (
             <div className={classes.content}>
-            <Form className={classes.form} onChange={() => btnEnabler(values)}>
+            <Form className={classes.form} >
                 <div className={classes.formWrapper}>
                   <div className={classes.wrap}>
                     <Control
@@ -99,7 +110,7 @@ const NewProject = () => {
                           e,
                           values.coords,
                           setPosition,
-                          setmarker,
+                          
                           setFlyTo,
                           setIcon
                         )
@@ -146,54 +157,68 @@ const NewProject = () => {
                     location={flyTo}
                   />
                 </div>
-                <div className={classes.photoInput}>
+               
+
+
+<div className={classes.photos}>
+<div className={classes.photoInput}>
                   <Control name="image" control="file" label="ფოტოს ატვირთვა" />
                   <label htmlFor="image" className={classes.imageLabel}>
-                    ფოტოს ატვირთვა{" "}
+                   <img src={add} alt="newImage" className={classes.icon}></img> ფოტოს ატვირთვა
                   </label>
                   <input
                     id="image"
-                    onChange={(e) =>
-                      imageUploadHandler(e, setKeys, setAllImages)
-                    }
                     className={classes.imageUpload}
                     type="file"
                     multiple
                   ></input>{" "}
                 </div>
+{allImages.length > 0 &&
+              allImages.map((el) => (
+                <div
+                  key={el.key}
+                  className={classes.photo}
+                  onMouseOver={handleMouseOver}
+                  onMouseOut={handleMouseOut}
+                >
+                  <img
+                    src={el.url}
+                    alt={el.key}
+                    className={classes.imagePrev}
+                  />
+                  
+                    
+                    <img
+                      className={`${classes.none} ${classes.bin}`}
+                      
+                      src={recycle}
+                      alt="bin"
+                    />
+                 
+                </div>
+                
+              ))}
+</div>
+                
+              
               </Form>
 
-              <ProjectPreview
-                keys={keys}
-                projectName={values.header}
-                projectDescription={values.description}
-                setKeys={setKeys}
-                allImages={allImages}
-                projectLocation={values.location}
-                coords={values.coords}
-                month={values.month}
-                year={values.year}
-              />
+              
               <button
                 type="submit"
                 onClick={(e)=>save(e,values.header,values.description,values.year,values.month,allImages,values.coords,values.location,setSavedSucces)}
                 className={classes.submit}
-                disabled={btnDisabled}
+               
               >
-                პროექტის შენახვა
+                შენახვა
               </button>
             </div>
           );
         }}
       </Formik>
-
-      {savedSucces && (
-        <div className={classes.popup}>
-          <h1>პროექტი შენახულია ✅</h1>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
 
-export default NewProject;
+export default Edit;

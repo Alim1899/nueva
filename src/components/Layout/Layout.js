@@ -14,7 +14,7 @@ import Navbar from "../Navbar/Navbar";
 import Newproject from "../Admin/NewProject/NewProject";
 import Admin from "../Admin/Admin/Admin";
 import ProjectList from "../Admin/ProjectList/ProjectList";
-
+import Edit from '../Admin/Edit/Edit'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -47,6 +47,10 @@ const router = createBrowserRouter([
   {
     path: "/project/:id",
     element: <Project />,
+  },
+  {
+    path: "/edit/:id",
+    element: <Edit />,
   },
   {
     path: "/services",
