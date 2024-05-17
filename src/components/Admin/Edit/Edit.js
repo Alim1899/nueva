@@ -2,13 +2,12 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import Control from "../../Inputs/Control";
-import { getData, handleLocation,save } from "../Functions";
+import { getData, handleLocation,edit } from "../Functions";
 import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
 import add from "../../../assets/AdminIcons/plus.png";
 import admin from "../../../assets/AdminIcons/admin.png";
 import office from "../../../assets/icons/office.png";
-import location from '../../../assets/icons/location.svg';
 import {year, months} from '../NewProject/DatePicker'
 import recycle from '../../../assets/icons/delete.png';
 
@@ -21,21 +20,15 @@ const Edit = () => {
   const [icon, setIcon] = useState(office);
   const { id } = useParams();
   const [allImages, setAllImages] = useState([]);
-  const [savedSucces, setSavedSucces] = useState(false);
-
   // MUST DELETE
-if(savedSucces)window.reload(); 
+ 
 
   useEffect(() => {
     if (!dataArrived) {
       getData(id, setProject, setDataArrived);
     }else{
       console.log(project);
-      setAllImages(project.images)
-       setPosition(project.coords.split(','))
-       setMarker(project.coords.split(','))
-       setIcon(location)
-       console.log(allImages);
+    setAllImages(project.images)
     }
   }, [id, dataArrived,project,allImages]);
   const handleMouseOver = (e) => {
@@ -77,7 +70,7 @@ if(savedSucces)window.reload();
         validateOnChange
         initialValues={{
     header: project.header || "",
-    coords: project.coords || "",
+    coords: project.coords.split(",") || "",
     description: project.description || "",
     location: project.location || "",
     month: project.date.month || "",
@@ -89,7 +82,15 @@ if(savedSucces)window.reload();
         }}
       >
         {({ values }) => {
-          console.log(values);
+          project.header=values.header;
+          project.description=values.description;
+          project.coords=values.coords;
+          project.date.month=values.month;
+          project.date.year=values.year;
+          project.location=values.location;
+          project.images=allImages;
+          console.log(project);
+          console.log(allImages);
           return (
             <div className={classes.content}>
             <Form className={classes.form} >
@@ -110,7 +111,7 @@ if(savedSucces)window.reload();
                           e,
                           values.coords,
                           setPosition,
-                          
+                          setMarker,
                           setFlyTo,
                           setIcon
                         )
@@ -206,7 +207,7 @@ if(savedSucces)window.reload();
               
               <button
                 type="submit"
-                onClick={(e)=>save(e,values.header,values.description,values.year,values.month,allImages,values.coords,values.location,setSavedSucces)}
+                onClick={(e)=>edit(e,project,id)}
                 className={classes.submit}
                
               >

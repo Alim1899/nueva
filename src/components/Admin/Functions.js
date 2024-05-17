@@ -1,7 +1,7 @@
 import app from "../../firebaseConfig";
 import markerIcon from "../../assets/icons/marker.png";
 
-import { getDatabase, set, get, ref, push, remove } from "firebase/database";
+import { getDatabase, set, get, ref, push, remove,update } from "firebase/database";
 // TESTED WORKING
 export const save = async (
   e,
@@ -33,6 +33,16 @@ export const save = async (
     console.error("Error saving data:", error);
   }
 };
+export const edit = async (e,project,projectId)=>{
+  try{const db = getDatabase(app);
+  const projectRef = ref(db, `projects/${projectId}`);
+await update(projectRef,project);
+}
+catch (error){
+  console.log('Error updating data:', error);
+}
+
+}
 export const retrieveImage = async (setKeys, setAllImages) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "images");

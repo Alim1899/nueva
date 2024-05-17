@@ -73,7 +73,7 @@
 
 .formWrapper {
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 50% 50%;
 }
 .formWrapper > div > div > input {
   height: 30px;
@@ -125,7 +125,7 @@
 }
 .description > div > textarea {
   overflow-y: auto;
-  height: 70%;
+  height: 90%;
   width: 95%;
   border-radius: 15px;
   border: 1px solid gold;
