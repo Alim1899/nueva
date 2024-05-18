@@ -1,7 +1,15 @@
 import app from "../../firebaseConfig";
 import markerIcon from "../../assets/icons/marker.png";
 
-import { getDatabase, set, get, ref, push, remove,update } from "firebase/database";
+import {
+  getDatabase,
+  set,
+  get,
+  ref,
+  push,
+  remove,
+  update,
+} from "firebase/database";
 // TESTED WORKING
 export const save = async (
   e,
@@ -28,21 +36,19 @@ export const save = async (
     });
     setSavedSucces(true);
     window.location.reload();
-
   } catch (error) {
     console.error("Error saving data:", error);
   }
 };
-export const edit = async (e,project,projectId)=>{
-  try{const db = getDatabase(app);
-  const projectRef = ref(db, `projects/${projectId}`);
-await update(projectRef,project);
-}
-catch (error){
-  console.log('Error updating data:', error);
-}
-
-}
+export const edit = async (e, project, projectId) => {
+  try {
+    const db = getDatabase(app);
+    const projectRef = ref(db, `projects/${projectId}`);
+    await update(projectRef, project);
+  } catch (error) {
+    console.log("Error updating data:", error);
+  }
+};
 export const retrieveImage = async (setKeys, setAllImages) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "images");
@@ -90,6 +96,52 @@ export const handleLocation = (
     alert("აკრიფე სწორი ფორმატით - 42.123456,43.123456");
   }
 };
+
+const getImage = async (id,setAllImages) => {
+  const db = getDatabase(app);
+  const dbRef = ref(db, `projects/${id}/images`);
+  const snapshot = await get(dbRef);
+  if (snapshot.exists()) {
+    console.log(Object.entries(snapshot.val()));
+    setAllImages(Object.entries(snapshot.val()))
+  } else {
+    console.log("No images found");
+  }
+};
+
+export const saveImage =async(e, id,setAllImages) => {
+ 
+  if (e.target.files) {
+    const fileList = e.target.files;
+    for (let i = 0; i < fileList.length; i++) {
+      const file = fileList[i];
+      const reader = new FileReader();
+
+      if (file.type.startsWith("image/")) {
+        reader.onload = async () => {
+          const dataURL = reader.result;
+          const key = "photo" + Date.now() + i;
+          try {
+            const db = getDatabase(app);
+            const newDocRef = push(ref(db, `projects/${id}/images`));
+            await set(newDocRef, {
+              key: key,
+              url: dataURL,
+            });
+            await getImage(id,setAllImages);
+          } catch (error) {
+            console.error("Something went wrong:", error);
+          }
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert("Please upload only images");
+      }
+    }
+  }
+};
+
+
 export const imageUploadHandler = async (e, setKeys, setAllImages) => {
   if (e.target.files) {
     const fileList = e.target.files;
@@ -139,7 +191,6 @@ export const deleteImage = async (e, imageId, setKeys, keys) => {
   if (!imageId) {
     imageId = e.target.parentNode.parentNode.childNodes[0].alt;
   }
-
   const db = getDatabase(app);
   const dbRef = ref(db, "images/" + imageId);
   await remove(dbRef);
@@ -147,23 +198,31 @@ export const deleteImage = async (e, imageId, setKeys, keys) => {
   const newKeys = keys.filter((item) => item.key !== imageId);
   setKeys(newKeys);
 };
-export const deleteProject = async(id)=>{
+export const deleteProject = async (id) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "projects/" + id);
   await remove(dbRef);
-  console.log(id);
-}
-export const getData = async(id,setProject,setDataArrived)=>{
+  
+};
+
+export const getData = async (id, setProject, setDataArrived,setAllImages) => {
   const db = getDatabase(app);
   const dbRef = ref(db, `projects/${id}`);
-  const snapshot = await get(dbRef);
-
-  if (snapshot.exists()) {
-    setProject(snapshot.val());
-    setDataArrived(true);
-  } else {
-    console.error("cant find");
+  try {
+    const snapshot = await get(dbRef);
+    if (snapshot.exists()) {
+     
+      const projectData = snapshot.val();
+      
+      setAllImages(Object.entries(projectData.images)) // Verify images array here
+      setProject(projectData);
+      setDataArrived(true);
+    } else {
+      console.error("Can't find project with the given ID");
+    }
+  } catch (error) {
+    console.error("Error fetching data:", error);
   }
-}
+};
 
 

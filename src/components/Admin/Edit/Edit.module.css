@@ -54,26 +54,12 @@
   margin: auto;
 }
 
-.projectHeads > div > input {
-  border-radius: 15px;
-  outline: none;
-  border: none;
-  height: 30px;
-}
-.projectHeads > div > textarea {
-  overflow-y: auto;
-  height: 20vh;
-  width: 40vw;
-  border-radius: 15px;
-  border: 1px solid gold;
-}
-
 
 
 
 .formWrapper {
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 40%60%;
 }
 .formWrapper > div > div > input {
   height: 30px;
@@ -124,9 +110,8 @@
   border-radius: 15px;
 }
 .description > div > textarea {
-  overflow-y: auto;
   height: 90%;
-  width: 95%;
+  width: 90%;
   border-radius: 15px;
   border: 1px solid gold;
 }
@@ -147,8 +132,10 @@
   z-index: 0;
 }
 .form {
+  max-width: 1875px;
   background-color: var(--foreground-color);
   margin: 3px;
+  margin: auto;
   border-radius: 15px;
 }
 
@@ -162,8 +149,16 @@
 
 .photos {
   margin-top: 10px;
- display: flex;
-overflow-x: scroll;
+  display: flex;
+  margin: 5px auto;
+
+
+}
+.photoScroll{
+  display: flex;
+  overflow: scroll;
+  max-width: 1800px;
+
 }
 .photo{
   margin: 0 5px;

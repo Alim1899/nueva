@@ -2,14 +2,14 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import Control from "../../Inputs/Control";
-import { getData, handleLocation,edit } from "../Functions";
+import { getData, handleLocation, edit,saveImage } from "../Functions";
 import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
 import add from "../../../assets/AdminIcons/plus.png";
 import admin from "../../../assets/AdminIcons/admin.png";
 import office from "../../../assets/icons/office.png";
-import {year, months} from '../NewProject/DatePicker'
-import recycle from '../../../assets/icons/delete.png';
+import { year, months } from "../NewProject/DatePicker";
+import recycle from "../../../assets/icons/delete.png";
 
 const Edit = () => {
   const [project, setProject] = useState(null);
@@ -20,17 +20,14 @@ const Edit = () => {
   const [icon, setIcon] = useState(office);
   const { id } = useParams();
   const [allImages, setAllImages] = useState([]);
-  // MUST DELETE
- 
-
   useEffect(() => {
     if (!dataArrived) {
-      getData(id, setProject, setDataArrived);
-    }else{
-      console.log(project);
-    setAllImages(project.images)
+      getData(id, setProject, setDataArrived, setAllImages);
+    } else {
+      setAllImages(project.images || []); 
     }
-  }, [id, dataArrived,project,allImages]);
+  }, [id, dataArrived, project]);
+
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -66,157 +63,159 @@ const Edit = () => {
       </div>
 
       <div className={classes.content}>
-      <Formik
-        validateOnChange
-        initialValues={{
-    header: project.header || "",
-    coords: project.coords.split(",") || "",
-    description: project.description || "",
-    location: project.location || "",
-    month: project.date.month || "",
-    year: project.date.year || "",
-  }}
-        
-        onSubmit={(values) => {
-          console.log(values);
-        }}
-      >
-        {({ values }) => {
-          project.header=values.header;
-          project.description=values.description;
-          project.coords=values.coords;
-          project.date.month=values.month;
-          project.date.year=values.year;
-          project.location=values.location;
-          project.images=allImages;
-          console.log(project);
-          console.log(allImages);
-          return (
-            <div className={classes.content}>
-            <Form className={classes.form} >
-                <div className={classes.formWrapper}>
-                  <div className={classes.wrap}>
-                    <Control
-                      name="header"
-                      label="სათაური"
-                      control="input"
-                      type="text"
-                    />
-                    <Control
-                      name="coords"
-                      label="კოორდინატები"
-                      control="input"
-                      onBlur={(e) =>
-                        handleLocation(
-                          e,
-                          values.coords,
-                          setPosition,
-                          setMarker,
-                          setFlyTo,
-                          setIcon
-                        )
-                      }
-                      type="text"
-                    ></Control>
-                    <Control
-                      name="location"
-                      label="ლოკაცია"
-                      control="input"
-                      type="text"
-                    ></Control>
-                    <div className={classes.datePicker}>
+        <Formik
+          validateOnChange
+          initialValues={{
+            header: project.header || "",
+            coords: project.coords || "",
+            description: project.description || "",
+            location: project.location || "",
+            month: project.date.month || "",
+            year: project.date.year || "",
+          }}
+          onSubmit={(values) => {
+            console.log(values);
+          }}
+        >
+          {({ values }) => {
+            project.header = values.header;
+            project.description = values.description;
+            project.coords = values.coords;
+            project.date.month = values.month;
+            project.date.year = values.year;
+            project.location = values.location;
+            project.images = allImages;
+            
+          console.log(allImages[0][1]); 
+            return (
+              <div className={classes.content}>
+                <Form className={classes.form}>
+                  <div className={classes.formWrapper}>
+                    <div className={classes.wrap}>
                       <Control
-                        name="month"
-                        label="თვე"
-                        options={months}
-                        control="select"
+                        name="header"
+                        label="სათაური"
+                        control="input"
+                        type="text"
                       />
                       <Control
-                        name="year"
-                        label="წელი"
-                        options={year}
-                        control="select"
+                        name="coords"
+                        label="კოორდინატები"
+                        control="input"
+                        onBlur={(e) =>
+                          handleLocation(
+                            e,
+                            values.coords,
+                            setPosition,
+                            setMarker,
+                            setFlyTo,
+                            setIcon
+                          )
+                        }
+                        type="text"
+                      ></Control>
+                      <Control
+                        name="location"
+                        label="ლოკაცია"
+                        control="input"
+                        type="text"
+                      ></Control>
+                      <div className={classes.datePicker}>
+                        <Control
+                          name="month"
+                          label="თვე"
+                          options={months}
+                          control="select"
+                        />
+                        <Control
+                          name="year"
+                          label="წელი"
+                          options={year}
+                          control="select"
+                        />
+                      </div>
+                    </div>
+                    <div className={classes.description}>
+                      <Control
+                        name="description"
+                        label="აღწერა"
+                        control="textarea"
+                        type="text"
                       />
                     </div>
                   </div>
-                  <div className={classes.description}>
-                    <Control
-                      name="description"
-                      label="აღწერა"
-                      control="textarea"
-                      type="text"
+                  <div className={classes.map}>
+                    <Leaflet
+                      popup="ოფისი"
+                      center={position}
+                      zoom={7}
+                      icon={icon}
+                      marker={marker}
+                      location={flyTo}
                     />
                   </div>
-                </div>
-                <div className={classes.map}>
-                  <Leaflet
-                    popup="ოფისი"
-                    center={position}
-                    zoom={7}
-                    icon={icon}
-                    marker={marker}
-                    location={flyTo}
-                  />
-                </div>
-               
 
+                  <div className={classes.photos}>
+                    <div className={classes.photoInput}>
+                      <Control
+                        name="image"
+                        control="file"
+                        label="ფოტოს ატვირთვა"
+                      />
+                      <label htmlFor="image" className={classes.imageLabel}>
+                        <img
+                          src={add}
+                          alt="newImage"
+                          className={classes.icon}
+                        ></img>{" "}
+                        ფოტოს ატვირთვა
+                      </label>
+                      <input
+                        id="image"
+                        onChange={(e)=>saveImage(e,id,setAllImages)}
+                        className={classes.imageUpload}
+                        type="file"
+                        multiple
+                      ></input>{" "}
+                    </div>
+                    <div className={classes.photoScroll}>
+                      {allImages.length > 0 &&
+                      allImages.map((el) => (
+                        <div
+                          key={el[1].key}
+                          className={classes.photo}
+                          onMouseOver={handleMouseOver}
+                          onMouseOut={handleMouseOut}
+                        >
+                          <img
+                            src={el[1].url}
+                            alt={el.key}
+                            className={classes.imagePrev}
+                          />
 
-<div className={classes.photos}>
-<div className={classes.photoInput}>
-                  <Control name="image" control="file" label="ფოტოს ატვირთვა" />
-                  <label htmlFor="image" className={classes.imageLabel}>
-                   <img src={add} alt="newImage" className={classes.icon}></img> ფოტოს ატვირთვა
-                  </label>
-                  <input
-                    id="image"
-                    className={classes.imageUpload}
-                    type="file"
-                    multiple
-                  ></input>{" "}
-                </div>
-{allImages.length > 0 &&
-              allImages.map((el) => (
-                <div
-                  key={el.key}
-                  className={classes.photo}
-                  onMouseOver={handleMouseOver}
-                  onMouseOut={handleMouseOut}
-                >
-                  <img
-                    src={el.url}
-                    alt={el.key}
-                    className={classes.imagePrev}
-                  />
-                  
+                          <img
+                            className={`${classes.none} ${classes.bin}`}
+                            src={recycle}
+                            alt="bin"
+                          />
+                        </div>
+                      ))}
+                    </div>
                     
-                    <img
-                      className={`${classes.none} ${classes.bin}`}
-                      
-                      src={recycle}
-                      alt="bin"
-                    />
-                 
-                </div>
-                
-              ))}
-</div>
-                
-              
-              </Form>
+                  </div>
+                </Form>
 
-              
-              <button
-                type="submit"
-                onClick={(e)=>edit(e,project,id)}
-                className={classes.submit}
-               
-              >
-                შენახვა
-              </button>
-            </div>
-          );
-        }}
-      </Formik>
+                <button
+                  type="submit"
+                  onClick={(e) => edit(e, project, id)}
+                  className={classes.submit}
+                >
+                  შენახვა
+                </button>
+              </div>
+            );
+          }}
+        </Formik>
       </div>
     </div>
   );
