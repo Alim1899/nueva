@@ -132,6 +132,7 @@
   z-index: 0;
 }
 .form {
+  width: 100%;
   max-width: 1875px;
   background-color: var(--foreground-color);
   margin: 3px;
@@ -149,16 +150,15 @@
 
 .photos {
   margin-top: 10px;
-  display: flex;
-  margin: 5px auto;
+  display: grid;
+  grid-template-columns: 48% 48%;
+  column-gap: 4%;
 
 
 }
-.photoScroll{
+.oldImages,.newImages{
   display: flex;
-  overflow: scroll;
-  max-width: 1800px;
-
+  flex-wrap: wrap;
 }
 .photo{
   margin: 0 5px;
@@ -176,13 +176,13 @@
   display: none;
 }
 
-.photoInput,.imagePrev {
- width: 200px;
+.uploadNew,.imagePrev {
+ width: 250px;
  height: 200px;
  border-radius: 15px;
  background-color: var(--navbar);
 }
-.imageLabel,.photoInput{
+.imageLabel,.uploadNew{
   display: flex;
   justify-content: center;
   align-items: center;

@@ -67,13 +67,13 @@ const Project = () => {
           <div className={classes.gallery}>
             <h1 className={classes.sliderHeader}>გალერეა</h1>
             <div className={classes.photos}>
-              {project.images.map((img, index) => {
+              {Object.entries(project.images).map((img, index) => {
                 return (
-                  <div key={img.key} className={classes.imgs}>
+                  <div key={img[1].key} className={classes.imgs}>
                     <img
                       className={classes.img}
                       alt="project-img"
-                      src={img.url}
+                      src={img[1].url}
                       
                     ></img>
                     <div className={classes.enlarge}>
@@ -97,12 +97,12 @@ const Project = () => {
           />
           </div>
           <div className={classes.slides}>
-            {project.images.map((image, index) => (
+            {Object.entries(project.images).map((image, index) => (
               <img
                 key={index}
                 className={classes.contentImg}
-                alt={image.key}
-                src={image.url}
+                alt={image[1].key}
+                src={image[1].url}
                 onClick={() => showSlider(false)}
                 style={{
                   transform: `translateX(-${activeSlide * 100}%)`,

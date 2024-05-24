@@ -2,7 +2,12 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import Control from "../../Inputs/Control";
-import { getData, handleLocation, edit,saveImage } from "../Functions";
+import {
+  getData,
+  handleLocation,
+  edit,
+  imageUploadHandler,
+} from "../Functions";
 import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
 import add from "../../../assets/AdminIcons/plus.png";
@@ -20,11 +25,14 @@ const Edit = () => {
   const [icon, setIcon] = useState(office);
   const { id } = useParams();
   const [allImages, setAllImages] = useState([]);
+  const [allImages1, setAllImages1] = useState([]);
+
+  const [keys, setKeys] = useState([]);
   useEffect(() => {
     if (!dataArrived) {
       getData(id, setProject, setDataArrived, setAllImages);
     } else {
-      setAllImages(project.images || []); 
+      setAllImages(project.images || []);
     }
   }, [id, dataArrived, project]);
 
@@ -85,8 +93,8 @@ const Edit = () => {
             project.date.year = values.year;
             project.location = values.location;
             project.images = allImages;
-            
-          console.log(allImages[0][1]); 
+
+            console.log("Allimages:", allImages1, "Keys:", keys);
             return (
               <div className={classes.content}>
                 <Form className={classes.form}>
@@ -156,39 +164,41 @@ const Edit = () => {
                   </div>
 
                   <div className={classes.photos}>
-                    <div className={classes.photoInput}>
-                      <Control
-                        name="image"
-                        control="file"
-                        label="ფოტოს ატვირთვა"
-                      />
-                      <label htmlFor="image" className={classes.imageLabel}>
-                        <img
-                          src={add}
-                          alt="newImage"
-                          className={classes.icon}
-                        ></img>{" "}
-                        ფოტოს ატვირთვა
-                      </label>
-                      <input
-                        id="image"
-                        onChange={(e)=>saveImage(e,id,setAllImages)}
-                        className={classes.imageUpload}
-                        type="file"
-                        multiple
-                      ></input>{" "}
-                    </div>
-                    <div className={classes.photoScroll}>
-                      {allImages.length > 0 &&
-                      allImages.map((el) => (
+                    <div className={classes.newImages}>
+                      <div className={classes.uploadNew}>
+                        <Control
+                          name="image"
+                          control="file"
+                          label="ფოტოს ატვირთვა"
+                        />
+                        <label htmlFor="image" className={classes.imageLabel}>
+                          <img
+                            src={add}
+                            alt="newImage"
+                            className={classes.icon}
+                          ></img>{" "}
+                          ფოტოს ატვირთვა
+                        </label>
+                        <input
+                          id="image"
+                          onChange={(e) =>
+                            imageUploadHandler(e, setKeys, setAllImages1)
+                          }
+                          className={classes.imageUpload}
+                          type="file"
+                          multiple
+                        ></input>
+                      </div>
+                      {allImages1.length > 0 &&
+                      allImages1.map((el) => (
                         <div
-                          key={el[1].key}
+                          key={el.key}
                           className={classes.photo}
                           onMouseOver={handleMouseOver}
                           onMouseOut={handleMouseOut}
                         >
                           <img
-                            src={el[1].url}
+                            src={el.url}
                             alt={el.key}
                             className={classes.imagePrev}
                           />
@@ -201,7 +211,29 @@ const Edit = () => {
                         </div>
                       ))}
                     </div>
-                    
+                    <div className={classes.oldImages}>
+                      {allImages.length > 0 &&
+                        allImages.map((el) => (
+                          <div
+                            key={el[1].key}
+                            className={classes.photo}
+                            onMouseOver={handleMouseOver}
+                            onMouseOut={handleMouseOut}
+                          >
+                            <img
+                              src={el[1].url}
+                              alt={el.key}
+                              className={classes.imagePrev}
+                            />
+
+                            <img
+                              className={`${classes.none} ${classes.bin}`}
+                              src={recycle}
+                              alt="bin"
+                            />
+                          </div>
+                        ))}
+                    </div>
                   </div>
                 </Form>
 

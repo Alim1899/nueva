@@ -19,6 +19,9 @@ const Project = ({ project, id, deleteProject }) => {
       prevIndex === length - 1 ? 0 : prevIndex + 1
     );
   };
+// Object.entries(project.images).map(el=>{
+//   return console.log(el[1].url);
+// })
 
   return (
     <div className={classes.project}>
@@ -31,13 +34,13 @@ const Project = ({ project, id, deleteProject }) => {
             className={`${classes.arrow} ${classes.leftArrow}`}
           />
           <div className={classes.slides}>
-            {project.images.map((image, index) => (
+            {Object.entries(project.images).map((image, index) => (
               <img
                 key={index}
-                id={parseInt(localStorage.getItem("id")) + 1}
+               
                 className={classes.contentImg}
-                alt={image.key}
-                src={image.url}
+                alt={image[1].key}
+                src={image[1].url}
                 style={{ transform: `translateX(-${activeSlide * 100}%)` }}
               />
             ))}

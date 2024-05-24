@@ -97,49 +97,7 @@ export const handleLocation = (
   }
 };
 
-const getImage = async (id,setAllImages) => {
-  const db = getDatabase(app);
-  const dbRef = ref(db, `projects/${id}/images`);
-  const snapshot = await get(dbRef);
-  if (snapshot.exists()) {
-    console.log(Object.entries(snapshot.val()));
-    setAllImages(Object.entries(snapshot.val()))
-  } else {
-    console.log("No images found");
-  }
-};
 
-export const saveImage =async(e, id,setAllImages) => {
- 
-  if (e.target.files) {
-    const fileList = e.target.files;
-    for (let i = 0; i < fileList.length; i++) {
-      const file = fileList[i];
-      const reader = new FileReader();
-
-      if (file.type.startsWith("image/")) {
-        reader.onload = async () => {
-          const dataURL = reader.result;
-          const key = "photo" + Date.now() + i;
-          try {
-            const db = getDatabase(app);
-            const newDocRef = push(ref(db, `projects/${id}/images`));
-            await set(newDocRef, {
-              key: key,
-              url: dataURL,
-            });
-            await getImage(id,setAllImages);
-          } catch (error) {
-            console.error("Something went wrong:", error);
-          }
-        };
-        reader.readAsDataURL(file);
-      } else {
-        alert("Please upload only images");
-      }
-    }
-  }
-};
 
 
 export const imageUploadHandler = async (e, setKeys, setAllImages) => {
@@ -205,7 +163,7 @@ export const deleteProject = async (id) => {
   
 };
 
-export const getData = async (id, setProject, setDataArrived,setAllImages) => {
+export const getData = async (id, setProject, setDataArrived,) => {
   const db = getDatabase(app);
   const dbRef = ref(db, `projects/${id}`);
   try {
@@ -214,7 +172,6 @@ export const getData = async (id, setProject, setDataArrived,setAllImages) => {
      
       const projectData = snapshot.val();
       
-      setAllImages(Object.entries(projectData.images)) // Verify images array here
       setProject(projectData);
       setDataArrived(true);
     } else {
@@ -226,3 +183,48 @@ export const getData = async (id, setProject, setDataArrived,setAllImages) => {
 };
 
 
+
+
+// const getImage = async (id,allImages) => {
+//   const db = getDatabase(app);
+//   const dbRef = ref(db, `images`);
+//   const snapshot = await get(dbRef);
+//   if (snapshot.exists()) {
+//     console.log(Object.entries(snapshot.val()));
+//      allImages.push(snapshot.val())
+//   } else {
+//     console.log("No images found");
+//   }
+// };
+
+// export const saveImage =async(e, id,allImages) => {
+ 
+//   if (e.target.files) {
+//     const fileList = e.target.files;
+//     for (let i = 0; i < fileList.length; i++) {
+//       const file = fileList[i];
+//       const reader = new FileReader();
+
+//       if (file.type.startsWith("image/")) {
+//         reader.onload = async () => {
+//           const dataURL = reader.result;
+//           const key = "photo" + Date.now() + i;
+//           try {
+//             const db = getDatabase(app);
+//             const newDocRef = ref(db, `images`);
+//             await push(newDocRef, {
+//               key: key,
+//               url: dataURL,
+//             });
+//             await getImage(id,allImages);
+//           } catch (error) {
+//             console.error("Something went wrong:", error);
+//           }
+//         };
+//         reader.readAsDataURL(file);
+//       } else {
+//         alert("Please upload only images");
+//       }
+//     }
+//   }
+// };

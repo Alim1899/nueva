@@ -21,6 +21,8 @@ const Project = ({ project, id }) => {
     );
   };
 
+ 
+
   return (
     <div className={classes.project}>
       <div className={classes.content}>
@@ -32,13 +34,13 @@ const Project = ({ project, id }) => {
             className={`${classes.arrow} ${classes.leftArrow}`}
           />
           <div className={classes.slides}>
-            {project.images.map((image, index) => (
+            {Object.entries(project.images).map((image, index) => (
               <img
                 key={index}
-                id={parseInt(localStorage.getItem("id")) + 1}
+            
                 className={classes.contentImg}
-                alt={image.key}
-                src={image.url}
+                alt={image[1].key}
+                src={image[1].url}
                 style={{ transform: `translateX(-${activeSlide * 100}%)` }}
               />
             ))}
