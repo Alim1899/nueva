@@ -18,7 +18,7 @@ import {
 import { months, year } from "./DatePicker";
 
 const NewProject = () => {
-  const [keys, setKeys] = useState([]);
+
   const [savedSucces, setSavedSucces] = useState(false);
   const [allImages, setAllImages] = useState([]);
   const [position, setPosition] = useState([42.259061, 43.00614]);
@@ -78,7 +78,7 @@ const NewProject = () => {
         }}
       >
         {({ values }) => {
-          console.log(values);
+          console.log(allImages);
           return (
             <div className={classes.content}>
             <Form className={classes.form} onChange={() => btnEnabler(values)}>
@@ -154,7 +154,7 @@ const NewProject = () => {
                   <input
                     id="image"
                     onChange={(e) =>
-                      imageUploadHandler(e, setKeys, setAllImages)
+                      imageUploadHandler(e, setAllImages)
                     }
                     className={classes.imageUpload}
                     type="file"
@@ -164,11 +164,10 @@ const NewProject = () => {
               </Form>
 
               <ProjectPreview
-                keys={keys}
+                allImages={allImages}
                 projectName={values.header}
                 projectDescription={values.description}
-                setKeys={setKeys}
-                allImages={allImages}
+                setAllImages={setAllImages}
                 projectLocation={values.location}
                 coords={values.coords}
                 month={values.month}

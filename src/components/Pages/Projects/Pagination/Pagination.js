@@ -37,11 +37,11 @@ if (pageCount<=1) return null
         {count} პროექტი
       </p>
       <div className={classes.buttons}>
-        <button onClick={prevPage} disabled={currentPage === 1}>
+        <button className={classes.prev} onClick={prevPage} disabled={currentPage === 1}>
         <img className={classes.icon} src={left} alt="left"></img>
           წინა
         </button>
-        <button onClick={nextPage} disabled={currentPage === pageCount}>
+        <button className={classes.next} onClick={nextPage} disabled={currentPage === pageCount}>
         შემდეგი<img className={classes.icon} src={right} alt="right"></img>
         </button>
       </div> 

@@ -7,6 +7,7 @@ import {
   handleLocation,
   edit,
   imageUploadHandler,
+  deleteImage,
 } from "../Functions";
 import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
@@ -27,7 +28,6 @@ const Edit = () => {
   const [allImages, setAllImages] = useState([]);
   const [allImages1, setAllImages1] = useState([]);
 
-  const [keys, setKeys] = useState([]);
   useEffect(() => {
     if (!dataArrived) {
       getData(id, setProject, setDataArrived, setAllImages);
@@ -94,7 +94,7 @@ const Edit = () => {
             project.location = values.location;
             project.images = allImages;
 
-            console.log("Allimages:", allImages1, "Keys:", keys);
+            console.log("Allimages:", allImages1);
             return (
               <div className={classes.content}>
                 <Form className={classes.form}>
@@ -163,6 +163,10 @@ const Edit = () => {
                     />
                   </div>
 
+                  <div className={classes.photoHeaders}>
+                    <h2 className={classes.photoHeader}>ახალი ფოტოები</h2>
+                    <h2 className={classes.photoHeader}>არსებული ფოტოები</h2>
+                  </div>
                   <div className={classes.photos}>
                     <div className={classes.newImages}>
                       <div className={classes.uploadNew}>
@@ -182,7 +186,7 @@ const Edit = () => {
                         <input
                           id="image"
                           onChange={(e) =>
-                            imageUploadHandler(e, setKeys, setAllImages1)
+                            imageUploadHandler(e,setAllImages1)
                           }
                           className={classes.imageUpload}
                           type="file"
@@ -207,6 +211,7 @@ const Edit = () => {
                             className={`${classes.none} ${classes.bin}`}
                             src={recycle}
                             alt="bin"
+                            
                           />
                         </div>
                       ))}

@@ -49,7 +49,7 @@ export const edit = async (e, project, projectId) => {
     console.log("Error updating data:", error);
   }
 };
-export const retrieveImage = async (setKeys, setAllImages) => {
+export const retrieveImage = async (setAllImages) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "images");
   const snapshot = await get(dbRef);
@@ -61,7 +61,6 @@ export const retrieveImage = async (setKeys, setAllImages) => {
         url: el[1].url,
       });
     });
-    setKeys(imgs.sort((a, b) => b - a));
     setAllImages(imgs);
   } else {
     console.error("cant find");
@@ -100,7 +99,7 @@ export const handleLocation = (
 
 
 
-export const imageUploadHandler = async (e, setKeys, setAllImages) => {
+export const imageUploadHandler = async (e,setAllImages) => {
   if (e.target.files) {
     const fileList = e.target.files;
     for (let i = 0; i < fileList.length; i++) {
@@ -120,7 +119,7 @@ export const imageUploadHandler = async (e, setKeys, setAllImages) => {
               id: localStorage.getItem("id"),
             });
             // After each successful upload, retrieve the images
-            await retrieveImage(setKeys, setAllImages);
+            await retrieveImage(setAllImages);
           } catch (error) {
             console.error("Something went wrong:", error);
           }
@@ -163,16 +162,17 @@ export const deleteProject = async (id) => {
   
 };
 
-export const getData = async (id, setProject, setDataArrived,) => {
+export const getData = async (id, setProject, setDataArrived,setAllImages) => {
+  getImage(id,setAllImages)
   const db = getDatabase(app);
   const dbRef = ref(db, `projects/${id}`);
   try {
     const snapshot = await get(dbRef);
     if (snapshot.exists()) {
-     
+   
       const projectData = snapshot.val();
-      
       setProject(projectData);
+      console.log(projectData);
       setDataArrived(true);
     } else {
       console.error("Can't find project with the given ID");
@@ -185,46 +185,16 @@ export const getData = async (id, setProject, setDataArrived,) => {
 
 
 
-// const getImage = async (id,allImages) => {
-//   const db = getDatabase(app);
-//   const dbRef = ref(db, `images`);
-//   const snapshot = await get(dbRef);
-//   if (snapshot.exists()) {
-//     console.log(Object.entries(snapshot.val()));
-//      allImages.push(snapshot.val())
-//   } else {
-//     console.log("No images found");
-//   }
-// };
+const getImage = async (id,setAllImages) => {
+  const db = getDatabase(app);
+  const dbRef = ref(db, `projects/${id}/images`);
+  const snapshot = await get(dbRef);
+  if (snapshot.exists()) {
+    console.log(snapshot.val());
+     setAllImages(Object.entries(snapshot.val()))
+  } else {
+    console.log("No images found");
+  }
+};
 
-// export const saveImage =async(e, id,allImages) => {
  
-//   if (e.target.files) {
-//     const fileList = e.target.files;
-//     for (let i = 0; i < fileList.length; i++) {
-//       const file = fileList[i];
-//       const reader = new FileReader();
-
-//       if (file.type.startsWith("image/")) {
-//         reader.onload = async () => {
-//           const dataURL = reader.result;
-//           const key = "photo" + Date.now() + i;
-//           try {
-//             const db = getDatabase(app);
-//             const newDocRef = ref(db, `images`);
-//             await push(newDocRef, {
-//               key: key,
-//               url: dataURL,
-//             });
-//             await getImage(id,allImages);
-//           } catch (error) {
-//             console.error("Something went wrong:", error);
-//           }
-//         };
-//         reader.readAsDataURL(file);
-//       } else {
-//         alert("Please upload only images");
-//       }
-//     }
-//   }
-// };

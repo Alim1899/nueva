@@ -3,7 +3,7 @@ import classes from "./Preview.module.css";
 import recycle from "../../../assets/icons/delete.png";
 import {deleteImage} from "../Functions"
 
-const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,projectLocation,month,year}) => {
+const ProjectPreview = ({ allImages, projectName, projectDescription,setAllImages,projectLocation,month,year}) => {
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -33,8 +33,8 @@ const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,projectL
        
           <div className={classes.photoScroll}>
           
-            {keys.length > 0 &&
-              keys.map((el) => (
+            {allImages.length > 0 &&
+              allImages.map((el) => (
                 <div
                   key={el.key}
                   className={classes.photo}
@@ -50,7 +50,7 @@ const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,projectL
                     
                     <img
                       className={`${classes.none} ${classes.bin}`}
-                      onClick={(e) => deleteImage(e,el.key,setKeys,keys)}
+                      onClick={(e) => deleteImage(e,el.key,setAllImages,allImages)}
                       src={recycle}
                       alt="bin"
                     />
@@ -58,7 +58,7 @@ const ProjectPreview = ({ keys, projectName, projectDescription,setKeys,projectL
                 </div>
                 
               ))}
-            {keys.length === 0 && (
+            {allImages.length === 0 && (
               <div className={classes.uploadedImages}>
                 ატვირთული ფოტოები გამოჩნდება აქ
               </div>
