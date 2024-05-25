@@ -145,6 +145,7 @@ export const deleteAllData = async () => {
 };
 
 export const deleteImage = async (e, imageId, setKeys, keys) => {
+  console.log(imageId);
   if (!imageId) {
     imageId = e.target.parentNode.parentNode.childNodes[0].alt;
   }
@@ -159,9 +160,7 @@ export const deleteProject = async (id) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "projects/" + id);
   await remove(dbRef);
-  
 };
-
 export const getData = async (id, setProject, setDataArrived,setAllImages) => {
   getImage(id,setAllImages)
   const db = getDatabase(app);
@@ -190,7 +189,7 @@ const getImage = async (id,setAllImages) => {
   const dbRef = ref(db, `projects/${id}/images`);
   const snapshot = await get(dbRef);
   if (snapshot.exists()) {
-    console.log(snapshot.val());
+   
      setAllImages(Object.entries(snapshot.val()))
   } else {
     console.log("No images found");
@@ -198,3 +197,17 @@ const getImage = async (id,setAllImages) => {
 };
 
  
+
+
+export const deleteProjectImage = async(e,projectId,imageId,setAllImages,allImages)=>{
+  
+ console.log(projectId,imageId);
+  const db = getDatabase(app);
+  const dbRef = ref(db,`projects/${projectId}/images/${imageId}`);
+  console.log(dbRef);
+  await remove(dbRef);
+  console.log(allImages);
+  const newKeys = allImages.filter((item) => item[0] !== imageId);
+  console.log(newKeys);
+  setAllImages(newKeys);
+}

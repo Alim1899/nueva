@@ -156,6 +156,7 @@
   display:grid;
   height: 60vh;
   grid-template-columns: repeat(3,1fr);
+place-content: start;
   overflow: auto;
 
 }

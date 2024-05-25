@@ -8,6 +8,7 @@ import {
   edit,
   imageUploadHandler,
   deleteImage,
+  deleteProjectImage
 } from "../Functions";
 import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
@@ -26,7 +27,7 @@ const Edit = () => {
   const [icon, setIcon] = useState(office);
   const { id } = useParams();
   const [allImages, setAllImages] = useState([]);
-  const [allImages1, setAllImages1] = useState([]);
+  const [newImages, setNewImages] = useState([]);
 
   useEffect(() => {
     if (!dataArrived) {
@@ -94,7 +95,7 @@ const Edit = () => {
             project.location = values.location;
             project.images = allImages;
 
-            console.log("Allimages:", allImages1);
+            /* console.log("Allimages:", allImages); */
             return (
               <div className={classes.content}>
                 <Form className={classes.form}>
@@ -186,15 +187,15 @@ const Edit = () => {
                         <input
                           id="image"
                           onChange={(e) =>
-                            imageUploadHandler(e,setAllImages1)
+                            imageUploadHandler(e,setNewImages)
                           }
                           className={classes.imageUpload}
                           type="file"
                           multiple
                         ></input>
                       </div>
-                      {allImages1.length > 0 &&
-                      allImages1.map((el) => (
+                      {newImages.length > 0 &&
+                      newImages.map((el) => (
                         <div
                           key={el.key}
                           className={classes.photo}
@@ -210,8 +211,8 @@ const Edit = () => {
                           <img
                             className={`${classes.none} ${classes.bin}`}
                             src={recycle}
-                            alt="bin"
-                            
+                            alt={el.key}
+                            onClick={(e)=>{deleteImage(e,el.key,setNewImages,newImages)}}
                           />
                         </div>
                       ))}
@@ -227,14 +228,15 @@ const Edit = () => {
                           >
                             <img
                               src={el[1].url}
-                              alt={el.key}
+                              alt={el[0]}
                               className={classes.imagePrev}
                             />
 
                             <img
                               className={`${classes.none} ${classes.bin}`}
                               src={recycle}
-                              alt="bin"
+                              alt={el.key}
+                              onClick={(e)=>deleteProjectImage(e,id,el[0],setAllImages,allImages)}
                             />
                           </div>
                         ))}
