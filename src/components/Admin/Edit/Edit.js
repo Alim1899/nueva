@@ -8,7 +8,8 @@ import {
   edit,
   imageUploadHandler,
   deleteImage,
-  deleteProjectImage
+  deleteProjectImage,
+  getImages
 } from "../Functions";
 import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
@@ -19,23 +20,23 @@ import { year, months } from "../NewProject/DatePicker";
 import recycle from "../../../assets/icons/delete.png";
 
 const Edit = () => {
-  const [project, setProject] = useState(null);
+  const [project, setProject] = useState([{}]);
   const [dataArrived, setDataArrived] = useState(false);
   const [position, setPosition] = useState([42.259061, 43.00614]);
   const [marker, setMarker] = useState([42.259061, 42.66614]);
   const [flyTo, setFlyTo] = useState(null);
   const [icon, setIcon] = useState(office);
   const { id } = useParams();
-  const [allImages, setAllImages] = useState([]);
-  const [newImages, setNewImages] = useState([]);
+  const [oldImages, setOldImages] = useState([]);
+  const [newImages, setnewImages] = useState([]);
 
   useEffect(() => {
     if (!dataArrived) {
-      getData(id, setProject, setDataArrived, setAllImages);
+      getData(id, setProject, setDataArrived);
+      getImages(id,setOldImages)
     } else {
-      setAllImages(project.images || []);
     }
-  }, [id, dataArrived, project]);
+  }, [id,project,dataArrived,oldImages]);
 
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
@@ -93,9 +94,10 @@ const Edit = () => {
             project.date.month = values.month;
             project.date.year = values.year;
             project.location = values.location;
-            project.images = allImages;
+            project.images = oldImages;
 
-            /* console.log("Allimages:", allImages); */
+             console.log("oldImages:", oldImages); 
+             console.log("New images:",newImages);
             return (
               <div className={classes.content}>
                 <Form className={classes.form}>
@@ -187,39 +189,39 @@ const Edit = () => {
                         <input
                           id="image"
                           onChange={(e) =>
-                            imageUploadHandler(e,setNewImages)
+                            imageUploadHandler(e,setnewImages)
                           }
                           className={classes.imageUpload}
                           type="file"
                           multiple
                         ></input>
                       </div>
-                      {newImages.length > 0 &&
-                      newImages.map((el) => (
+                      {Object.entries(newImages).length > 0 &&
+                      Object.entries(newImages).map((el) => (
                         <div
-                          key={el.key}
+                          key={el[0]}
                           className={classes.photo}
                           onMouseOver={handleMouseOver}
                           onMouseOut={handleMouseOut}
                         >
                           <img
-                            src={el.url}
-                            alt={el.key}
+                            src={el[1].url}
+                            alt={el[0]}
                             className={classes.imagePrev}
                           />
 
                           <img
                             className={`${classes.none} ${classes.bin}`}
                             src={recycle}
-                            alt={el.key}
-                            onClick={(e)=>{deleteImage(e,el.key,setNewImages,newImages)}}
+                            alt={el[0]}
+                            onClick={(e)=>{deleteImage(e,el[0],setnewImages,newImages)}}
                           />
                         </div>
                       ))}
                     </div>
                     <div className={classes.oldImages}>
-                      {allImages.length > 0 &&
-                        allImages.map((el) => (
+                      {Object.entries(oldImages).length > 0 &&
+                        Object.entries(oldImages).map((el) => (
                           <div
                             key={el[1].key}
                             className={classes.photo}
@@ -235,8 +237,8 @@ const Edit = () => {
                             <img
                               className={`${classes.none} ${classes.bin}`}
                               src={recycle}
-                              alt={el.key}
-                              onClick={(e)=>deleteProjectImage(e,id,el[0],setAllImages,allImages)}
+                              alt={el[0]}
+                              onClick={(e)=>deleteProjectImage(e,id,el[0],setOldImages,oldImages)}
                             />
                           </div>
                         ))}

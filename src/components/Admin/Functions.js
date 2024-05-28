@@ -41,9 +41,6 @@ export const save = async (
   }
 };
 
-
-
-
 export const edit = async (e, project, projectId) => {
   try {
     const db = getDatabase(app);
@@ -59,7 +56,7 @@ export const retrieveImage = async (setAllImages) => {
   const snapshot = await get(dbRef);
 
   if (snapshot.exists()) {
-     setAllImages(snapshot.val());
+    setAllImages(snapshot.val());
   } else {
     console.error("cant find");
   }
@@ -94,10 +91,7 @@ export const handleLocation = (
   }
 };
 
-
-
-
-export const imageUploadHandler = async (e,setAllImages) => {
+export const imageUploadHandler = async (e, setAllImages) => {
   if (e.target.files) {
     const fileList = e.target.files;
     for (let i = 0; i < fileList.length; i++) {
@@ -115,7 +109,6 @@ export const imageUploadHandler = async (e,setAllImages) => {
               key: key,
               url: dataURL,
             });
-            // After each successful upload, retrieve the images
             await retrieveImage(setAllImages);
           } catch (error) {
             console.error("Something went wrong:", error);
@@ -134,8 +127,6 @@ export const deleteAllData = async () => {
     const db = getDatabase(app);
     const imagesRef = ref(db, "images");
     await remove(imagesRef);
-
-    // Optionally, you can reset your state variables here if needed
   } catch (error) {
     console.error("Error deleting all data:", error);
   }
@@ -149,11 +140,9 @@ export const deleteImage = async (e, imageId, setKeys, keys) => {
   const dbRef = ref(db, "images/" + imageId);
   await remove(dbRef);
 
-  // Create a new object without the deleted image
   const newKeys = { ...keys };
   delete newKeys[imageId];
 
-  // Update the state with the new object
   setKeys(newKeys);
 };
 export const deleteProject = async (id) => {
@@ -167,7 +156,6 @@ export const getData = async (id, setProject, setDataArrived) => {
   try {
     const snapshot = await get(dbRef);
     if (snapshot.exists()) {
-   
       const projectData = snapshot.val();
       setProject(projectData);
       console.log(projectData);
@@ -180,31 +168,28 @@ export const getData = async (id, setProject, setDataArrived) => {
   }
 };
 
- 
-
-
-export const deleteProjectImage = async(e,projectId,imageId,setAllImages,allImages)=>{
-  
- console.log(projectId,imageId);
+export const deleteProjectImage = async (
+  e,
+  projectId,
+  imageId,
+  setAllImages,
+  allImages
+) => {
+  console.log(projectId, imageId);
   const db = getDatabase(app);
-  const dbRef = ref(db,`projects/${projectId}/images/${imageId}`);
-  console.log(dbRef);
+  const dbRef = ref(db, `projects/${projectId}/images/${imageId}`);
   await remove(dbRef);
   console.log(allImages);
   const newKeys = allImages.filter((item) => item[0] !== imageId);
   console.log(newKeys);
   setAllImages(newKeys);
+};
+
+export const getImages = async(projectId,setAllImages)=>{
+console.log(projectId);
+const db = getDatabase(app);
+const dbRef = ref(db,`projects/${projectId}/images`)
+const snapshot = await get(dbRef);
+if(snapshot.exists())setAllImages(snapshot.val())
 }
 
-//const getImage = async (id,setAllImages) => {
-  //   const db = getDatabase(app);
-  //   const dbRef = ref(db, `projects/${id}/images`);
-  //   const snapshot = await get(dbRef);
-  //   if (snapshot.exists()) {
-     
-  //      setAllImages(Object.entries(snapshot.val()))
-  //   } else {
-  //     console.log("No images found");
-  //   }
-  // };
-  
