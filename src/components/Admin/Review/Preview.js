@@ -33,31 +33,35 @@ const ProjectPreview = ({ allImages, projectName, projectDescription,setAllImage
        
           <div className={classes.photoScroll}>
           
-            {allImages.length > 0 &&
-              allImages.map((el) => (
-                <div
-                  key={el.key}
-                  className={classes.photo}
-                  onMouseOver={handleMouseOver}
-                  onMouseOut={handleMouseOut}
-                >
-                  <img
-                    src={el.url}
-                    alt={el.key}
-                    className={classes.imagePrev}
-                  />
-                  
-                    
-                    <img
-                      className={`${classes.none} ${classes.bin}`}
-                      onClick={(e) => deleteImage(e,el.key,setAllImages,allImages)}
-                      src={recycle}
-                      alt="bin"
-                    />
-                 
-                </div>
-                
-              ))}
+          {
+  Object.entries(allImages).length > 0 && (
+   console.log('allImages:', allImages),
+    Object.entries(allImages).map((el) => (
+      <div
+        key={el[0]}
+        id={el[0]}
+        className={classes.photo}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
+      >
+        <img
+          src={el[1].url}
+          alt={el[0]}
+          className={classes.imagePrev}
+        />
+        
+        <img
+          className={`${classes.none} ${classes.bin}`}
+          onClick={(e) => deleteImage(e, el[0], setAllImages, allImages)}
+          src={recycle}
+          alt="bin"
+          id={el[0]}
+        />
+      </div>
+    ))
+  )
+}
+
             {allImages.length === 0 && (
               <div className={classes.uploadedImages}>
                 ატვირთული ფოტოები გამოჩნდება აქ

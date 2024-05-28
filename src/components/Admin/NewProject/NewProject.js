@@ -71,6 +71,7 @@ const NewProject = () => {
           location: "",
           month: "",
           year: "",
+          images:[]
         }}
         validationSchema={Schema}
         onSubmit={(values) => {
@@ -78,7 +79,8 @@ const NewProject = () => {
         }}
       >
         {({ values }) => {
-          console.log(allImages);
+         
+         
           return (
             <div className={classes.content}>
             <Form className={classes.form} onChange={() => btnEnabler(values)}>

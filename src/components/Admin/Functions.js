@@ -40,6 +40,10 @@ export const save = async (
     console.error("Error saving data:", error);
   }
 };
+
+
+
+
 export const edit = async (e, project, projectId) => {
   try {
     const db = getDatabase(app);
@@ -53,15 +57,9 @@ export const retrieveImage = async (setAllImages) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "images");
   const snapshot = await get(dbRef);
-  const imgs = [];
+
   if (snapshot.exists()) {
-    Object.entries(snapshot.val()).forEach((el) => {
-      imgs.push({
-        key: el[0],
-        url: el[1].url,
-      });
-    });
-    setAllImages(imgs);
+     setAllImages(snapshot.val());
   } else {
     console.error("cant find");
   }
@@ -116,7 +114,6 @@ export const imageUploadHandler = async (e,setAllImages) => {
             await set(newDocRef, {
               key: key,
               url: dataURL,
-              id: localStorage.getItem("id"),
             });
             // After each successful upload, retrieve the images
             await retrieveImage(setAllImages);
@@ -145,15 +142,18 @@ export const deleteAllData = async () => {
 };
 
 export const deleteImage = async (e, imageId, setKeys, keys) => {
-  console.log(imageId);
   if (!imageId) {
-    imageId = e.target.parentNode.parentNode.childNodes[0].alt;
+    imageId = e.target.id;
   }
   const db = getDatabase(app);
   const dbRef = ref(db, "images/" + imageId);
   await remove(dbRef);
 
-  const newKeys = keys.filter((item) => item.key !== imageId);
+  // Create a new object without the deleted image
+  const newKeys = { ...keys };
+  delete newKeys[imageId];
+
+  // Update the state with the new object
   setKeys(newKeys);
 };
 export const deleteProject = async (id) => {
