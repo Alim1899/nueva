@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import classes from "./Projects.module.css";
-import locate from "../../../assets/icons/location.svg"
+import locate from "../../../assets/icons/location.svg";
 import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
 import Pagination from "./Pagination/Pagination";
@@ -21,15 +21,13 @@ const Project = ({ project, id }) => {
     );
   };
 
- 
-
   return (
     <div className={classes.project}>
       <div className={classes.content}>
         <div className={classes.slider}>
           <img
             alt="left"
-            onClick={() => leftSlide(project.images.length)}
+            onClick={() => leftSlide(Object.entries(project.images).length)}
             src={left}
             className={`${classes.arrow} ${classes.leftArrow}`}
           />
@@ -37,7 +35,6 @@ const Project = ({ project, id }) => {
             {Object.entries(project.images).map((image, index) => (
               <img
                 key={index}
-            
                 className={classes.contentImg}
                 alt={image[1].key}
                 src={image[1].url}
@@ -48,7 +45,7 @@ const Project = ({ project, id }) => {
           <img
             alt="right"
             src={right}
-            onClick={() => rightSlide(project.images.length)}
+            onClick={() => rightSlide(Object.entries(project.images).length)}
             className={`${classes.arrow} ${classes.rightArrow}`}
           />
         </div>

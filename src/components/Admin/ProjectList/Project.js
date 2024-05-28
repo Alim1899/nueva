@@ -19,9 +19,6 @@ const Project = ({ project, id, deleteProject }) => {
       prevIndex === length - 1 ? 0 : prevIndex + 1
     );
   };
-// Object.entries(project.images).map(el=>{
-//   return console.log(el[1].url);
-// })
 
   return (
     <div className={classes.project}>
@@ -29,7 +26,7 @@ const Project = ({ project, id, deleteProject }) => {
         <div className={classes.slider}>
           <img
             alt="left"
-            onClick={() => leftSlide(project.images.length)}
+            onClick={() => leftSlide(Object.entries(project.images).length)}
             src={left}
             className={`${classes.arrow} ${classes.leftArrow}`}
           />
@@ -39,7 +36,7 @@ const Project = ({ project, id, deleteProject }) => {
                 key={index}
                
                 className={classes.contentImg}
-                alt={image[1].key}
+                alt={image[0]}
                 src={image[1].url}
                 style={{ transform: `translateX(-${activeSlide * 100}%)` }}
               />
@@ -48,7 +45,7 @@ const Project = ({ project, id, deleteProject }) => {
           <img
             alt="right"
             src={right}
-            onClick={() => rightSlide(project.images.length)}
+            onClick={() => rightSlide(Object.entries(project.images).length)}
             className={`${classes.arrow} ${classes.rightArrow}`}
           />
         </div>

@@ -161,8 +161,7 @@ export const deleteProject = async (id) => {
   const dbRef = ref(db, "projects/" + id);
   await remove(dbRef);
 };
-export const getData = async (id, setProject, setDataArrived,setAllImages) => {
-  getImage(id,setAllImages)
+export const getData = async (id, setProject, setDataArrived) => {
   const db = getDatabase(app);
   const dbRef = ref(db, `projects/${id}`);
   try {
@@ -181,21 +180,6 @@ export const getData = async (id, setProject, setDataArrived,setAllImages) => {
   }
 };
 
-
-
-
-const getImage = async (id,setAllImages) => {
-  const db = getDatabase(app);
-  const dbRef = ref(db, `projects/${id}/images`);
-  const snapshot = await get(dbRef);
-  if (snapshot.exists()) {
-   
-     setAllImages(Object.entries(snapshot.val()))
-  } else {
-    console.log("No images found");
-  }
-};
-
  
 
 
@@ -211,3 +195,16 @@ export const deleteProjectImage = async(e,projectId,imageId,setAllImages,allImag
   console.log(newKeys);
   setAllImages(newKeys);
 }
+
+//const getImage = async (id,setAllImages) => {
+  //   const db = getDatabase(app);
+  //   const dbRef = ref(db, `projects/${id}/images`);
+  //   const snapshot = await get(dbRef);
+  //   if (snapshot.exists()) {
+     
+  //      setAllImages(Object.entries(snapshot.val()))
+  //   } else {
+  //     console.log("No images found");
+  //   }
+  // };
+  

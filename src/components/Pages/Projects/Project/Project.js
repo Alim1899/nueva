@@ -25,13 +25,17 @@ const Project = () => {
 
   const leftSlide = () => {
     setActiveSlide((prevIndex) =>
-      prevIndex === 0 ? project.images.length - 1 : prevIndex - 1
+      prevIndex === 0
+        ? Object.entries(project.images).length - 1
+        : prevIndex - 1
     );
   };
 
   const rightSlide = () => {
     setActiveSlide((prevIndex) =>
-      prevIndex === project.images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === Object.entries(project.images).length - 1
+        ? 0
+        : prevIndex + 1
     );
   };
 
@@ -39,6 +43,19 @@ const Project = () => {
     setActiveSlide(index);
     showSlider(true);
   };
+  const handleKeyDown = (event) => {
+    if (event.key === "Escape") {
+      setTimeout(() => {
+        showSlider(false);
+      }, 300);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <div className={classes.project}>
@@ -74,10 +91,13 @@ const Project = () => {
                       className={classes.img}
                       alt="project-img"
                       src={img[1].url}
-                      
                     ></img>
                     <div className={classes.enlarge}>
-                    <img src={enlarge}  alt="enlarge" onClick={() => openSlider(index)}></img>
+                      <img
+                        src={enlarge}
+                        alt="enlarge"
+                        onClick={() => openSlider(index)}
+                      ></img>
                     </div>
                   </div>
                 );
@@ -88,18 +108,17 @@ const Project = () => {
       )}
       {slider && (
         <div className={classes.slider}>
-        <div className={classes.arrows} onClick={leftSlide}>
-          <img
-            alt="left"
-            
-            src={left}
-            className={`${classes.arrow} ${classes.leftArrow}`}
-          />
+          <div className={classes.arrows} onClick={leftSlide}>
+            <img
+              alt="left"
+              src={left}
+              className={`${classes.arrow} ${classes.leftArrow}`}
+            />
           </div>
           <div className={classes.slides}>
-            {Object.entries(project.images).map((image, index) => (
+            {Object.entries(project.images).map((image) => (
               <img
-                key={index}
+                key={image[0]}
                 className={classes.contentImg}
                 alt={image[1].key}
                 src={image[1].url}
@@ -110,13 +129,14 @@ const Project = () => {
               />
             ))}
           </div>
-          <div className={classes.arrows} onClick={rightSlide}> <img
-            alt="right"
-            src={right}
-            
-            className={`${classes.arrow} ${classes.rightArrow}`}
-          /></div>
-         
+          <div className={classes.arrows} onClick={rightSlide}>
+            {" "}
+            <img
+              alt="right"
+              src={right}
+              className={`${classes.arrow} ${classes.rightArrow}`}
+            />
+          </div>
         </div>
       )}
     </div>
