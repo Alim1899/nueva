@@ -41,15 +41,27 @@ export const save = async (
   }
 };
 
-export const edit = async (e, project, projectId) => {
+export const edit = async (e, project, projectId,setSavedSucces,navigate,setBtnDisabled) => {
+  e.preventDefault();
+  setBtnDisabled(true);
   try {
     const db = getDatabase(app);
     const projectRef = ref(db, `projects/${projectId}`);
     await update(projectRef, project);
+    setSavedSucces(true)
+    setTimeout(() => {
+      navigate('/projectList')
+    }, 1200);
+    
   } catch (error) {
     console.log("Error updating data:", error);
   }
+ 
 };
+
+
+
+
 export const retrieveImage = async (setAllImages) => {
   const db = getDatabase(app);
   const dbRef = ref(db, "images");

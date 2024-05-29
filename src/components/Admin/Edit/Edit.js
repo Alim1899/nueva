@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Formik, Form } from "formik";
 import Control from "../../Inputs/Control";
@@ -9,7 +9,8 @@ import {
   imageUploadHandler,
   deleteImage,
   deleteProjectImage,
-  getImages
+  getImages,
+  deleteAllData
 } from "../Functions";
 import classes from "./Edit.module.css";
 import Leaflet from "../../Map/Leaflet";
@@ -21,6 +22,8 @@ import recycle from "../../../assets/icons/delete.png";
 
 const Edit = () => {
   const [project, setProject] = useState([{}]);
+  const [btnDisabled,setBtnDisabled] =useState(false);
+  const [savedSucces,setSavedSucces] = useState(false);
   const [dataArrived, setDataArrived] = useState(false);
   const [position, setPosition] = useState([42.259061, 43.00614]);
   const [marker, setMarker] = useState([42.259061, 42.66614]);
@@ -29,7 +32,7 @@ const Edit = () => {
   const { id } = useParams();
   const [oldImages, setOldImages] = useState([]);
   const [newImages, setnewImages] = useState([]);
-
+  let navigate = useNavigate();
   useEffect(() => {
     if (!dataArrived) {
       getData(id, setProject, setDataArrived);
@@ -37,6 +40,9 @@ const Edit = () => {
     } else {
     }
   }, [id,project,dataArrived,oldImages]);
+  useEffect(() => {
+    deleteAllData();
+  }, []);
 
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
@@ -56,6 +62,15 @@ const Edit = () => {
         <div className={classes.loader}></div>
       </div>
     );
+  }
+  if(savedSucces){
+    return(
+    <div className={classes.succes}>
+    <h2>პროექტი შენახულია✅</h2>
+  </div>
+    )
+
+   
   }
 
   return (
@@ -94,10 +109,8 @@ const Edit = () => {
             project.date.month = values.month;
             project.date.year = values.year;
             project.location = values.location;
-            project.images = oldImages;
+            project.images = {...oldImages,...newImages};
 
-             /* console.log("oldImages:", oldImages); 
-             console.log("New images:",newImages); */
             return (
               <div className={classes.content}>
                 <Form className={classes.form}>
@@ -250,8 +263,9 @@ const Edit = () => {
 
                 <button
                   type="submit"
-                  onClick={(e) => edit(e, project, id)}
+                  onClick={(e) => edit(e, project, id,setSavedSucces,navigate,setBtnDisabled)}
                   className={classes.submit}
+                  disabled={btnDisabled}
                 >
                   შენახვა
                 </button>
