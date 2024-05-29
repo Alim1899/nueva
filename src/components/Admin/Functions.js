@@ -158,7 +158,6 @@ export const getData = async (id, setProject, setDataArrived) => {
     if (snapshot.exists()) {
       const projectData = snapshot.val();
       setProject(projectData);
-      console.log(projectData);
       setDataArrived(true);
     } else {
       console.error("Can't find project with the given ID");
@@ -175,21 +174,18 @@ export const deleteProjectImage = async (
   setAllImages,
   allImages
 ) => {
-  console.log(projectId, imageId);
   const db = getDatabase(app);
   const dbRef = ref(db, `projects/${projectId}/images/${imageId}`);
-  await remove(dbRef);
-  console.log(allImages);
-  const newKeys = allImages.filter((item) => item[0] !== imageId);
-  console.log(newKeys);
+  const newKeys = { ...allImages };
+  delete newKeys[imageId];
   setAllImages(newKeys);
+  await remove(dbRef);
 };
 
-export const getImages = async(projectId,setAllImages)=>{
-console.log(projectId);
-const db = getDatabase(app);
-const dbRef = ref(db,`projects/${projectId}/images`)
-const snapshot = await get(dbRef);
-if(snapshot.exists())setAllImages(snapshot.val())
-}
-
+export const getImages = async (projectId, setAllImages) => {
+  console.log(projectId);
+  const db = getDatabase(app);
+  const dbRef = ref(db, `projects/${projectId}/images`);
+  const snapshot = await get(dbRef);
+  if (snapshot.exists()) setAllImages(snapshot.val());
+};

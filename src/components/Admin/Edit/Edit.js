@@ -96,8 +96,8 @@ const Edit = () => {
             project.location = values.location;
             project.images = oldImages;
 
-             console.log("oldImages:", oldImages); 
-             console.log("New images:",newImages);
+             /* console.log("oldImages:", oldImages); 
+             console.log("New images:",newImages); */
             return (
               <div className={classes.content}>
                 <Form className={classes.form}>
@@ -223,7 +223,7 @@ const Edit = () => {
                       {Object.entries(oldImages).length > 0 &&
                         Object.entries(oldImages).map((el) => (
                           <div
-                            key={el[1].key}
+                            key={el[0]}
                             className={classes.photo}
                             onMouseOver={handleMouseOver}
                             onMouseOut={handleMouseOut}
@@ -231,12 +231,14 @@ const Edit = () => {
                             <img
                               src={el[1].url}
                               alt={el[0]}
+                              key={el[1].key}
                               className={classes.imagePrev}
                             />
 
                             <img
                               className={`${classes.none} ${classes.bin}`}
                               src={recycle}
+                              key={el[0]}
                               alt={el[0]}
                               onClick={(e)=>deleteProjectImage(e,id,el[0],setOldImages,oldImages)}
                             />
