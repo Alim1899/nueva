@@ -51,6 +51,7 @@ export const edit = async (e, project, projectId,setSavedSucces,navigate,setBtnD
     setSavedSucces(true)
     setTimeout(() => {
       navigate('/projectList')
+      deleteAllData();
     }, 1200);
     
   } catch (error) {
