@@ -1,10 +1,10 @@
 :root {
     --background-color: #070f2b; 
     --foreground-color: #035a4e; 
-    --navbar-light:#59b6c7;
+    --navbar-light:#acb8ac;
     --navbar-dark:#236570;
-    --navbar:#5b9ad4;
-    --text-color: aliceblue;
+    --navbar:#E6E7E6;
+    --text-color: #062906;
     --header-font-size:clamp(0.9rem, 5vw, 2.5rem);
     --navbar-height:clamp(90px,10vw,120px);
     --header-width: clamp(150px,60vw,700px);

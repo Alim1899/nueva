@@ -1,39 +1,42 @@
 import classes from "./Navbar.module.css";
 import React from "react";
-import logo from "../../assets/photos/logo.png";
+import logo from "../../assets/photos/logo.svg";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import i18n from "../i18n";
 const Navbar = () => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const [showNavbar, setShowNavbar] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [englishLang, setEnglishLang] = useState(false);
+  const [dropDown, setDropDown] = useState(windowWidth >= 750 ? false : true);
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
+      windowWidth > 750 ? setDropDown(false) : setDropDown(true);
+     setShowNavbar(false);
     };
-
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [dropDown, windowWidth,showNavbar]);
   const showList = () => {
     setShowNavbar(!showNavbar);
   };
 
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
+  const changeLanguage = (e) => {
+    setEnglishLang(!englishLang);
+    if (englishLang) {
+      i18n.changeLanguage("ge");
+    } else {
+      i18n.changeLanguage("en");
+    }
   };
-
 
   return (
     <div className={classes.main}>
-  
-   
-  
-      {windowWidth <= 750 && (
+      {dropDown && (
         <div>
           <div className={classes.mobile}>
             <div className={classes.lines} onClick={showList}>
@@ -41,67 +44,87 @@ const Navbar = () => {
               <div className={!showNavbar ? classes.line : classes.close}></div>
               <div className={!showNavbar ? classes.line : classes.close}></div>
             </div>
-            <img className={classes.logo} alt="logo" src={logo}></img>
+            <img className={classes.logoBig} alt="logo" src={logo}></img>
           </div>
-
-          {showNavbar && (
-            <div className={classes.dropList}>
-              <ul className={classes.dropdown}>
-              <li>
-            <a href="/">{t('main')}</a>
-          </li>
-          <li>
-            <a href="/about">{t("about")}</a>
-          </li>
-          <li>
-            <a href="/services">{t("services")}</a>
-          </li>
-          <li>
-            <a href="/projects">{t('projetcs')}</a>
-          </li>
-          <li>
-            <a href="/gallery">{t('gallery')}</a>
-          </li>
-
-          <li>
-            <a href="/contact">{t('contact')}</a>
-          </li>
-              </ul>
-              <div className={classes.blur} onClick={showList}></div>
-            </div>
-          )}
         </div>
       )}
-      {windowWidth > 750 && (
-        <ul className={classes.navlinks}>
-          <li>
-            <a href="/"><h4>{t('main')}</h4></a>
+      <div className={dropDown ? classes.dropdown : classes.navbar}>
+        <a href="/">
+          {" "}
+          <img
+            className={dropDown ? classes.none : classes.logo}
+            alt="logo"
+            src={logo}
+          ></img>
+        </a>
+        <ul className={showNavbar ? classes.dropMenu : classes.navlinks}>
+          <li
+            className={
+              window.location.pathname === "/about"
+                ? classes.activeItem
+                : classes.listItem
+            }
+          >
+            <a href="/about">
+              <h4>{t("about")}</h4>
+            </a>
           </li>
-          <li>
-            <a href="/about"><h4>{t("about")}</h4></a>
+          <li
+            className={
+              window.location.pathname === "/services"
+                ? classes.activeItem
+                : classes.listItem
+            }
+          >
+            <a href="/services">
+              <h4>{t("services")}</h4>
+            </a>
           </li>
-          <li>
-            <a href="/services"><h4>{t("services")}</h4></a>
+          <li
+            className={
+              window.location.pathname === "/projects"
+                ? classes.activeItem
+                : classes.listItem
+            }
+          >
+            <a href="/projects">
+              <h4>{t("projects")}</h4>
+            </a>
           </li>
-          <li>
-            <a href="/projects"><h4>{t("projects")}</h4></a>
-          </li>
-          <li>
-            <a href="/gallery"><h4>{t("gallery")}</h4></a>
+          <li
+            className={
+              window.location.pathname === "/gallery"
+                ? classes.activeItem
+                : classes.listItem
+            }
+          >
+            <a href="/gallery">
+              <h4>{t("gallery")}</h4>
+            </a>
           </li>
 
-          <li>
-            <a href="/contact"><h4>{t("contact")}</h4></a>
-          </li>
-          <li>
-            <img className={classes.logo} alt="logo" src={logo}></img>
-          </li>
-          <li className={classes.languages}>
-            <h5  onClick={() => changeLanguage('ge')} className={classes.language}>ქარ</h5>
-            <h5 onClick={() => changeLanguage('en')} className={classes.language}>EN</h5>
+          <li
+            className={
+              window.location.pathname === "/contact"
+                ? classes.activeItem
+                : classes.listItem
+            }
+          >
+            <a href="/contact">
+              <h4>{t("contact")}</h4>
+            </a>
           </li>
         </ul>
+        <div className={showNavbar?classes.langs:classes.languages}>
+          <h5 onClick={(e) => changeLanguage(e)} className={classes.language}>
+            {englishLang ? "ქართული" : "English"}
+          </h5>
+        </div>
+        {showNavbar && (
+        <div className={classes.blur} onClick={showList}></div>
       )}
+      </div>
+     
     </div>
   );
 };
