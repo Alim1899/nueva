@@ -3,10 +3,10 @@ import down from "../../../assets/icons/services/down.svg";
 import up from "../../../assets/icons/services/up.svg";
 import ServiceList from "./ServiceList";
 import classes from "./Services.module.css";
-
+import { useTranslation } from "react-i18next";
 const Services = () => {
+  const {t} = useTranslation();
   const [showExtended, setShowExtended] = useState([]);
-
   const data = ServiceList();
 
   const extend = (index) => {
@@ -18,7 +18,7 @@ const Services = () => {
   return (
     <div className={classes.main}>
       <div className={classes.services}>
-        <h2 className={classes.header}>სერვისების ჩამონათვალი</h2>
+        <h2 className={classes.header}>{t("servicesPage.header")}</h2>
         <div className={classes.serviceList}>
           {data.map((el, index) => {
             return (

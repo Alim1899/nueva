@@ -18,14 +18,9 @@
   border: 1px solid gold;
 }
 .contentHeader {
-  display: flex;
-  justify-content: space-around;
-  font-weight: 500;
+text-align: center;
 }
-.contentHeader > span {
-  font-size: 20px;
-  font-weight: 700;
-}
+
 
 .question {
   border-bottom: 1px solid var(--navbar);

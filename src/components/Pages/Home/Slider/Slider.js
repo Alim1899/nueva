@@ -4,10 +4,12 @@ import rightSlide from "../../../../assets/icons/rightslide.svg";
 import scr1 from "../../../../assets/photos/scr1.png";
 import scr3 from "../../../../assets/photos/scr3.png";
 import scr4 from "../../../../assets/photos/scr4.png";
-
 import classes from "./Slider.module.css";
+import { useTranslation } from "react-i18next";
+
 
 const Slider = () => {
+  const {t}=useTranslation();
   const [showFirstSlide, setShowFirstSlide] = useState(true);
   const [showSecondSlide, setShowSecondSlide] = useState(false);
   const [showThirdSlide, setShowThirdSlide] = useState(false);
@@ -56,7 +58,7 @@ const Slider = () => {
 
   return (
     <div className={classes.main}>
-      <h1 className={classes.head}>ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს</h1>
+      <h1 className={classes.head}>{t("homeServices")}</h1>
       <div className={classes.slider}>
         <img
           alt="leftArrow"

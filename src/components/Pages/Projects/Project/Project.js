@@ -18,8 +18,6 @@ const Project = () => {
   useEffect(() => {
     if (!dataArrived) {
       getData(id, setProject, setDataArrived);
-    } else {
-      console.log(project);
     }
   }, [id, project, dataArrived]);
 

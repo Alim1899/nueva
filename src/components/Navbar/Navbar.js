@@ -29,8 +29,10 @@ const Navbar = () => {
     setEnglishLang(!englishLang);
     if (englishLang) {
       i18n.changeLanguage("ge");
+      sessionStorage.setItem("lng","ge")
     } else {
       i18n.changeLanguage("en");
+      sessionStorage.setItem("lng","en")
     }
   };
 
@@ -115,8 +117,8 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
-        <div className={showNavbar?classes.langs:classes.languages}>
-          <h5 onClick={(e) => changeLanguage(e)} className={classes.language}>
+        <div onClick={(e) => changeLanguage(e)} className={showNavbar?classes.langs:classes.languages}>
+          <h5  className={classes.language}>
             {englishLang ? "ქართული" : "English"}
           </h5>
         </div>

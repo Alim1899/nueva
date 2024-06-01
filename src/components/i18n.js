@@ -12,7 +12,23 @@ const resources = {
       services:"Services",
       projects:"Projects",
       gallery:"Gallery",
-      contact:"Contact"
+      contact:"Contact",
+      homeServices:"We Offer A Different Types Of Services",
+      faq:"Frequently Asked Questions",
+      servicesPage:{
+        header:'Services',
+        serviceList:{
+          geodesy:{
+            header:"Geodetic Service",
+            subHeader1:"Tracing the territory",
+            subHeader2:"Topographic Measurement",
+            subHeader3:"Internal measurement of the building",
+            subHeader4:"Counting bulk volume",
+            subHeader5:"Cadastral services"
+          }
+        }
+      },
+      
     }
   },
   ge: {
@@ -22,16 +38,33 @@ const resources = {
       services:"სერვისები",
       projects:"პროექტები",
       gallery:"გალერეა",
-      contact:"კონტაქტი"
+      contact:"კონტაქტი",
+      homeServices:"ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს",
+      faq:"ხშირად დასმული კითხვები",
+      servicesPage:{
+        header:'სერვისები',
+        serviceList:{
+          geodesy:{
+            header:"გეოდეზიური მომსახურება",
+            subHeader1:"ტერიტორიის დაკვალვა",
+            subHeader2:"ტოპოგრაფიული აზომვა",
+            subHeader3:"შენობის შიდა აზომვა",
+            subHeader4:"ნაყარის მოცულობის დათვლა",
+            subHeader5:"საკადასტრო მომსახურება"
+          }
+  
+        }
+      },
+      
     }
   }
 };
 
 i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
+  .use(initReactI18next) 
   .init({
     resources,
-    lng: "ge", 
+    lng: sessionStorage.getItem("lng"), 
     interpolation: {
       escapeValue: false // react already safes from xss
     }

@@ -3,8 +3,10 @@ import classes from "./FAQ.module.css";
 import up from "../../../../assets/icons/up.svg";
 import down from "../../../../assets/icons/down.svg";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const FAQ = () => {
+  const {t}= useTranslation();
   const [expandedView,setExpandedView] = useState(false);
   console.log(Questions);
   const clickHandler = (e) => {
@@ -26,11 +28,9 @@ const FAQ = () => {
     <div className={classes.main}>
       <div className={classes.content}>
         <div className={classes.faq}>
-          <h2 className={classes.contentHeader}>
-            ხშირად დასმული კითხვები
-            <span className={classes.allQuest}>ყველა კითხვა</span>
-          </h2>
-
+          <h1 className={classes.contentHeader}>
+           {t("faq")}
+          </h1>
           {Questions.map((el) => {
             return (
               <div key={el.key} className={classes.question}>
@@ -61,23 +61,3 @@ const FAQ = () => {
 };
 
 export default FAQ;
-
-// if (e.target.id === "1") {
-//   setTimeout(() => {
-//     setShowFirst(!showFirst);
-//     setShowSecond(false);
-//     setShowThird(false);
-//   }, 200);
-// } else if (e.target.id === "2") {
-//   setTimeout(() => {
-//     setShowSecond(!showSecond);
-//     setShowFirst(false);
-//     setShowThird(false);
-//   }, 200);
-// } else if (e.target.id === "3") {
-//   setTimeout(() => {
-//     setShowThird(!showThird);
-//     setShowSecond(false);
-//     setShowFirst(false);
-//   }, 200);
-// }

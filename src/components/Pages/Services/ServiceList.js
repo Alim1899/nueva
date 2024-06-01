@@ -5,19 +5,21 @@ import agro from '../../../assets/icons/services/agro.png'
 import building from '../../../assets/icons/services/building.png'
 import modeling from '../../../assets/icons/services/modeling.png'
 import gps from '../../../assets/icons/services/gps.png'
+import { useTranslation } from "react-i18next";
 
 
 export default function ServiceList () {
+  const {t} = useTranslation();
   return  [
     [
-    { header: "გეოდეზიური მომსახურება" },
+    { header: t("servicesPage.serviceList.geodesy.header") },
     {
       subHeaders: [
-        { subhead: "ტერიტორიის დაკვალვა" },
-        { subhead: "ტოპოგრაფიული აზომვა" },
-        { subhead: "შენობის შიდა აზომვა" },
-        { subhead: "ნაყარის მოცულობის დათვლა" },
-        { subhead: "საკადასტრო მომსახურება" },
+        { subhead: t("servicesPage.serviceList.geodesy.subHeader1") },
+        { subhead: t("servicesPage.serviceList.geodesy.subHeader2")  },
+        { subhead: t("servicesPage.serviceList.geodesy.subHeader3")  },
+        { subhead: t("servicesPage.serviceList.geodesy.subHeader4")  },
+        { subhead: t("servicesPage.serviceList.geodesy.subHeader5")  },
       ],
     },
     { src: geodesy },
