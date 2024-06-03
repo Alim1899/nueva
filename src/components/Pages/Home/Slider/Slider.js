@@ -63,6 +63,7 @@ const Slider = () => {
         <img
           alt="leftArrow"
           id="left"
+          style={{ fill: 'blue' }}
           onClick={changeByButtons}
           className={classes.leftArrow}
           src={leftSlide}
@@ -81,7 +82,7 @@ const Slider = () => {
         </div>
           
           <div>
-            <ul className={classes.dots}>
+            <ul className={window.innerWidth>=750?classes.dots : classes.none}>
               <li onClick={() => setActiveSlide(1)} id="1"></li>
               <li onClick={() => setActiveSlide(2)} id="2"></li>
               <li onClick={() => setActiveSlide(3)} id="3"></li>

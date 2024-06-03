@@ -1,12 +1,13 @@
 :root {
     --background-color: #070f2b; 
     --foreground-color: #035a4e; 
-    --navbar-light:#acb8ac;
+    --navbar-light:#E6E7E6;
     --navbar-dark:#236570;
-    --navbar:#E6E7E6;
-    --text-color: #062906;
+    --navbar:#B0DFE5;
+    --dark-text: #062906;
+    --light-text:#F1FEFF;
     --header-font-size:clamp(0.9rem, 5vw, 2.5rem);
-    --navbar-height:clamp(90px,10vw,120px);
+    --navbar-height:clamp(90px,10vw,10px);
     --header-width: clamp(150px,60vw,700px);
   }
   body {
@@ -25,7 +26,7 @@ body::before {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    filter: blur(1px); /* Adjust the blur radius as needed */
+    filter: blur(5px); /* Adjust the blur radius as needed */
     z-index: -1; /* Ensure the pseudo-element is behind other content */
 }
   

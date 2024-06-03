@@ -5,8 +5,8 @@
  
  
   .slider{
-    height: clamp(250px,80vh,1800px);
-    width: clamp(250px,80vw,1800px);
+    height: clamp(300px,90vw,1000px);
+    width: clamp(250px,90vw,1300px);
     overflow: hidden;
     z-index: -12;
     margin: auto;

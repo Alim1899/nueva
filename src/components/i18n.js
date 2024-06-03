@@ -16,7 +16,7 @@ const resources = {
       homeServices:"We Offer A Different Types Of Services",
       faq:"Frequently Asked Questions",
       servicesPage:{
-        header:'Services',
+        header:'SERVICES',
         serviceList:{
           geodesy:{
             header:"Geodetic Service",
@@ -64,7 +64,7 @@ i18n
   .use(initReactI18next) 
   .init({
     resources,
-    lng: sessionStorage.getItem("lng"), 
+    lng: sessionStorage.getItem("lng")||"ge", 
     interpolation: {
       escapeValue: false // react already safes from xss
     }

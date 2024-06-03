@@ -6,12 +6,12 @@
   font-family: sans;
 }
 .content {
-  width: 90vw;
-  max-width: 1980px;
-  min-height: 484px;
+ 
+    width: clamp(250px,90vw,1300px);
   margin: auto;
   margin-top: 20px;
-  background-color: var(--navbar-dark);
+  background-color: var(--foreground-color);
+  opacity: 0.9;
   color: aliceblue;
   margin-bottom: 20px;
   border-radius: 15px;

@@ -44,14 +44,14 @@ const Services = () => {
                             {item.subhead}
                           </li>
                         );
-                      })}
+                      })}</ul>
                       <button
                         className={classes.upArrow}
                         onClick={() => extend(index)}
                       >
                         <img className={classes.up} src={up} alt="up" />
                       </button>
-                    </ul>
+                    
                   </div>
                 )}
               </div>
