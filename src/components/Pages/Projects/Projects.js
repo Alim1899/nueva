@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from "react";
+// Projects.js
+import React, { useState, useMemo } from "react";
 import classes from "./Projects.module.css";
 import locate from "../../../assets/icons/location.svg";
 import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
 import Pagination from "./Pagination/Pagination";
-import { retrieveData } from "../../Admin/Functions";
-
+import { useProjects } from "./Project/ProjectsContext";
 const Project = ({ project, id }) => {
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -66,13 +66,9 @@ const Project = ({ project, id }) => {
 };
 
 const Projects = () => {
-  const [projects, setProjects] = useState([]);
+  const { projects, loading } = useProjects();
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(5);
-
-  useEffect(() => {
-    retrieveData(setProjects);
-  }, []);
 
   const memoizedProjects = useMemo(() => projects, [projects]);
 
@@ -80,10 +76,12 @@ const Projects = () => {
     <div className={classes.main}>
       <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
 
-      {memoizedProjects.length === 0 && (
-        <div className={classes.animation}>
-          <h2>იტვირთება პროექტები</h2>
-          <div className={classes.loader}></div>
+      {loading&&(
+        <div className={classes.mainAnim}>
+          <div className={classes.animation}>
+            <h2>იტვირთება</h2>
+            <div className={classes.loader}></div>
+          </div>
         </div>
       )}
 

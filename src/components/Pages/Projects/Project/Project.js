@@ -1,25 +1,38 @@
+// Project.js
 import React, { useState, useEffect } from "react";
 import classes from "./Project.module.css";
 import Leaflet from "../../../Map/Leaflet";
-import { getData } from "../../../Admin/Functions";
 import { useParams } from "react-router-dom";
 import enlarge from "../../../../assets/icons/larger.png";
 import marker from "../../../../assets/icons/marker.png";
 import left from "../../../../assets/icons/leftslide.svg";
 import right from "../../../../assets/icons/rightslide.svg";
+import { useProjects } from "./ProjectsContext";
 
 const Project = () => {
-  const [project, setProject] = useState([]);
+  const { id } = useParams();
+  const { projects } = useProjects();
+  const [project, setProject] = useState(null);
   const [slider, showSlider] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-  const [dataArrived, setDataArrived] = useState(false);
-  const { id } = useParams();
 
   useEffect(() => {
-    if (!dataArrived) {
-      getData(id, setProject, setDataArrived);
+    const foundProject = projects.find((p) => p[0] === id);
+    if (foundProject) {
+      setProject(foundProject[1]);
     }
-  }, [id, project, dataArrived]);
+  }, [id, projects]);
+
+  if (!project) {
+    return (
+      <div className={classes.mainAnim}>
+        <div className={classes.animation}>
+          <h2>იტვირთება</h2>
+          <div className={classes.loader}></div>
+        </div>
+      </div>
+    );
+  }
 
   const leftSlide = () => {
     setActiveSlide((prevIndex) =>
@@ -41,6 +54,7 @@ const Project = () => {
     setActiveSlide(index);
     showSlider(true);
   };
+
   const handleKeyDown = (event) => {
     if (event.key === "Escape") {
       setTimeout(() => {
@@ -48,62 +62,49 @@ const Project = () => {
       }, 300);
     }
   };
-  useEffect(() => {
-    window.addEventListener("keydown", handleKeyDown);
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  window.addEventListener("keydown", handleKeyDown);
 
   return (
     <div className={classes.project}>
-      {!dataArrived && (
-        <div className={classes.animation}>
-          <h2>იტვირთება</h2>
-          <div className={classes.loader}></div>
+      <div className={classes.content}>
+        <header className={classes.header}>{project.header}</header>
+        <p className={classes.description}>{project.description}</p>
+        <h4 className={classes.date}>
+          {project.date.month}, {project.date.year}{" "}
+        </h4>
+        <div className={classes.map}>
+          <Leaflet
+            popup="ნენსკრა"
+            center={project.coords.split(",")}
+            zoom={10}
+            icon={marker}
+            marker={project.coords.split(",")}
+          />
         </div>
-      )}
-      {dataArrived && (
-        <div className={classes.content}>
-          <header className={classes.header}>{project.header}</header>
-          <p className={classes.description}>{project.description}</p>
-          <h4 className={classes.date}>
-            {project.date.month}, {project.date.year}{" "}
-          </h4>
-          <div className={classes.map}>
-            <Leaflet
-              popup="ნენსკრა"
-              center={project.coords.split(",")}
-              zoom={10}
-              icon={marker}
-              marker={project.coords.split(",")}
-            />
-          </div>
-          <div className={classes.gallery}>
-            <h1 className={classes.sliderHeader}>გალერეა</h1>
-            <div className={classes.photos}>
-              {Object.entries(project.images).map((img, index) => {
-                return (
-                  <div key={img[1].key} className={classes.imgs}>
+        <div className={classes.gallery}>
+          <h1 className={classes.sliderHeader}>გალერეა</h1>
+          <div className={classes.photos}>
+            {Object.entries(project.images).map((img, index) => {
+              return (
+                <div key={img[1].key} className={classes.imgs}>
+                  <img
+                    className={classes.img}
+                    alt="project-img"
+                    src={img[1].url}
+                  ></img>
+                  <div className={classes.enlarge}>
                     <img
-                      className={classes.img}
-                      alt="project-img"
-                      src={img[1].url}
+                      src={enlarge}
+                      alt="enlarge"
+                      onClick={() => openSlider(index)}
                     ></img>
-                    <div className={classes.enlarge}>
-                      <img
-                        src={enlarge}
-                        alt="enlarge"
-                        onClick={() => openSlider(index)}
-                      ></img>
-                    </div>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-      )}
+      </div>
       {slider && (
         <div className={classes.slider}>
           <div className={classes.arrows} onClick={leftSlide}>
@@ -128,7 +129,6 @@ const Project = () => {
             ))}
           </div>
           <div className={classes.arrows} onClick={rightSlide}>
-            {" "}
             <img
               alt="right"
               src={right}
