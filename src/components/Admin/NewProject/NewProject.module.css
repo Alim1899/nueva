@@ -113,7 +113,6 @@ border: 1px solid rebeccapurple;
   border-radius: 15px;
 }
 
-/* Add more media queries as needed for other elements */
 .map {
   height: 90%;
   width: 80%;
@@ -131,7 +130,7 @@ border: 1px solid rebeccapurple;
  height: 80%;
   margin: auto;
 
-  background-color: var(--navbar-light);
+  background-color: var(--background-color);
   font-size: clamp(1rem, 2vw, 2.5rem);
   font-weight: 900;
   border-radius: 15px;
@@ -167,7 +166,7 @@ border: 1px solid rebeccapurple;
 }
 .popup > h1 {
   font-size: clamp(2rem, 20vw, 5rem);
-  color: var(--text-color);
+  color: var(--light-text);
 }
 .submit{
   text-align: center;
@@ -175,7 +174,7 @@ border: 1px solid rebeccapurple;
   margin-left: 30%;
   height: 70px;
   margin-bottom: -50px;
-  background-color: var(--navbar);
+  background-color: var(--navbar-dark);
   font-size: clamp(1rem, 2vw, 2.5rem);
   font-weight: 900;
   border-radius: 15px;
@@ -189,10 +188,3 @@ border: 1px solid rebeccapurple;
   opacity: 0.7;
 }
 
-@media screen and (max-width: 800px) {
-  
- 
-  
-  
-
-}

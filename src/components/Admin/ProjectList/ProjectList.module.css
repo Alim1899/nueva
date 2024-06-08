@@ -51,7 +51,7 @@ width: 100%;
 .project {
   border-radius: 45px;
   background-color: var(--background-color);
-  color: var(--text-color);
+  color: var(--light-text);
   border: 1px solid gold;
   display: grid;
   width: 95%;

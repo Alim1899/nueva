@@ -1,5 +1,5 @@
 :root {
-    --background-color: #070f2b; 
+    --background-color: #2F3C49; 
     --foreground-color: #035a4e; 
     --navbar-light:#E6E7E6;
     --navbar-dark:#236570;
@@ -7,8 +7,10 @@
     --dark-text: #062906;
     --light-text:#F1FEFF;
     --header-font-size:clamp(0.9rem, 5vw, 2.5rem);
-    --navbar-height:clamp(90px,10vw,10px);
+    --navbar-height:90px;
     --header-width: clamp(150px,60vw,700px);
+    --content-width:clamp(275px,95%,1980px);
+
   }
   body {
     overflow-x: hidden;

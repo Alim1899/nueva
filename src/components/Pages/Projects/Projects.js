@@ -96,7 +96,7 @@ const Projects = () => {
       )}
       <Pagination
         count={memoizedProjects.length}
-        numOfItems={5}
+        numOfItems={10}
         setStartIndex={setStartIndex}
         setEndIndex={setEndIndex}
         startIndex={startIndex}
