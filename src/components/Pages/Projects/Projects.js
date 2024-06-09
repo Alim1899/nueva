@@ -68,18 +68,18 @@ const Project = ({ project, id }) => {
 const Projects = () => {
   const { projects, loading } = useProjects();
   const [startIndex, setStartIndex] = useState(0);
-  const [endIndex, setEndIndex] = useState(5);
+  const [endIndex, setEndIndex] = useState(10);
 
   const memoizedProjects = useMemo(() => projects, [projects]);
 
   return (
     <div className={classes.main}>
-      <h1 className={classes.header}>ჩვენს მიერ შესრულებული პროექტები</h1>
+      <h1 className={classes.header}>ჩვენი პროექტები</h1>
 
       {loading&&(
         <div className={classes.mainAnim}>
           <div className={classes.animation}>
-            <h2>იტვირთება</h2>
+            <h2>იტვირთება...</h2>
             <div className={classes.loader}></div>
           </div>
         </div>

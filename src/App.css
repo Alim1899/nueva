@@ -12,6 +12,7 @@
     --navbar-height:90px;
     --header-width: clamp(120px,20vw,400px);
     --content-width:clamp(275px,95%,1500px);
+    --header-border-radius:5px;
     
   }
   body {

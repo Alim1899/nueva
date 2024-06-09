@@ -13,16 +13,16 @@ const PaginationExample = ({ count, numOfItems,setStartIndex,setEndIndex,startIn
 
   const pageCount = Math.ceil(count / numOfItems);
   const nextPage = () => {
-    setStartIndex(startIndex+5);
-    setEndIndex(endIndex+5);
+    setStartIndex(startIndex+10);
+    setEndIndex(endIndex+10);
     window.scrollTo(0, 0);
     const next = currentPage === pageCount ? currentPage : currentPage + 1;
     searchParams.set("page", next);
     setSearchParams(searchParams);
   };
   const prevPage = () => {
-    setStartIndex(startIndex-5);
-    setEndIndex(endIndex-5);
+    setStartIndex(startIndex-10);
+    setEndIndex(endIndex-10);
     window.scrollTo(0, 0);
     const prev = currentPage === 1 ? currentPage : currentPage - 1;
     searchParams.set("page", prev);
