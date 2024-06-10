@@ -6,12 +6,12 @@
 
 .header {
   font-size: var(--header-font-size);
-  border-bottom: 2px solid gold;
+  border-bottom: 2px solid var(--navbar);
   width: var(--header-width);
   margin: auto;
   text-align: center;
   border-radius: 15px;
-  color: aliceblue;
+  color: var(--light-text);
 }
 
 .contact {

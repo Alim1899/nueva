@@ -1,14 +1,13 @@
 import { Questions } from "./Quiestions";
 import classes from "./FAQ.module.css";
-import up from "../../../../assets/icons/up.svg";
-import down from "../../../../assets/icons/down.svg";
+import up from "../../../../assets/icons/services/up.svg";
+import down from "../../../../assets/icons/services/down.svg";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 const FAQ = () => {
   const {t}= useTranslation();
   const [expandedView,setExpandedView] = useState(false);
-  console.log(Questions);
   const clickHandler = (e) => {
     if(e.target.id==="quest")return;
     console.log(e.target.id);

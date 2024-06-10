@@ -9,7 +9,7 @@ import marker from "../../../assets/icons/marker.png";
 const Contact = () => {
   return (
     <div className={classes.main}>
-            <h2 className={classes.header}>საკონტაქტო ინფორმაცია</h2>
+            <h2 className={classes.header}>კონტაქტი</h2>
       <div className={classes.contact}>
         <div className={classes.content}>
         
