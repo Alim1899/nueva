@@ -7,9 +7,8 @@ import scr4 from "../../../../assets/photos/scr4.png";
 import classes from "./Slider.module.css";
 import { useTranslation } from "react-i18next";
 
-
 const Slider = () => {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   const [showFirstSlide, setShowFirstSlide] = useState(true);
   const [showSecondSlide, setShowSecondSlide] = useState(false);
   const [showThirdSlide, setShowThirdSlide] = useState(false);
@@ -37,7 +36,6 @@ const Slider = () => {
     }
   }, [activeSlide]);
 
-  requestAnimationFrame(slider);
   useEffect(() => {
     slider();
     const timer = setTimeout(() => {
@@ -63,29 +61,40 @@ const Slider = () => {
         <img
           alt="leftArrow"
           id="left"
-          style={{ fill: 'blue' }}
           onClick={changeByButtons}
           className={classes.leftArrow}
           src={leftSlide}
         ></img>
         <div className={classes.content}>
-        <div className={classes.slides}>
-          {showFirstSlide && (
-            <img className={classes.slide} src={scr1} alt="screen"></img>
-          )}
-          {showSecondSlide && (
-            <img className={classes.slide} src={scr4} alt="screem"></img>
-          )}
-          {showThirdSlide && (
-            <img className={classes.slide} src={scr3} alt="screem"></img>
-          )}
-        </div>
-          
+          <div className={classes.slides}>
+            {showFirstSlide && (
+              <img className={classes.slide} src={scr1} alt="screen"></img>
+            )}
+            {showSecondSlide && (
+              <img className={classes.slide} src={scr4} alt="screen"></img>
+            )}
+            {showThirdSlide && (
+              <img className={classes.slide} src={scr3} alt="screen"></img>
+            )}
+          </div>
+
           <div>
-            <ul className={window.innerWidth>=750?classes.dots : classes.none}>
-              <li onClick={() => setActiveSlide(1)} id="1"></li>
-              <li onClick={() => setActiveSlide(2)} id="2"></li>
-              <li onClick={() => setActiveSlide(3)} id="3"></li>
+            <ul className={classes.dots}>
+              <li
+                onClick={() => setActiveSlide(1)}
+                className={activeSlide === 1 ? classes.activeDot :classes.dot}
+                id="1"
+              ></li>
+              <li
+                onClick={() => setActiveSlide(2)}
+                className={activeSlide === 2 ? classes.activeDot : classes.dot}
+                id="2"
+              ></li>
+              <li
+                onClick={() => setActiveSlide(3)}
+                className={activeSlide === 3 ? classes.activeDot : classes.dot}
+                id="3"
+              ></li>
             </ul>
           </div>
         </div>

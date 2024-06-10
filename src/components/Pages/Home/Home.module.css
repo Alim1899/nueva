@@ -1,14 +1,13 @@
 .main {
-    width: 100vw;
     z-index: -1;
+    width: var(--content-width);
+ margin: auto;
   }
  
  
   .slider{
-    height: clamp(300px,90vw,1000px);
-    width: clamp(250px,90vw,1300px);
-    overflow: hidden;
-    z-index: -12;
+    width: 90%;
     margin: auto;
+    padding-top: 5vh;
   }
  

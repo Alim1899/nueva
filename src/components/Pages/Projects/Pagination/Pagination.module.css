@@ -1,6 +1,6 @@
 .main{
-    border: 1px solid gold;
-    background-color: var(--foreground-color);
+    border: 1px solid var(--navbar);
+    background-color: var(--light-background);
     width: 90%;
     max-width: 1000px;
     min-width: 300px;
@@ -30,13 +30,13 @@
 }
 .prev,.next{
     height: 60px;
-    
     font-size: 1.5rem;
-    color: aliceblue;
+    color: var(--dark-text);
     font-weight: 900;
-    background-color: rgb(24, 122, 122);
+    background-color: var(--navbar);
     border: none;
     margin: 0 5px;
+    border-radius:15px;
 }
 .prev{
     display: grid;

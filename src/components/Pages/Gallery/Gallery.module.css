@@ -13,7 +13,7 @@
   }
   .photos{
   padding: 40px;
-    max-width: 2300px;
+    max-width: var(--content-width);
     margin:  auto;
     display: flex;
     justify-content: center;
@@ -21,11 +21,23 @@
     flex-wrap: wrap;
   }
 .img{
-    height: 35vh;
-    min-height: 300px;
-    max-width: 700px;
-    max-height: 600px;
-    min-width: 280px;
-    width: 35vw;
+  width: 23%;
   margin: 1%;
+  width: 23%;
+  height: 300px;
+}
+@media screen and (max-width:1500px) {
+  .img{
+    width: 31%;
+  }
+}
+@media screen and (max-width:1000px) {
+  .img{
+    width: 48%;
+  }
+}
+@media screen and (max-width:700px) {
+  .img{
+    width: 95%;
+  }
 }

@@ -16,7 +16,7 @@
   place-items: center;
 }
 .errors {
-background-color: var(--navbar-dark);
+background-color: var(--navbar);
   border-radius: 15px;
   height: 50%;
   width: 98%;
@@ -35,10 +35,11 @@ background-color: var(--navbar-dark);
   width: clamp(200px, 90%, 500px);
   font-size: clamp(0.95rem, 5vw, 2rem);
   border-radius: 15px;
-  background-color: var(--navbar);
+  background-color: var(--navbar-dark);
   margin-top: 3vh;
   outline: none;
   border: none;
+  color: var(--light-text);
 }
 .button:hover {
   cursor: pointer;
