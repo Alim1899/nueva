@@ -68,10 +68,10 @@ const Project = () => {
   return (
     <div className={classes.project}>
       <div className={classes.content}>
-        <header className={classes.header}>{project.header}</header>
-        <p className={classes.description}>{project.description}</p>
+        <header className={classes.header}>{project.header.ge}</header>
+        <p className={classes.description}>{project.description.ge}</p>
         <h4 className={classes.date}>
-          {project.date.month}, {project.date.year}{" "}
+          {project.date.month.ge}, {project.date.year}{" "}
         </h4>
         <div className={classes.map}>
           <Leaflet

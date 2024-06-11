@@ -8,6 +8,7 @@ import Pagination from "./Pagination/Pagination";
 import { useProjects } from "./Project/ProjectsContext";
 import { useTranslation } from "react-i18next";
 const Project = ({ project, id }) => {
+
   const [activeSlide, setActiveSlide] = useState(0);
 const {t}=useTranslation();
   const leftSlide = (length) => {
@@ -50,10 +51,10 @@ const {t}=useTranslation();
             className={`${classes.arrow} ${classes.rightArrow}`}
           />
         </div>
-        <h3 className={classes.projectHeader}>{project.header}</h3>
+        <h3 className={classes.projectHeader}>{project.header.ge}</h3>
         <div className={classes.location}>
           <img alt="icon" className={classes.icon} src={locate} />
-          <h5>{project.location}</h5>
+          <h5>{project.location.ge}</h5>
         </div>
 
         <button type="button" className={classes.moreBtn}>
@@ -72,7 +73,8 @@ const Projects = () => {
   const [endIndex, setEndIndex] = useState(10);
   const { t } = useTranslation();
   const memoizedProjects = useMemo(() => projects, [projects]);
-
+  console.log(memoizedProjects);
+  console.log(projects);
   return (
     <div className={classes.main}>
       <h1 className={classes.header}>{t("projectsPage.header")}</h1>
@@ -88,9 +90,11 @@ const Projects = () => {
 
       {memoizedProjects.length > 0 && (
         <div className={classes.projectList}>
+        
           {memoizedProjects
             .slice(startIndex, endIndex)
             .map((project, index) => (
+              
               <Project key={index} project={project[1]} id={project[0]} />
             ))}
         </div>

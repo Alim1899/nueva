@@ -3,7 +3,7 @@ import classes from "./Preview.module.css";
 import recycle from "../../../assets/icons/delete.png";
 import {deleteImage} from "../Functions"
 
-const ProjectPreview = ({ allImages, projectName, projectDescription,setAllImages,projectLocation,month,year}) => {
+const ProjectPreview = ({ allImages,setAllImages}) => {
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
     element.classList.add(classes.bindiv);
@@ -17,17 +17,8 @@ const ProjectPreview = ({ allImages, projectName, projectDescription,setAllImage
   };
   return (
     <div className={classes.preview}>
-      <h1 className={classes.prevHeader}>გადახედეთ პროექტს </h1>
-      <div className={classes.prevContent}>
-        <div className={classes.headers}>
-        <div className={classes.headerWrapper}>
-               <h2 className={classes.headerPrev}>{projectName?projectName:"პროექტის სათაური"}</h2>
-               <h2 className={classes.locationPrev}>{projectLocation?projectLocation:"პროექტის ლოკაცია"}</h2>
-          <h4 className={classes.date}>თარიღი: {month?month:'თვე'},{year?year:'წელი'}</h4>
-        </div>
-     
-          <h5 className={classes.descriptionPrev}>{projectDescription?projectDescription:"პროექტის აღწერა"}</h5>
-        </div>
+      <h1 className={classes.prevHeader}>ატვირთული ფოტოები </h1>
+        
 
         <div className={classes.photos}>
        
@@ -35,7 +26,6 @@ const ProjectPreview = ({ allImages, projectName, projectDescription,setAllImage
           
           {
   Object.entries(allImages).length > 0 && (
-   console.log('allImages:', allImages),
     Object.entries(allImages).map((el) => (
       <div
         key={el[0]}
@@ -68,9 +58,7 @@ const ProjectPreview = ({ allImages, projectName, projectDescription,setAllImage
               </div>
             )}
           </div>
-        </div>
-      </div>
-     
+        </div>     
     </div>
   );
 };

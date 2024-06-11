@@ -25,6 +25,7 @@ const Edit = () => {
   const [btnDisabled,setBtnDisabled] =useState(false);
   const [savedSucces,setSavedSucces] = useState(false);
   const [dataArrived, setDataArrived] = useState(false);
+  const [selectedMonth, setSelectedMonth] = useState({ ge: "", en: "" });
   const [position, setPosition] = useState([42.259061, 43.00614]);
   const [marker, setMarker] = useState([42.259061, 42.66614]);
   const [flyTo, setFlyTo] = useState(null);
@@ -43,6 +44,12 @@ const Edit = () => {
   useEffect(() => {
     deleteAllData();
   }, []);
+  const handleMonthChange = (value) => {
+    const month = months.find((m) => m.value === value);
+    if (month) {
+      setSelectedMonth({ ge: month.value, en: month.enValue });
+    }
+  };
 
   const handleMouseOver = (e) => {
     const element = e.currentTarget.childNodes[1];
@@ -91,24 +98,28 @@ const Edit = () => {
         <Formik
           validateOnChange
           initialValues={{
-            header: project.header || "",
+            geHeader: project.header.ge || "",
+            enHeader: project.header.en || "",
             coords: project.coords || "",
-            description: project.description || "",
-            location: project.location || "",
-            month: project.date.month || "",
+            geDescription: project.description.ge || "",
+            enDescription: project.description.en || "",
+            geLocation: project.location.ge || "",
+            enLocation: project.location.en || "",
+            month: project.date.month.ge || "",
             year: project.date.year || "",
           }}
           onSubmit={(values) => {
             console.log(values);
           }}
         >
-          {({ values }) => {
-            project.header = values.header;
-            project.description = values.description;
+          {({ values,setFieldValue }) => {
+            console.log(project);
+            project.header = {ge:values.geHeader,en:values.enHeader}
+            project.description = {ge:values.geDescription,en:values.enDescription}
             project.coords = values.coords;
-            project.date.month = values.month;
+            project.date.month = {ge:selectedMonth.ge,en:selectedMonth.en};
             project.date.year = values.year;
-            project.location = values.location;
+            project.location = {ge:values.geLocation,en:values.enLocation}
             project.images = {...oldImages,...newImages};
 
             return (
@@ -117,8 +128,14 @@ const Edit = () => {
                   <div className={classes.formWrapper}>
                     <div className={classes.wrap}>
                       <Control
-                        name="header"
-                        label="სათაური"
+                        name="geHeader"
+                        label="სათაური ქარ."
+                        control="input"
+                        type="text"
+                      />
+                       <Control
+                        name="enHeader"
+                        label="სათაური EN."
                         control="input"
                         type="text"
                       />
@@ -139,17 +156,27 @@ const Edit = () => {
                         type="text"
                       ></Control>
                       <Control
-                        name="location"
-                        label="ლოკაცია"
+                        name="geLocation"
+                        label="ლოკაცია ქარ."
                         control="input"
                         type="text"
-                      ></Control>
+                      />
+                      <Control
+                        name="enLocation"
+                        label="ლოკაცია EN."
+                        control="input"
+                        type="text"
+                      />
                       <div className={classes.datePicker}>
                         <Control
                           name="month"
                           label="თვე"
                           options={months}
                           control="select"
+                          onChange={(e) => {
+                        setFieldValue("month", e.target.value);
+                        handleMonthChange(e.target.value);
+                      }}
                         />
                         <Control
                           name="year"
@@ -161,8 +188,14 @@ const Edit = () => {
                     </div>
                     <div className={classes.description}>
                       <Control
-                        name="description"
-                        label="აღწერა"
+                        name="geDescription"
+                        label="აღწერა ქარ."
+                        control="textarea"
+                        type="text"
+                      />
+                       <Control
+                        name="enDescription"
+                        label="აღწერა EN."
                         control="textarea"
                         type="text"
                       />

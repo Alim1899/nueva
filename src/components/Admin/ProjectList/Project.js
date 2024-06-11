@@ -49,10 +49,10 @@ const Project = ({ project, id, deleteProject }) => {
             className={`${classes.arrow} ${classes.rightArrow}`}
           />
         </div>
-        <h2 className={classes.projectHeader}>{project.header}</h2>
+        <h2 className={classes.projectHeader}>{project.header.ge}</h2>
         <div className={classes.location}>
           <img alt="icon" className={classes.icon} src={locate} />
-          <h4>{project.location}</h4>
+          <h4>{project.location.ge}</h4>
         </div>
         <div className={classes.buttons}>
         

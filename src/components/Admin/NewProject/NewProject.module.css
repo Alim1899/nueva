@@ -9,6 +9,7 @@
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
+  
 }
 .link{
   font-size: clamp(0.6rem,2vw,2rem);
@@ -46,15 +47,15 @@
   background-color: var(--navbar-light);
   color: aliceblue;
   margin: auto;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 90% 10%;
+grid-template-columns: 65% 35%;
+grid-template-rows: 90% 10%;
 }
 
 .formWrapper {
   display: grid;
   grid-template-columns: 40% 60%;
 }
-.formWrapper > div > div > input {
+.formWrapper > div > div > input,.formWrapper > div > div >div> input {
   height: 30px;
   width: 15vw;
   min-width: 120px;
@@ -170,10 +171,7 @@ border: 1px solid rebeccapurple;
 }
 .submit{
   text-align: center;
-  margin-right: -70%;
-  margin-left: 30%;
   height: 70px;
-  margin-bottom: -50px;
   background-color: var(--navbar-dark);
   font-size: clamp(1rem, 2vw, 2.5rem);
   font-weight: 900;
@@ -182,6 +180,9 @@ border: 1px solid rebeccapurple;
   border: 1px solid gold;
   color: aliceblue;
   cursor: pointer;
+  width: 98vw;
+  margin: auto;
+  margin-top: 10px;
 }
 .submit:disabled{
   cursor: not-allowed;
