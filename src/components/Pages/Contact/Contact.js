@@ -5,11 +5,12 @@ import phone from "../../../assets/icons/social/phone.svg";
 import gmail from "../../../assets/icons/social/gmail.svg";
 import Leaflet from "../../Map/Leaflet";
 import marker from "../../../assets/icons/marker.png";
-
+import { useTranslation } from "react-i18next";
 const Contact = () => {
+  const {t} = useTranslation();
   return (
     <div className={classes.main}>
-            <h2 className={classes.header}>კონტაქტი</h2>
+            <h2 className={classes.header}>{t("contactPage.header")}</h2>
       <div className={classes.contact}>
         <div className={classes.content}>
         
@@ -74,8 +75,8 @@ const Contact = () => {
             </ul>
           </div>
           <div className={classes.address}>
-          <div className={classes.addressName}> <h4 className={classes.head}>მისამართი:</h4>
-            <h4 className={classes.street}>4600 ქუთაისი, აკ. წერეთლის N67</h4></div>
+          <div className={classes.addressName}> <h4 className={classes.head}>{t("contactPage.addressHeader")}:</h4>
+            <h4 className={classes.street}>{t("contactPage.street")}</h4></div>
            
             <div className={classes.map}>
               {" "}

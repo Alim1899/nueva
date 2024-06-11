@@ -24,11 +24,11 @@ const FAQ = () => {
     <div className={classes.main}>
       <div className={classes.content}>
         <div className={classes.faq}>
-          <h1 className={classes.contentHeader}>{t("faq")}</h1>
+          <h1 className={classes.contentHeader}>{t("homePage.faq.header")}</h1>
 
           <div className={classes.question}>
             <div className={classes.quest} id="quest" onClick={clickHandler}>
-              <h6 id="question">{t("faqs.quest1")}</h6>
+              <h6 id="question">{t("homePage.faq.questions.quest1")}</h6>
               <img
                 alt="carret"
                 className={classes.svg}
@@ -38,12 +38,12 @@ const FAQ = () => {
             </div>
 
             <div className={classes.answer} style={{ display: "none" }}>
-              <p>{t("faqs.answer1")}</p>
+              <p>{t("homePage.faq.questions.answer1")}</p>
             </div>
           </div>
           <div className={classes.question}>
             <div className={classes.quest} id="quest" onClick={clickHandler}>
-              <h6 id="question">{t("faqs.quest2")}</h6>
+              <h6 id="question">{t("homePage.faq.questions.quest2")}</h6>
               <img
                 alt="carret"
                 className={classes.svg}
@@ -53,12 +53,12 @@ const FAQ = () => {
             </div>
 
             <div className={classes.answer} style={{ display: "none" }}>
-              <p>{t("faqs.answer2")}</p>
+              <p>{t("homePage.faq.questions.answer2")}</p>
             </div>
           </div>
           <div className={classes.question}>
             <div className={classes.quest} id="quest" onClick={clickHandler}>
-              <h6 id="question">{t("faqs.quest3")}</h6>
+              <h6 id="question">{t("homePage.faq.questions.quest3")}</h6>
               <img
                 alt="carret"
                 className={classes.svg}
@@ -68,12 +68,12 @@ const FAQ = () => {
             </div>
 
             <div className={classes.answer} style={{ display: "none" }}>
-              <p>{t("faqs.answer3")}</p>
+              <p>{t("homePage.faq.questions.answer3")}</p>
             </div>
           </div>
           <div className={classes.question}>
             <div className={classes.quest} id="quest" onClick={clickHandler}>
-              <h6 id="question">{t("faqs.quest4")}</h6>
+              <h6 id="question">{t("homePage.faq.questions.quest4")}</h6>
               <img
                 alt="carret"
                 className={classes.svg}
@@ -83,7 +83,7 @@ const FAQ = () => {
             </div>
 
             <div className={classes.answer} style={{ display: "none" }}>
-              <p>{t("faqs.answer4")}</p>
+              <p>{t("homePage.faq.questions.answer4")}</p>
             </div>
           </div>
         </div>

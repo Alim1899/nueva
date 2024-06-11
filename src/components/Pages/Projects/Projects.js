@@ -6,9 +6,10 @@ import left from "../../../assets/icons/leftslide.svg";
 import right from "../../../assets/icons/rightslide.svg";
 import Pagination from "./Pagination/Pagination";
 import { useProjects } from "./Project/ProjectsContext";
+import { useTranslation } from "react-i18next";
 const Project = ({ project, id }) => {
   const [activeSlide, setActiveSlide] = useState(0);
-
+const {t}=useTranslation();
   const leftSlide = (length) => {
     setActiveSlide((prevIndex) =>
       prevIndex === 0 ? length - 1 : prevIndex - 1
@@ -57,7 +58,7 @@ const Project = ({ project, id }) => {
 
         <button type="button" className={classes.moreBtn}>
           <a href={`/project/${id}`} className={classes.toProject}>
-            სრულად
+            {t("projectsPage.moreBtn")}
           </a>
         </button>
       </div>
@@ -69,17 +70,17 @@ const Projects = () => {
   const { projects, loading } = useProjects();
   const [startIndex, setStartIndex] = useState(0);
   const [endIndex, setEndIndex] = useState(10);
-
+  const { t } = useTranslation();
   const memoizedProjects = useMemo(() => projects, [projects]);
 
   return (
     <div className={classes.main}>
-      <h1 className={classes.header}>ჩვენი პროექტები</h1>
+      <h1 className={classes.header}>{t("projectsPage.header")}</h1>
 
       {loading&&(
         <div className={classes.mainAnim}>
           <div className={classes.animation}>
-            <h2>იტვირთება...</h2>
+            <h2>{t("projectsPage.loading")}</h2>
             <div className={classes.loader}></div>
           </div>
         </div>

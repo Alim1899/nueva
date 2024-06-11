@@ -1,20 +1,40 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-
 // the translations
 // (tip move them in a JSON file and import them,
 // or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
 const resources = {
   en: {
     translation: {
-      main: "Main",
-      about: "About Us",
-      services: "Services",
-      projects: "Projects",
-      gallery: "Gallery",
-      contact: "Contact",
-      homeServices: "We Offer A Different Types Of Services",
-      faq: "Frequently Asked Questions",
+      headers: {
+        main: "Main",
+        about: "About Us",
+        services: "Services",
+        projects: "Projects",
+        gallery: "Gallery",
+        contact: "Contact",
+      },
+      homePage: {
+        sliderHeader: "We Offer A Different Types Of Services",
+        faq: {
+          header: "Frequently Asked Questions",
+          questions: {
+            quest1: "Which region is the main work area?",
+            answer1:
+              "Nueva LLC is based in the city of Kutaisi, and its working area covers Western Georgia",
+            quest2: "Have you taken part in any massive project?",
+            answer2:
+              "Our specialists were involved in the construction process of the new terminal at Kutaisi Airport, the new oil refinery in the village of Kulevi, the new Baghdati-Abastumani road, the Chiaturi Sashevardno viewpoint, and other high-complexity projects in terms of design and geodetic supervision.",
+            quest3: "Do you have your own hardware?",
+            answer3:
+              "The company owns a wide range of the latest material and technical equipment, including tachometers, GPS devices, standard and RTK/multi-spectrum drones, and a GPS base station with a 50 km radius (the so-called 'base rover'). Using this equipment, both geodetic studies of construction projects and analyses of the state of agricultural objects are carried out.",
+            quest4: "Which software do you use for modeling?",
+            answer4:
+              "We use Civil 3D for spatial data modeling, ArcGIS Pro for data analysis, Rocky 3D for rockfall modeling, and Pix4Dmapper for creating orthophotos.",
+          },
+        },
+      },
+
       servicesPage: {
         header: "SERVICES",
         serviceList: {
@@ -29,7 +49,7 @@ const resources = {
         },
       },
       aboutPage: {
-        header: "About Us",
+        header: "ABOUT US",
         firstParagraph:
           'LLC "Nueva" is a design and surveying institution based in the city of Kutaisi. Its working area covers the western region of Georgia. Our clientele includes municipalities of various cities, sub-agencies of the Ministry, educational institutions, and primarily private organizations. The company actively participates in public procurement tenders and has successfully completed hundreds of state orders worth thousands of GEL.',
         secondParagraph:
@@ -41,28 +61,55 @@ const resources = {
         fourthParagraph:
           "LLC \"Nueva\" actively cooperates with professional and higher educational institutions to retrain students and improve training programs. Our specialists have contributed to the development of professional school programs and the enhancement of bachelor's and master's programs in higher education.",
       },
-      faqs: {
-        quest1:"Which region is the main work area?",
-        answer1:"Nueva LLC is based in the city of Kutaisi, and its working area covers Western Georgia",
-        quest2:"Have you taken part in any massive project?",
-        answer2:"Our specialists were involved in the construction process of the new terminal at Kutaisi Airport, the new oil refinery in the village of Kulevi, the new Baghdati-Abastumani road, the Chiaturi Sashevardno viewpoint, and other high-complexity projects in terms of design and geodetic supervision.",
-        quest3:"Do you have your own hardware?",
-        answer3:"The company owns a wide range of the latest material and technical equipment, including tachometers, GPS devices, standard and RTK/multi-spectrum drones, and a GPS base station with a 50 km radius (the so-called 'base rover'). Using this equipment, both geodetic studies of construction projects and analyses of the state of agricultural objects are carried out.",
-        quest4:"Which software do you use for modeling?",
-        answer4:"We use Civil 3D for spatial data modeling, ArcGIS Pro for data analysis, Rocky 3D for rockfall modeling, and Pix4Dmapper for creating orthophotos.",
+      projectsPage: {
+        header: "PROJECTS",
+        moreBtn: "More",
+        loading: "Loading...",
+        project: {
+          galleryHeader: "Gallery",
+        },
+      },
+      contactPage: {
+        header: "CONTACT",
+        addressHeader: "Address:",
+        street: "67 Akaki Tsereteli Street. Kutaisi 4600",
+      },
+      galleryPage: {
+        header: "GALLERY",
       },
     },
   },
   ge: {
     translation: {
-      main: "მთავარი",
-      about: "ჩვენს შესახებ",
-      services: "სერვისები",
-      projects: "პროექტები",
-      gallery: "გალერეა",
-      contact: "კონტაქტი",
-      homeServices: "ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს",
-      faq: "ხშირად დასმული კითხვები",
+      headers: {
+        main: "მთავარი",
+        about: "ჩვენს შესახებ",
+        services: "სერვისები",
+        projects: "პროექტები",
+        gallery: "გალერეა",
+        contact: "კონტაქტი",
+        project: "პროექტი",
+      },
+      homePage: {
+        sliderHeader: "ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს",
+        faq: {
+          header: "ხშირად დასმული კითხვები",
+          questions: {
+            quest1: "რომელი რეგიონია ძირითადი სამუშაო არეალი?",
+            answer1:
+              "შპს 'ნუევა' ბაზირებულია ქალაქ ქუთაისში, ხოლო მისი სამუშაო არეალი ფარავს დასავლეთ საქართველოს",
+            quest2: "რომელიმე მასიურ პროექტში თუ მიგიღიათ მონაწილეობა?",
+            answer2:
+              "ჩვენი სპეციალისტები ჩართულები იყვნენ ქუთაისის აეროპორტის ახალი ტერმინალის, სოფელ ყულევში ახალი ნავთობგადამამუშავებელი ქარხნის, ბაღდათი-აბასთუმნის ახალი გზის , ჭიათურის საშევარდნოს გადმოსახედის და სხვა მაღალი სირთულის ობიექტის მშენებლობის პროცესში, პროექტირების და გეოდეზიური ზედამხედველობის მხრივ.",
+            quest3: "გაქვთ თუ არა საკუთარი საჭირო აპარატურა?",
+            answer3:
+              "კომპანია ფლობს ფართო სპექტრის უახლეს მატერიალურ-ტექნიკურ ბაზას, რაც მოიცავს ტაქეომეტრებს, ჯიპისებს, სტანდარტულ და რტკ /მულტისპქტრულ დრონებს, 50 კმ რადიუსზე მოქმედ ჯიპიეს საბაზო სადგურს (ე.წ. 'ბაზა როვერს'). ამ ტექნიკის გამოყენებით ხდება როგორც სამშენებლო ობიექტების გეოდეზიური შესწავლა, ასევე სასოფლო სამეურნეო ობიექტების მდგომარეობის ანალიზი.",
+            quest4: "რომელ პროგრამულ უზრუნველყოფებს იყენებთ მოდელირებისთვის?",
+            answer4:
+              "მონაცემების სივრცული მოდელირება CIVIL 3D-ში, მონაცემების ანალიზი ARCGIS PRO-ში, ქვათაცვენის მოდელირება ROCKY 3D-ში ,ორთოფოტოების დამზადება PIX4Dmapper-ში",
+          },
+        },
+      },
       servicesPage: {
         header: "სერვისები",
         serviceList: {
@@ -87,18 +134,22 @@ const resources = {
         fourthParagraph:
           'შპს "ნუევა" აქტიურად თანამშრომლობს პროფესიულ და უმაღლეს სასწავლებლებთან, სტუდენტების გადამზადებისა და სასწავლო პროგრამების დახვეწის კუთხით. სხვადასხვა დროს მისი სპეციალისტები მონაწილეობდნენ პროფესიული სასწავლებლების პროგრამებისა შემუშავებასა და უმაღლესი სასწავლებლის საბაკალავრო და სამაგისტრო პროგრამების დახვეწაში.',
       },
-      faqs: {
-        quest1: "რომელი რეგიონია ძირითადი სამუშაო არეალი?",
-        answer1:
-          "შპს 'ნუევა' ბაზირებულია ქალაქ ქუთაისში, ხოლო მისი სამუშაო არეალი ფარავს დასავლეთ საქართველოს",
-          quest2:"რომელიმე მასიურ პროექტში თუ მიგიღიათ მონაწილეობა?",
-          answer2:"ჩვენი სპეციალისტები ჩართულები იყვნენ ქუთაისის აეროპორტის ახალი ტერმინალის, სოფელ ყულევში ახალი ნავთობგადამამუშავებელი ქარხნის, ბაღდათი-აბასთუმნის ახალი გზის , ჭიათურის საშევარდნოს გადმოსახედის და სხვა მაღალი სირთულის ობიექტის მშენებლობის პროცესში, პროექტირების და გეოდეზიური ზედამხედველობის მხრივ.",
-          quest3:"გაქვთ თუ არა საკუთარი საჭირო აპარატურა?",
-          answer3:"კომპანია ფლობს ფართო სპექტრის უახლეს მატერიალურ-ტექნიკურ ბაზას, რაც მოიცავს ტაქეომეტრებს, ჯიპისებს, სტანდარტულ და რტკ /მულტისპქტრულ დრონებს, 50 კმ რადიუსზე მოქმედ ჯიპიეს საბაზო სადგურს (ე.წ. 'ბაზა როვერს'). ამ ტექნიკის გამოყენებით ხდება როგორც სამშენებლო ობიექტების გეოდეზიური შესწავლა, ასევე სასოფლო სამეურნეო ობიექტების მდგომარეობის ანალიზი.",
-          quest4:"რომელ პროგრამულ უზრუნველყოფებს იყენებთ მოდელირებისთვის?",
-          answer4:"მონაცემების სივრცული მოდელირება CIVIL 3D-ში, მონაცემების ანალიზი ARCGIS PRO-ში, ქვათაცვენის მოდელირება ROCKY 3D-ში ,ორთოფოტოების დამზადება PIX4Dmapper-ში"
+      projectsPage: {
+        header: "პროექტები",
+        moreBtn: "სრულად",
+        loading: "იტვირთება...",
+        project: {
+          galleryHeader: "გალერეა",
+        },
       },
-
+      contactPage: {
+        header: "კონტაქტი",
+        addressHeader: "მისამართი:",
+        street: "67 აკაკი წერეთლის ქუჩა. ქუთაისი 4600",
+      },
+      galleryPage: {
+        header: "გალერეა",
+      },
     },
   },
 };
@@ -107,7 +158,7 @@ i18n.use(initReactI18next).init({
   resources,
   lng: sessionStorage.getItem("lng") || "ge",
   interpolation: {
-    escapeValue: false, // react already safes from xss
+    escapeValue: false,
   },
 });
 

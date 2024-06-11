@@ -2,6 +2,7 @@
   height: 100%;
   width: 100%;
  padding:2vh 0;
+
 }
 
 .header {
@@ -20,7 +21,8 @@
   height: 100%;
   border-radius: 15px;
   background-color: var(--light-background);
-  margin-top: 5vh
+  margin-top: 5vh;
+  overflow: hidden;
 
 }
 
@@ -29,6 +31,7 @@
   display: flex; 
   flex-direction: column; 
   border-radius: 15px;
+  overflow: hidden;
 }
 
 .social {
@@ -37,6 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .socialIcon {
   height: 50px;
@@ -49,6 +53,7 @@
   display: flex; 
   flex-direction: column; 
   list-style-type: none;
+  overflow: hidden;
 }
 
 .listItem > a {
@@ -70,7 +75,8 @@
 
 .map {
   height:clamp(250px,40vh,600px);
-  width: 98%;
+  width: 90%;
+  min-width: 250px;
 
 margin: auto;
 margin-bottom:1vh;

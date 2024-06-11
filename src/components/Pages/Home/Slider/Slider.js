@@ -56,7 +56,7 @@ const Slider = () => {
 
   return (
     <div className={classes.main}>
-      <h1 className={classes.head}>{t("homeServices")}</h1>
+      <h1 className={classes.head}>{t("homePage.sliderHeader")}</h1>
       <div className={classes.slider}>
         <img
           alt="leftArrow"

@@ -8,8 +8,9 @@ import marker from "../../../../assets/icons/marker.png";
 import left from "../../../../assets/icons/leftslide.svg";
 import right from "../../../../assets/icons/rightslide.svg";
 import { useProjects } from "./ProjectsContext";
-
+import { useTranslation } from "react-i18next";
 const Project = () => {
+  const {t}=useTranslation();
   const { id } = useParams();
   const { projects } = useProjects();
   const [project, setProject] = useState(null);
@@ -27,7 +28,7 @@ const Project = () => {
     return (
       <div className={classes.mainAnim}>
         <div className={classes.animation}>
-          <h2>იტვირთება</h2>
+          <h2>{t("projectsPage.loading")}</h2>
           <div className={classes.loader}></div>
         </div>
       </div>
@@ -82,7 +83,7 @@ const Project = () => {
           />
         </div>
         <div className={classes.gallery}>
-          <h1 className={classes.sliderHeader}>გალერეა</h1>
+          <h1 className={classes.sliderHeader}>{t('projectsPage.project.galleryHeader')}</h1>
           <div className={classes.photos}>
             {Object.entries(project.images).map((img, index) => {
               return (

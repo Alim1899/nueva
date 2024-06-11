@@ -176,6 +176,7 @@ opacity: 1;
   
   .leftArrow {
     grid-column: 1; 
+
   }
   
   .rightArrow {
@@ -189,12 +190,11 @@ opacity: 1;
   .arrows{
     height: 100vh;
     display: flex;
-    background-color: rgb(8, 40, 41);
+    background-color: var(--light-background);
   }
   .arrows:hover{
     background-color: rgba(97, 107, 107, 0.623);
         cursor: pointer;
-      
   }
   
   @media screen and (max-width:1200px){
