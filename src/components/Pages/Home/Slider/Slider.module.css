@@ -1,5 +1,4 @@
 .main {
- height: 500px;
   display: grid;
   background-color: var(--navbar-light);
   grid-template-rows: 10% 90%;
@@ -17,8 +16,9 @@
 
 .content {
   width: 100%;
-  height: 100%;
+  height: clamp(250px,60vh,700px);
   display: grid;
+
   grid-template-rows: 90% 10%;
   place-content: center;
 }
@@ -47,7 +47,7 @@
   justify-content: space-between;
   align-items: center;
   font-size:3rem;
-  margin-top: 2vh;
+
 }
 .dot:hover {
   cursor: pointer;
@@ -83,6 +83,7 @@ height: 20px;
 width: 20px;
 border-radius: 50%;
 background-color: var(--dark-background);
+margin-top: 1vh;
 }
 .dots{
   list-style-type: none;
@@ -93,4 +94,5 @@ background-color: var(--dark-background);
   height: 20px;
 width: 20px;
 border-radius: 50%;
+margin-top: 1vh;
 }
