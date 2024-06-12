@@ -35,19 +35,65 @@ const resources = {
         },
       },
 
-      servicesPage: {
-        header: "SERVICES",
-        serviceList: {
-          geodesy: {
-            header: "Geodetic Service",
-            subHeader1: "Tracing the territory",
-            subHeader2: "Topographic Measurement",
-            subHeader3: "Internal measurement of the building",
-            subHeader4: "Counting bulk volume",
-            subHeader5: "Cadastral services",
-          },
+    servicesPage: {
+   
+    serviceList: {
+        geodesy: {
+            header: "Geodetic Services",
+            subHeader1: "Land Surveying",
+            subHeader2: "Topographic Survey",
+            subHeader3: "Building Interior Survey",
+            subHeader4: "Calculation of Volume of Fill",
+            subHeader5: "Cadastral Services",
         },
-      },
+        projecting: {
+            header: "Design",
+            subHeader1: "Road Design",
+            subHeader2: "Parks and Squares",
+            subHeader3: "Water Supply Networks",
+            subHeader4: "Sewer Networks",
+            subHeader5: "Drainage Systems",
+        },
+        storms: {
+            header: "Assessment and Prevention of Natural Disasters",
+            subHeader1: "Construction of Retaining Walls",
+            subHeader2: "Design of Shore Protection Works",
+            subHeader3: "Modeling of Rockfalls and Landslides",
+            subHeader4: "Modeling of Landslides and Mudflows",
+            subHeader5: "Permanent Monitoring of Processes",
+        },
+        agro: {
+            header: "Agricultural Farm Analysis",
+            subHeader1: "Counting of Plants",
+            subHeader2: "Assessment of Plant Condition",
+            subHeader3: "Preparation of Optimal Development Plan",
+            subHeader4: "Study of Water Problems/Swamping Causes",
+        },
+        consult: {
+            header: "Construction Consulting",
+            subHeader1: "Preparation of Construction Documentation (Form 2)",
+            subHeader2: "Calculation of Work Volumes",
+            subHeader3: "Work Pricing According to SNiP",
+            subHeader4: "Preparation of Correction Packages for Projects",
+            subHeader5: "Supervision of Construction Works",
+        },
+        cadastro: {
+            header: "Individual Services with Surveying Equipment",
+            subHeader1: "Stonex RTK GPS Connected to GeoCORS System",
+            subHeader2: "Base Station with External Radio (Coverage 50km)",
+            subHeader3: "Base Station with Internal Radio (Coverage 5km)",
+            subHeader4: "Service with Leica Brand Total Stations",
+            subHeader5: "Aerial Survey with RTK Multispectral Drone",
+        },
+        programming: {
+            header: "Software Analysis and Modeling",
+            subHeader1: "Spatial Data Modeling in CIVIL 3D",
+            subHeader2: "Data Analysis in ARCGIS PRO",
+            subHeader3: "Rockfall Modeling in ROCKY 3D",
+            subHeader4: "Orthophoto Creation in PIX4Dmapper",
+        }
+    },
+},
       aboutPage: {
         header: "ABOUT US",
         firstParagraph:
@@ -90,7 +136,7 @@ const resources = {
         contact: "კონტაქტი",
         project: "პროექტი",
       },
-      homePage: {
+            homePage: {
         sliderHeader: "ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს",
         faq: {
           header: "ხშირად დასმული კითხვები",
@@ -111,7 +157,6 @@ const resources = {
         },
       },
       servicesPage: {
-        header: "სერვისები",
         serviceList: {
           geodesy: {
             header: "გეოდეზიური მომსახურება",
@@ -121,6 +166,53 @@ const resources = {
             subHeader4: "ნაყარის მოცულობის დათვლა",
             subHeader5: "საკადასტრო მომსახურება",
           },
+          projecting:{
+            header:"პროექტირება",
+            subHeader1:"საავტომობილო გზა",
+            subHeader2:"სკვერები და პარკები",
+            subHeader3:"წყალმომარაგების ქსელები",
+            subHeader4:"საკანალიზაციო ქსელები",
+            subHeader5:"სანიაღვრე სისტემები",
+          },
+          storms:{
+            header:"სტიქიური მოვლენების შეფასება და პრევენცია",
+            subHeader1:"საყრდენი კედლების მოწყობა",
+            subHeader2:"ნაპირსამაგრი სამუშაოების პროექტირება",
+            subHeader3:"ქვათაცვენა-კლდეზვავის მოდელირება",
+            subHeader4:"მეწყრების და ღვარცოფების მოდელირება",
+            subHeader5:"პროცესის პერმანენტული მონიტორინგი"
+          },
+          agro:{
+            header:"აგრარული მეურნეობების ანალიზი",
+            subHeader1:"ნარგავების რაოდენობის დათვლა",
+            subHeader2:"ნარგავების მდგომარეობის შეფასება",
+            subHeader3:"განაშენიანების ოპტიმალური გეგმის შედგენა",
+            subHeader4:"წყლის პრობლემის/დაჭაობების მიზეზების შესწავლა",
+          },
+          consult:{
+            header:"სამშენებლო სამუშაოების კონსულტირება",
+            subHeader1:"სამშენებლო დოკუმენტაციის წარმოება (ფორმა 2)",
+            subHeader2:"სამუშაოს მოცულობების დათვლა",
+            subHeader3:"სამუშაოების განფასება снип-ებით",
+            subHeader4:"პროექტში კორექტირების პაკეტების მომზადება",
+            subHeader5:"სამშენებლო სამუშაოების ზედამხედველობა"
+          },
+            cadastro:{
+              header:"ინდივიდუალური მომსახურება საამზომველო ტექნიკით",
+            subHeader1:"GeoCORS სისტემაში ჩართული Stonexის RTK ჯიპიესებით",
+            subHeader2:"საბაზო სადგური გარე რადიოთი (დაფარვა 50კმ)",
+            subHeader3:"საბაზო სადგური შიდა რადიოთი (დაფარვა 5კმ)",
+            subHeader4:"Leica-ს ბრენდის ტაქეომეტრებით მომსახურება",
+            subHeader5:"აერო გადაღება RTK მულტისპეკტრული დრონით"
+            },
+            programming:{
+              header:"პროგრამული ანალიზი და მოდელირება",
+            subHeader1:"მონაცემების სივრცული მოდელირება CIVIL 3D-ში",
+            subHeader2:"მონაცემების ანალიზი ARCGIS PRO-ში",
+            subHeader3:"ქვათაცვენის მოდელირება ROCKY 3D-ში.",
+            subHeader4:"ორთოფოტოების დამზადება PIX4Dmapper-ში",
+            }
+          
         },
       },
       aboutPage: {

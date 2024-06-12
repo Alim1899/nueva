@@ -45,5 +45,5 @@ font-size: clamp(1rem,3vw,2.2rem);
   outline: none;
   background-color: var(--navbar-dark);
   cursor: pointer;
-  height: 45px;
+  height: clamp(25px,5vw,45px);
 }

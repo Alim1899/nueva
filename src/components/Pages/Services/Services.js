@@ -23,7 +23,7 @@ const Services = () => {
   return (
     <div className={classes.main}>
       <div className={classes.services}>
-        <h2 className={classes.header}>{t("servicesPage.header")}</h2>
+        <h2 className={classes.header}>{t("headers.services")}</h2>
         <div className={classes.serviceList}>
           {data.map((el, index) => {
             return (

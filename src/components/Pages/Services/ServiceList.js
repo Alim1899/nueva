@@ -16,74 +16,74 @@ export default function ServiceList() {
       },
     ],
     [
-      { header: "პროექტირება" },
+      { header: t("servicesPage.serviceList.projecting.header") },
       {
         subHeaders: [
-          { subhead: "საავტომობილო გზები" },
-          { subhead: "სკვერები და პარკები" },
-          { subhead: "წყალმომარაგების ქსელები" },
-          { subhead: "საკანალიზაციო ქსელები" },
-          { subhead: "სანიაღვრე სისტემები" },
+          { subhead: t("servicesPage.serviceList.projecting.subHeader1") },
+          { subhead: t("servicesPage.serviceList.projecting.subHeader2") },
+          { subhead: t("servicesPage.serviceList.projecting.subHeader3") },
+          { subhead: t("servicesPage.serviceList.projecting.subHeader4") },
+          { subhead: t("servicesPage.serviceList.projecting.subHeader5") },
         ],
       },
     ],
     [
-      { header: "სტიქიური მოვლენების შეფასება და პრევენცია" },
+      { header: t("servicesPage.serviceList.storms.header") },
       {
         subHeaders: [
-          { subhead: "საყრდენი კედლების მოწყობა" },
-          { subhead: "ნაპირსამაგრი სამუშაოების პროექტირება" },
-          { subhead: "ქვათაცვენა-კლდეზვავის მოდელირება" },
-          { subhead: "მეწყრების და ღვარცოფების მოდელირება" },
-          { subhead: "პროცესის პერმანენტული მონიტორინგი" },
+          { subhead: t("servicesPage.serviceList.storms.subHeader1") },
+          { subhead: t("servicesPage.serviceList.storms.subHeader2") },
+          { subhead: t("servicesPage.serviceList.storms.subHeader3") },
+          { subhead: t("servicesPage.serviceList.storms.subHeader4") },
+          { subhead: t("servicesPage.serviceList.storms.subHeader5") },
         ],
       },
     ],
     [
-      { header: "აგრარული მეურნეობების ანალიზი" },
+      { header: t("servicesPage.serviceList.agro.header") },
       {
         subHeaders: [
-          { subhead: "ნარგავების რაოდენობის დათვლა" },
-          { subhead: "ნარგავების მდგომარეობის შეფასება " },
-          { subhead: "განაშენიანების ოპტიმალური გეგმის შედგენა" },
-          { subhead: "წყლის პრობლემის/დაჭაობების მიზეზების შესწავლა" },
+          { subhead: t("servicesPage.serviceList.agro.subHeader1") },
+          { subhead: t("servicesPage.serviceList.agro.subHeader2") },
+          { subhead: t("servicesPage.serviceList.agro.subHeader3") },
+          { subhead: t("servicesPage.serviceList.agro.subHeader4") },
         ],
       },
     ],
     [
-      { header: "სამშენებლო სამუშაოების კონსულტირება" },
+      { header: t("servicesPage.serviceList.consult.header") },
       {
         subHeaders: [
-          { subhead: "სამშენებლო დოკუმენტაციის წარმოება (ფორმა 2)" },
-          { subhead: "სამუშაოს მოცულობების დათვლა  " },
-          { subhead: "სამუშაოების განფასება снип-ებით" },
-          { subhead: "პროექტში კორექტირების პაკეტების მომზადება" },
-          { subhead: "სამშენებლო სამუშაოების ზედამხედველობა" },
+          { subhead: t("servicesPage.serviceList.consult.subHeader1") },
+          { subhead: t("servicesPage.serviceList.consult.subHeader2") },
+          { subhead: t("servicesPage.serviceList.consult.subHeader3") },
+          { subhead: t("servicesPage.serviceList.consult.subHeader4") },
+          { subhead: t("servicesPage.serviceList.consult.subHeader5") },
         ],
       },
     ],
     [
-      { header: "პროგრამული ანალიზი  და მოდელირება" },
+      { header: t("servicesPage.serviceList.programming.header") },
       {
         subHeaders: [
-          { subhead: "მონაცემების სივრცული მოდელირება CIVIL 3D-ში" },
-          { subhead: "მონაცემების ანალიზი ARCGIS PRO-ში  " },
-          { subhead: "ქვათაცვენის მოდელირება ROCKY 3D-ში. " },
-          { subhead: "ორთოფოტოების დამზადება PIX4Dmapper-ში" },
+          { subhead: t("servicesPage.serviceList.programming.subHeader1") },
+          { subhead: t("servicesPage.serviceList.programming.subHeader2") },
+          { subhead: t("servicesPage.serviceList.programming.subHeader3") },
+          { subhead: t("servicesPage.serviceList.programming.subHeader4") },
         ],
       },
     ],
     [
-      { header: "ინდივიდუალური მომსახურება საამზომველო ტექნიკით" },
+      { header: t("servicesPage.serviceList.cadastro.header") },
       {
         subHeaders: [
-          { subhead: "GeoCORS სისტემაში ჩართული Stonexის RTK ჯიპიესებით " },
-          { subhead: "საბაზო სადგური  გარე რადიოთი (დაფარვა 50კმ)" },
-          { subhead: "საბაზო სადგური  შიდა რადიოთი (დაფარვა 5კმ)" },
-          { subhead: "Leicaს ბრენდის ტაქეომეტრებით მომსახურება" },
-          { subhead: "აერო გადაღება RTK მულტისპეკტრული დრონით " },
+          { subhead: t("servicesPage.serviceList.cadastro.subHeader1") },
+          { subhead: t("servicesPage.serviceList.cadastro.subHeader2") },
+          { subhead: t("servicesPage.serviceList.cadastro.subHeader3") },
+          { subhead: t("servicesPage.serviceList.cadastro.subHeader4") },
         ],
       },
     ],
+    
   ];
 }
