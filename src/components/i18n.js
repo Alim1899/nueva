@@ -17,83 +17,86 @@ const resources = {
       homePage: {
         sliderHeader: "We Offer A Different Types Of Services",
         faq: {
-          header: "Frequently Asked Questions",
-          questions: {
-            quest1: "Which region is the main work area?",
-            answer1:
-              "Nueva LLC is based in the city of Kutaisi, and its working area covers Western Georgia",
-            quest2: "Have you taken part in any massive project?",
-            answer2:
-              "Our specialists were involved in the construction process of the new terminal at Kutaisi Airport, the new oil refinery in the village of Kulevi, the new Baghdati-Abastumani road, the Chiaturi Sashevardno viewpoint, and other high-complexity projects in terms of design and geodetic supervision.",
-            quest3: "Do you have your own hardware?",
-            answer3:
-              "The company owns a wide range of the latest material and technical equipment, including tachometers, GPS devices, standard and RTK/multi-spectrum drones, and a GPS base station with a 50 km radius (the so-called 'base rover'). Using this equipment, both geodetic studies of construction projects and analyses of the state of agricultural objects are carried out.",
-            quest4: "Which software do you use for modeling?",
-            answer4:
-              "We use Civil 3D for spatial data modeling, ArcGIS Pro for data analysis, Rocky 3D for rockfall modeling, and Pix4Dmapper for creating orthophotos.",
-          },
-        },
+header: "Frequently Asked Questions",
+questions: {
+quest1: "What area does the company's service cover?",
+answer1:
+"The company's service area mainly covers western Georgia, and within specific projects, the company has experience working on projects in eastern Georgia and abroad.",
+quest2: "When do we need to use a rover base?",
+answer2:
+"There are certain areas in Georgia where there is no mobile internet connection and, consequently, no reception of the GeoCors signal. In such cases, a rover base is used within a radius of 5 km to 50 km.",
+quest3: "How is the price for topographic work determined?",
+answer3:
+"The price for topography depends on the terrain, location, and area (from 300 GEL per hectare).",
+quest4: "How is the price for aerial photography determined?",
+answer4:
+"The price for aerial photography depends on the terrain, location, and area (from 100 GEL per hectare).",
+quest5: "How can one get employed at the company?",
+answer5:
+"The company is actively looking for new employees. You can send your CV to ltd.nueva@gmail.com."
+},
+},
       },
+      
 
-    servicesPage: {
-   
-    serviceList: {
-        geodesy: {
+      servicesPage: {
+        serviceList: {
+          geodesy: {
             header: "Geodetic Services",
             subHeader1: "Land Surveying",
             subHeader2: "Topographic Survey",
             subHeader3: "Building Interior Survey",
             subHeader4: "Calculation of Volume of Fill",
             subHeader5: "Cadastral Services",
-        },
-        projecting: {
+          },
+          projecting: {
             header: "Design",
             subHeader1: "Road Design",
             subHeader2: "Parks and Squares",
             subHeader3: "Water Supply Networks",
             subHeader4: "Sewer Networks",
             subHeader5: "Drainage Systems",
-        },
-        storms: {
+          },
+          storms: {
             header: "Assessment and Prevention of Natural Disasters",
             subHeader1: "Construction of Retaining Walls",
             subHeader2: "Design of Shore Protection Works",
             subHeader3: "Modeling of Rockfalls and Landslides",
             subHeader4: "Modeling of Landslides and Mudflows",
             subHeader5: "Permanent Monitoring of Processes",
-        },
-        agro: {
+          },
+          agro: {
             header: "Agricultural Farm Analysis",
             subHeader1: "Counting of Plants",
             subHeader2: "Assessment of Plant Condition",
             subHeader3: "Preparation of Optimal Development Plan",
             subHeader4: "Study of Water Problems/Swamping Causes",
-        },
-        consult: {
+          },
+          consult: {
             header: "Construction Consulting",
             subHeader1: "Preparation of Construction Documentation (Form 2)",
             subHeader2: "Calculation of Work Volumes",
             subHeader3: "Work Pricing According to SNiP",
             subHeader4: "Preparation of Correction Packages for Projects",
             subHeader5: "Supervision of Construction Works",
-        },
-        cadastro: {
+          },
+          cadastro: {
             header: "Individual Services with Surveying Equipment",
             subHeader1: "Stonex RTK GPS Connected to GeoCORS System",
             subHeader2: "Base Station with External Radio (Coverage 50km)",
             subHeader3: "Base Station with Internal Radio (Coverage 5km)",
             subHeader4: "Service with Leica Brand Total Stations",
             subHeader5: "Aerial Survey with RTK Multispectral Drone",
-        },
-        programming: {
+          },
+          programming: {
             header: "Software Analysis and Modeling",
             subHeader1: "Spatial Data Modeling in CIVIL 3D",
             subHeader2: "Data Analysis in ARCGIS PRO",
             subHeader3: "Rockfall Modeling in ROCKY 3D",
             subHeader4: "Orthophoto Creation in PIX4Dmapper",
-        }
-    },
-},
+          },
+        },
+      },
       aboutPage: {
         header: "ABOUT US",
         firstParagraph:
@@ -113,6 +116,13 @@ const resources = {
         loading: "Loading...",
         project: {
           galleryHeader: "Gallery",
+        },
+        pagination: {
+          show: "Show's",
+          total: "of",
+          project: "Projects",
+          prev:"Prev.",
+          next:"Next"
         },
       },
       contactPage: {
@@ -136,24 +146,27 @@ const resources = {
         contact: "კონტაქტი",
         project: "პროექტი",
       },
-            homePage: {
+      homePage: {
         sliderHeader: "ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს",
         faq: {
           header: "ხშირად დასმული კითხვები",
           questions: {
-            quest1: "რომელი რეგიონია ძირითადი სამუშაო არეალი?",
+            quest1: "რა ტერიტორიას მოიცავს კომპანიის მომსახურების არეალი?",
             answer1:
-              "შპს 'ნუევა' ბაზირებულია ქალაქ ქუთაისში, ხოლო მისი სამუშაო არეალი ფარავს დასავლეთ საქართველოს",
-            quest2: "რომელიმე მასიურ პროექტში თუ მიგიღიათ მონაწილეობა?",
+              "კომპანიის მომსახურების არეალი ძირითადად მოიცავს დასავლეთ საქართველოს, კონკრეტული პროექტების ფარგლებში კომპანიას გააჩნია აღმოსავლეთ საქართველოსა და ქვეყნის ფარგლებს გარეთ პროექტებზე მუშაობის გამოცდილება.",
+            quest2: "რა დროს გვჭირდება ბაზა როვერის გამოყენება?",
             answer2:
-              "ჩვენი სპეციალისტები ჩართულები იყვნენ ქუთაისის აეროპორტის ახალი ტერმინალის, სოფელ ყულევში ახალი ნავთობგადამამუშავებელი ქარხნის, ბაღდათი-აბასთუმნის ახალი გზის , ჭიათურის საშევარდნოს გადმოსახედის და სხვა მაღალი სირთულის ობიექტის მშენებლობის პროცესში, პროექტირების და გეოდეზიური ზედამხედველობის მხრივ.",
-            quest3: "გაქვთ თუ არა საკუთარი საჭირო აპარატურა?",
+              "არსებობს გარკვეული არეალები საქაართველოში სადაც ტელეფონის ინტერნეტის კავშირი არ არის და შესაბამისად ვერ ღებულობს გეოქორსის სიგნალს, ამ შემთხვევაში ხდება ბაზა როვერის გამოყენება (მოკლე 5 კმ. დიდ 50 კმ-მდე) რადიუსში",
+            quest3: "როგორ განისაზღვრება ტოპოგრაფიული სამუშაოების ფასი?",
             answer3:
-              "კომპანია ფლობს ფართო სპექტრის უახლეს მატერიალურ-ტექნიკურ ბაზას, რაც მოიცავს ტაქეომეტრებს, ჯიპისებს, სტანდარტულ და რტკ /მულტისპქტრულ დრონებს, 50 კმ რადიუსზე მოქმედ ჯიპიეს საბაზო სადგურს (ე.წ. 'ბაზა როვერს'). ამ ტექნიკის გამოყენებით ხდება როგორც სამშენებლო ობიექტების გეოდეზიური შესწავლა, ასევე სასოფლო სამეურნეო ობიექტების მდგომარეობის ანალიზი.",
-            quest4: "რომელ პროგრამულ უზრუნველყოფებს იყენებთ მოდელირებისთვის?",
+              "ტოპოგრაფიის ფასი დამოკიდებულიე რელიეფზე, მდებარეობაზე და ფართობზე (1ჰა-300 დან)",
+            quest4: "როგორ განისაზღვრება აერო გადაღების  ფასი?",
             answer4:
-              "მონაცემების სივრცული მოდელირება CIVIL 3D-ში, მონაცემების ანალიზი ARCGIS PRO-ში, ქვათაცვენის მოდელირება ROCKY 3D-ში ,ორთოფოტოების დამზადება PIX4Dmapper-ში",
+              "აერო გადაღების ფასი დამოკიდებულიე რელიეფზე, მდებარეობაზე და ფართობზე (1ჰა-100 დან)",
+              quest5:"როგორაა შესაძლებელი დასაქმება კომპანიაში?",
+              answer5:"კომპანია აქტიურად ეძებს ახალ თანამშრომელბს  შეგიძლიათ CV გამოსაგზავნოთ ltd.nueva@gmail.com"
           },
+          
         },
       },
       servicesPage: {
@@ -166,53 +179,52 @@ const resources = {
             subHeader4: "ნაყარის მოცულობის დათვლა",
             subHeader5: "საკადასტრო მომსახურება",
           },
-          projecting:{
-            header:"პროექტირება",
-            subHeader1:"საავტომობილო გზა",
-            subHeader2:"სკვერები და პარკები",
-            subHeader3:"წყალმომარაგების ქსელები",
-            subHeader4:"საკანალიზაციო ქსელები",
-            subHeader5:"სანიაღვრე სისტემები",
+          projecting: {
+            header: "პროექტირება",
+            subHeader1: "საავტომობილო გზა",
+            subHeader2: "სკვერები და პარკები",
+            subHeader3: "წყალმომარაგების ქსელები",
+            subHeader4: "საკანალიზაციო ქსელები",
+            subHeader5: "სანიაღვრე სისტემები",
           },
-          storms:{
-            header:"სტიქიური მოვლენების შეფასება და პრევენცია",
-            subHeader1:"საყრდენი კედლების მოწყობა",
-            subHeader2:"ნაპირსამაგრი სამუშაოების პროექტირება",
-            subHeader3:"ქვათაცვენა-კლდეზვავის მოდელირება",
-            subHeader4:"მეწყრების და ღვარცოფების მოდელირება",
-            subHeader5:"პროცესის პერმანენტული მონიტორინგი"
+          storms: {
+            header: "სტიქიური მოვლენების შეფასება და პრევენცია",
+            subHeader1: "საყრდენი კედლების მოწყობა",
+            subHeader2: "ნაპირსამაგრი სამუშაოების პროექტირება",
+            subHeader3: "ქვათაცვენა-კლდეზვავის მოდელირება",
+            subHeader4: "მეწყრების და ღვარცოფების მოდელირება",
+            subHeader5: "პროცესის პერმანენტული მონიტორინგი",
           },
-          agro:{
-            header:"აგრარული მეურნეობების ანალიზი",
-            subHeader1:"ნარგავების რაოდენობის დათვლა",
-            subHeader2:"ნარგავების მდგომარეობის შეფასება",
-            subHeader3:"განაშენიანების ოპტიმალური გეგმის შედგენა",
-            subHeader4:"წყლის პრობლემის/დაჭაობების მიზეზების შესწავლა",
+          agro: {
+            header: "აგრარული მეურნეობების ანალიზი",
+            subHeader1: "ნარგავების რაოდენობის დათვლა",
+            subHeader2: "ნარგავების მდგომარეობის შეფასება",
+            subHeader3: "განაშენიანების ოპტიმალური გეგმის შედგენა",
+            subHeader4: "წყლის პრობლემის/დაჭაობების მიზეზების შესწავლა",
           },
-          consult:{
-            header:"სამშენებლო სამუშაოების კონსულტირება",
-            subHeader1:"სამშენებლო დოკუმენტაციის წარმოება (ფორმა 2)",
-            subHeader2:"სამუშაოს მოცულობების დათვლა",
-            subHeader3:"სამუშაოების განფასება снип-ებით",
-            subHeader4:"პროექტში კორექტირების პაკეტების მომზადება",
-            subHeader5:"სამშენებლო სამუშაოების ზედამხედველობა"
+          consult: {
+            header: "სამშენებლო სამუშაოების კონსულტირება",
+            subHeader1: "სამშენებლო დოკუმენტაციის წარმოება (ფორმა 2)",
+            subHeader2: "სამუშაოს მოცულობების დათვლა",
+            subHeader3: "სამუშაოების განფასება снип-ებით",
+            subHeader4: "პროექტში კორექტირების პაკეტების მომზადება",
+            subHeader5: "სამშენებლო სამუშაოების ზედამხედველობა",
           },
-            cadastro:{
-              header:"ინდივიდუალური მომსახურება საამზომველო ტექნიკით",
-            subHeader1:"GeoCORS სისტემაში ჩართული Stonexის RTK ჯიპიესებით",
-            subHeader2:"საბაზო სადგური გარე რადიოთი (დაფარვა 50კმ)",
-            subHeader3:"საბაზო სადგური შიდა რადიოთი (დაფარვა 5კმ)",
-            subHeader4:"Leica-ს ბრენდის ტაქეომეტრებით მომსახურება",
-            subHeader5:"აერო გადაღება RTK მულტისპეკტრული დრონით"
-            },
-            programming:{
-              header:"პროგრამული ანალიზი და მოდელირება",
-            subHeader1:"მონაცემების სივრცული მოდელირება CIVIL 3D-ში",
-            subHeader2:"მონაცემების ანალიზი ARCGIS PRO-ში",
-            subHeader3:"ქვათაცვენის მოდელირება ROCKY 3D-ში.",
-            subHeader4:"ორთოფოტოების დამზადება PIX4Dmapper-ში",
-            }
-          
+          cadastro: {
+            header: "ინდივიდუალური მომსახურება საამზომველო ტექნიკით",
+            subHeader1: "GeoCORS სისტემაში ჩართული Stonexის RTK ჯიპიესებით",
+            subHeader2: "საბაზო სადგური გარე რადიოთი (დაფარვა 50კმ)",
+            subHeader3: "საბაზო სადგური შიდა რადიოთი (დაფარვა 5კმ)",
+            subHeader4: "Leica-ს ბრენდის ტაქეომეტრებით მომსახურება",
+            subHeader5: "აერო გადაღება RTK მულტისპეკტრული დრონით",
+          },
+          programming: {
+            header: "პროგრამული ანალიზი და მოდელირება",
+            subHeader1: "მონაცემების სივრცული მოდელირება CIVIL 3D-ში",
+            subHeader2: "მონაცემების ანალიზი ARCGIS PRO-ში",
+            subHeader3: "ქვათაცვენის მოდელირება ROCKY 3D-ში.",
+            subHeader4: "ორთოფოტოების დამზადება PIX4Dmapper-ში",
+          },
         },
       },
       aboutPage: {
@@ -232,6 +244,13 @@ const resources = {
         loading: "იტვირთება...",
         project: {
           galleryHeader: "გალერეა",
+        },
+        pagination: {
+          show: "ჩანს",
+          total: "სულ არის",
+          project: "პროექტი",
+          prev:"წინა",
+          next:"შემდეგი"
         },
       },
       contactPage: {

@@ -73,8 +73,7 @@ const Projects = () => {
   const [endIndex, setEndIndex] = useState(10);
   const { t } = useTranslation();
   const memoizedProjects = useMemo(() => projects, [projects]);
-  console.log(memoizedProjects);
-  console.log(projects);
+ 
   return (
     <div className={classes.main}>
       <h1 className={classes.header}>{t("projectsPage.header")}</h1>
