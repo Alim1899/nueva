@@ -4,7 +4,8 @@
     left: 0;
     width: 100vw;
     height: var(--navbar-height);
-    z-index:99999999;
+    z-index:999;
+
 }
 .content{
     margin-top:var(--navbar-height);

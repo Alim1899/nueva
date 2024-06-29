@@ -8,11 +8,13 @@ const resources = {
     translation: {
       headers: {
         main: "Main",
-        about: "About Us",
+        about: "Company",
         services: "Services",
         projects: "Projects",
         gallery: "Gallery",
         contact: "Contact",
+        FAQ:"FAQ",
+        address:"67 A.Tsereteli, Kutaisi"
       },
       homePage: {
         sliderHeader: "We Offer A Different Types Of Services",
@@ -139,12 +141,14 @@ answer5:
     translation: {
       headers: {
         main: "მთავარი",
-        about: "ჩვენს შესახებ",
+        about: "კომპანია",
         services: "სერვისები",
         projects: "პროექტები",
         gallery: "გალერეა",
         contact: "კონტაქტი",
         project: "პროექტი",
+        FAQ:"FAQ",
+         address:"ა.წერეთლის 67, ქუთაისი"
       },
       homePage: {
         sliderHeader: "ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს",
