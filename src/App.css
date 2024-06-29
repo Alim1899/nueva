@@ -8,12 +8,13 @@
     --navbar:#B0DFE5;
     --dark-text: #062906;
     --light-text:#F1FEFF;
-    --header-font-size:clamp(0.8rem, 4vw, 2rem);
+    --header-font-size:clamp(1rem, 4vw, 2rem);
     --navbar-height:50px;
     --header-width: clamp(120px,40vw,400px);
     --content-width:clamp(275px,95%,1500px);
     --header-border-radius:5px;
-    
+    --footer-height:120px;
+    --content-height:calc(100vh - 2 * var(--navbar-height) - var(--footer-height) - 2px);
   }
   body {
     background-color: var(--navbar-light);

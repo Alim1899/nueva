@@ -1,8 +1,8 @@
 .project{
    width: var(--content-width);
+   min-height: var(--content-height);
     height: 100%;
-    padding-bottom: 2vh; 
-    padding-top: 2vh; 
+    padding: 3vh; 
     margin: auto;
 
 }
@@ -19,15 +19,14 @@
     height: clamp(260px,30vw,950px);
 }
 .header{
-  font-size: var(--header-font-size);
-color: var(--light-text);
-  border-bottom: 1px solid var(--navbar);
-  width: var(--header-width);
-  margin: auto;
   text-align: center;
-  border-radius: var(--header-border-radius);
-color: var(--light-text);
-padding-top: 2vh;
+  font-weight: 500;
+  font-size: var(--header-font-size);
+  border-bottom: 1px solid var(--navbar-light);
+  width: 40vw;
+  margin: auto;
+  margin-bottom: 20px;
+  color: var(--light-text);
 }
 .description{
     color: var(--light-text);

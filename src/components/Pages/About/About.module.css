@@ -1,14 +1,16 @@
 .main {
- padding: 2vh 0;
+ padding: 3vh;
+ min-height: var(--content-height);
 }
 .header{
-  font-size: var(--header-font-size);
-  border-bottom: 2px solid var(--navbar);
-  width: var(--header-width);
-  margin: auto;
   text-align: center;
-  border-radius: 2px;
-  color: aliceblue;
+  font-weight: 500;
+  font-size: var(--header-font-size);
+  border-bottom: 1px solid var(--navbar-light);
+  width: 40vw;
+  margin: auto;
+  margin-bottom: 20px;
+  color: var(--light-text);
 }
 .content {
   border-radius: 15px;

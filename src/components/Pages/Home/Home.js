@@ -1,6 +1,5 @@
 import classes from "./Home.module.css";
 import Slider from "./Slider/Slider";
-import FAQ from "./FAQ/FAQ";
 
 const Home = () => {
   return (
@@ -9,7 +8,6 @@ const Home = () => {
         <div className={classes.slider}>
           <Slider />
         </div>
-        <FAQ/>
       </div>
     </div>
   );

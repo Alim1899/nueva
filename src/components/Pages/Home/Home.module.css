@@ -1,10 +1,9 @@
 .main {
     z-index: -1;
     width: var(--content-width);
+    min-height: var(--content-height);
  margin: auto;
   }
- 
- 
   .slider{
     width: 90%;
     margin: auto;

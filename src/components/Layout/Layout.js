@@ -15,6 +15,7 @@ import Newproject from "../Admin/NewProject/NewProject";
 import Admin from "../Admin/Admin/Admin";
 import ProjectList from "../Admin/ProjectList/ProjectList";
 import Edit from '../Admin/Edit/Edit'
+import FAQ from '../Pages/FAQ/FAQ'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/FAQ",
+    element: <FAQ />,
   },
   {
     path: "/gallery",

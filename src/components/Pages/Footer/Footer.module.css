@@ -1,5 +1,5 @@
 .main {
- height: 100px;
+ height: var(--footer-height);
  width: 100vw;
   background-color: var(--dark-background); /* You can change the background color as per your design */
   color: white; /* You can change the text color as per your design */

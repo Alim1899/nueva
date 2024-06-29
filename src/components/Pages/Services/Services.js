@@ -28,11 +28,11 @@ const Services = () => {
           {data.map((el, index) => {
             return (
               <div className={classes.service} key={index}>
-                <div className={classes.collapsed}>
-                  <h3 className={classes.serviceHeader}>{el[0].header}</h3>
+                <div onClick={() => extend(index)} className={classes.collapsed}>
+                  <h3  className={classes.serviceHeader}>{el[0].header}</h3>
                   <button
                     className={classes.downArrow}
-                    onClick={() => extend(index)}
+                 
                     type="button"
                   >
                     <img
@@ -48,7 +48,7 @@ const Services = () => {
                     <ul>
                       {el[1].subHeaders.map((item, subIndex) => {
                         return (
-                          <li className={classes.listItem} key={subIndex}>
+                          <li className={classes.listItem}  onClick={() => extend(index)} key={subIndex}>
                             {item.subhead}
                           </li>
                         );

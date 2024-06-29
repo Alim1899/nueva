@@ -81,7 +81,7 @@ const Contact = () => {
             <div className={classes.map}>
               {" "}
               <Leaflet
-                popup="ნენსკრა"
+                popup="ოფისი"
                 center={[42.259061, 42.66614]}
                 zoom={15}
                 icon={marker}

@@ -1,25 +1,25 @@
 .main {
-  display: flex;
-  flex-direction: column;
+  height: var(--content-height)
   }
   .content {
-    width: clamp(250px,90vw,1300px);
+    width: var(--content-width);
     margin: auto;
-    margin-top: 3vh;
       color: var(--light-text);
-  margin-bottom: 40px;
   border-radius: 15px;
-  border: 1px solid var(--navbar);
+ 
 }
 .contentHeader {
 text-align: center;
 font-weight: 500;
-font-size: clamp(1rem,3vw,2.2rem);
-
-
+font-size: var(--header-font-size);
+border-bottom: 1px solid var(--navbar-light);
+width: 40vw;
+margin: auto;
+margin-bottom: 20px;
+color: var(--light-text);
 }
 .question {
-  border-top: 1px solid var(--navbar);
+  border-bottom: 1px solid var(--navbar);
 }
 .quest {
   display: flex;
@@ -35,7 +35,9 @@ font-size: clamp(1rem,3vw,2.2rem);
 .quest {
   width: 90%;
   margin: auto;
-
+}
+.answer{
+  font-size: clamp(0.8rem, 2.5vw, 1.8rem);
 }
 
 .svg {
@@ -46,4 +48,7 @@ font-size: clamp(1rem,3vw,2.2rem);
   background-color: var(--navbar-dark);
   cursor: pointer;
   height: clamp(25px,5vw,45px);
+}
+.faq{
+  padding-top: 3vh;
 }

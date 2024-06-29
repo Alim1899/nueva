@@ -5,8 +5,14 @@
     width: 100vw;
     height: var(--navbar-height);
     z-index:999;
-
 }
 .content{
-    margin-top:var(--navbar-height);
+    margin-top:calc(var(--navbar-height) + var(--navbar-height));
+}
+
+@media screen and (max-width:725px){
+    .content{
+        margin: 0;
+        padding-top:calc(var(--navbar-height) + var(--navbar-height))
+    }
 }
