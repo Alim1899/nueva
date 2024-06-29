@@ -1,12 +1,85 @@
 .main {
-    z-index: -1;
     width: var(--content-width);
     min-height: var(--content-height);
  margin: auto;
+ 
   }
   .slider{
     width: 90%;
     margin: auto;
-    padding-top: 5vh;
+  }
+  .content{
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+  .services{
+    background-color: var(--navbar-light);
+    border-radius: 10px;
+    height: 45vh;
+    overflow-y: scroll;
+  }
+  .header{
+    font-size: clamp(1rem,2vw,1.8rem);
+    margin: 0;
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    align-items: center;
+    color: var(--dark-text);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  }
+ .collapsed{
+display: grid;
+grid-template-columns: 70% 20%;
+place-content: center;
+border-bottom:1px solid var(--light-background);
+ }
+ .collapsed>a{
+  text-decoration: none;
+  color: var(--dark-text);
+ }
+ .serviceHeader{
+  font-size: clamp(0.7rem,1vw,1.4rem);
+  line-height: clamp(15px,3vh,25px);
+vertical-align:bottom;
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+ }
+  .downArrow,.upArrow{
+    border: none;
+    background-color: var(--navbar-light);
+  }
+  .down,.up{
+    height: 20px;
+    width: 20px;
+  }
+  .icon{
+    height: 30px;
   }
  
+
+  .extend:last-child{
+text-align: center;
+  }
+  .listItem{
+    font-size: clamp(0.7rem,1vw,1.8rem);
+    text-align: left;
+  }
+  .serviceHeader:hover{
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  @media  screen and (max-width:725px) {
+    .content{
+      display: flex;
+      flex-direction: column;
+    }
+    .services{
+      width: clamp(285px,95vw,500px);
+      margin: auto;
+      height: 50vh;
+      margin-bottom: 20px;
+     
+    }
+  }

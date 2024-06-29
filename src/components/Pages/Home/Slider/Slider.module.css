@@ -1,39 +1,28 @@
 .main {
   display: grid;
   background-color: var(--navbar-light);
-  grid-template-rows: 10% 90%;
-  border-radius: 15px;
-  margin-top: 2vh;
- 
+  border-radius: 15px; 
+  background-color: var(--navbar-light);
+  margin-bottom: 20px;
 }
 .slider {
-  background-color: var(--light-background);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 15px;
 }
-
 .content {
   width: 100%;
-  height: clamp(250px,60vh,700px);
   display: grid;
-
+  height: 65vh;
   grid-template-rows: 90% 10%;
   place-content: center;
 }
-.head {
-  font-size:clamp(0.9rem,4vw,2rem);
-  margin: auto;
-  font-weight: 600;
-  text-align: center;
-  color: var(--dark-text);
-}
+
 
 .leftArrow,
 .rightArrow {
-  height: clamp(50px,15vw,150px);
-  background-color: var(--navbar-light);
+  height: clamp(30px,5vw,50px);
   border-radius: 10%;
   margin: 2px;
   cursor: pointer;
@@ -84,13 +73,14 @@ width: 20px;
 border-radius: 50%;
 background-color: var(--dark-background);
 margin-top: 1vh;
+border: 1px solid var(--light-text);
 }
 .dots{
   list-style-type: none;
 }
 .dot{
-  background-color: white;
-  border: 1px solid white;
+  background-color: var(--light-text);
+  border: 1px solid var(--dark-background);
   height: 20px;
 width: 20px;
 border-radius: 50%;

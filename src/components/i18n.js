@@ -17,7 +17,7 @@ const resources = {
         address:"67 A.Tsereteli, Kutaisi"
       },
       homePage: {
-        sliderHeader: "We Offer A Different Types Of Services",
+        offers: "We offer:",
         faq: {
 header: "Frequently Asked Questions",
 questions: {
@@ -151,7 +151,7 @@ answer5:
          address:"ა.წერეთლის 67, ქუთაისი"
       },
       homePage: {
-        sliderHeader: "ჩვენ გთავაზობთ სხვადასხვა ტიპის სერვისს",
+        offers: "ჩვენი სერვისები:",
         faq: {
           header: "ხშირად დასმული კითხვები",
           questions: {
