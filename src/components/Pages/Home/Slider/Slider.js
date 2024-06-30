@@ -6,103 +6,71 @@ import scr3 from "../../../../assets/photos/scr3.png";
 import scr4 from "../../../../assets/photos/scr4.png";
 import classes from "./Slider.module.css";
 
+const slides = [scr1, scr4, scr3];
+
 const Slider = () => {
-  const [showFirstSlide, setShowFirstSlide] = useState(true);
-  const [showSecondSlide, setShowSecondSlide] = useState(false);
-  const [showThirdSlide, setShowThirdSlide] = useState(false);
-  const [activeSlide, setActiveSlide] = useState(1);
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const slider = useCallback(() => {
-    if (activeSlide === 1) {
-      setShowFirstSlide(true);
-      setShowSecondSlide(false);
-      setShowThirdSlide(false);
-    } else if (activeSlide === 2) {
-      setShowFirstSlide(false);
-      setShowSecondSlide(true);
-      setShowThirdSlide(false);
-    } else if (activeSlide === 3) {
-      setShowFirstSlide(false);
-      setShowSecondSlide(false);
-      setShowThirdSlide(true);
-    } else {
-      if (activeSlide >= 4) {
-        setActiveSlide(1);
-      } else if (activeSlide <= 0) {
-        setActiveSlide(3);
-      }
-    }
-  }, [activeSlide]);
+    setActiveSlide((prev) => (prev + 1) % slides.length);
+  }, []);
 
   useEffect(() => {
-    slider();
-    const timer = setTimeout(() => {
-      setActiveSlide(activeSlide + 1);
-    }, 3500);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [activeSlide, slider]);
+    const timer = setTimeout(slider, 3500);
+    return () => clearTimeout(timer);
+  }, [slider]);
 
-  const changeByButtons = (e) => {
-    if (e.target.id === "left") {
-      setActiveSlide((prevSlide) => (prevSlide <= 1 ? 3 : prevSlide - 1));
-    } else if (e.target.id === "right") {
-      setActiveSlide((prevSlide) => (prevSlide >= 3 ? 1 : prevSlide + 1));
-    }
+  const changeByButtons = (direction) => {
+    setActiveSlide(
+      (prev) => (prev + direction + slides.length) % slides.length
+    );
   };
 
   return (
     <div className={classes.main}>
       <div className={classes.slider}>
         <img
-          alt="leftArrow"
-          id="left"
-          onClick={changeByButtons}
+          alt="Previous slide"
+          aria-label="Previous slide"
+          onClick={() => changeByButtons(-1)}
           className={classes.leftArrow}
           src={leftSlide}
-        ></img>
+        />
         <div className={classes.content}>
           <div className={classes.slides}>
-            {showFirstSlide && (
-              <img className={classes.slide} src={scr1} alt="screen"></img>
-            )}
-            {showSecondSlide && (
-              <img className={classes.slide} src={scr4} alt="screen"></img>
-            )}
-            {showThirdSlide && (
-              <img className={classes.slide} src={scr3} alt="screen"></img>
-            )}
+            {slides.map((slide, index) => (
+              <img
+                key={index}
+                className={`${classes.slide} ${
+                  activeSlide === index ? "" : classes.none
+                }`}
+                src={slide}
+                alt={`Slide ${index + 1}`}
+              />
+            ))}
           </div>
-
           <div>
             <ul className={classes.dots}>
-              <li
-                onClick={() => setActiveSlide(1)}
-                className={activeSlide === 1 ? classes.activeDot :classes.dot}
-                id="1"
-              ></li>
-              <li
-                onClick={() => setActiveSlide(2)}
-                className={activeSlide === 2 ? classes.activeDot : classes.dot}
-                id="2"
-              ></li>
-              <li
-                onClick={() => setActiveSlide(3)}
-                className={activeSlide === 3 ? classes.activeDot : classes.dot}
-                id="3"
-              ></li>
+              {slides.map((_, index) => (
+                <li
+                  key={index}
+                  onClick={() => setActiveSlide(index)}
+                  className={
+                    activeSlide === index ? classes.activeDot : classes.dot
+                  }
+                  aria-label={`Slide ${index + 1}`}
+                />
+              ))}
             </ul>
           </div>
         </div>
-
         <img
-          onClick={changeByButtons}
-          id="right"
-          alt="rightArrow"
+          onClick={() => changeByButtons(1)}
+          alt="Next slide"
+          aria-label="Next slide"
           className={classes.rightArrow}
           src={rightSlide}
-        ></img>
+        />
       </div>
     </div>
   );
