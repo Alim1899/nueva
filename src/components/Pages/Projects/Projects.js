@@ -22,6 +22,7 @@ const {t}=useTranslation();
       prevIndex === length - 1 ? 0 : prevIndex + 1
     );
   };
+  const lang = sessionStorage.getItem("lng");
 
   return (
     <div className={classes.project}>
@@ -51,10 +52,10 @@ const {t}=useTranslation();
             className={`${classes.arrow} ${classes.rightArrow}`}
           />
         </div>
-        <h3 className={classes.projectHeader}>{project.header.ge}</h3>
+        <h3 className={classes.projectHeader}>{lang==='en'?project.header.en:project.header.ge}</h3>
         <div className={classes.location}>
           <img alt="icon" className={classes.icon} src={locate} />
-          <h5>{project.location.ge}</h5>
+          <h5>{lang==='en'?project.location.en:project.location.ge}</h5>
         </div>
 
         <button type="button" className={classes.moreBtn}>

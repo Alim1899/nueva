@@ -1,9 +1,7 @@
 .main{
-    border: 1px solid var(--navbar);
-    background-color: var(--light-background);
     width: 90%;
-    max-width: 1000px;
-    min-width: 300px;
+    max-width: 600px;
+    min-width: 240px;
     margin: auto;
     color: aliceblue;
     border-radius: 15px;
@@ -19,35 +17,31 @@
 .main>p{
     margin: 0;
     font-size: clamp(1.3rem,5vw,2rem);
+    border-top: 1px solid var(--navbar-light);
 }
 .buttons{
-    color: aliceblue;
-    height: 60px;
     width: 80%;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 45% 45%;
+    column-gap: 10%;
 
 }
 .prev,.next{
-    height: 60px;
-    font-size: 1.5rem;
+    height: 40px;
+    font-size: 1rem;
     color: var(--dark-text);
     font-weight: 900;
-    background-color: var(--navbar);
+    background-color: var(--navbar-light);
     border: none;
-    margin: 0 5px;
-    border-radius:15px;
+  
+    border-radius:5px;
 }
-.prev{
-    display: grid;
-    grid-template-columns: 20% 80%;
-    align-items: center;
+.prev,.next{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.next{
-    display: grid;
-    grid-template-columns: 80% 20%;
-    align-items: center;
-}
+
 button:hover{
     cursor: pointer;
 }
@@ -56,5 +50,5 @@ button:disabled {
     opacity: 0.5;
 }
 .icon{
-    height: 50px;
+    height: 30px;
 }

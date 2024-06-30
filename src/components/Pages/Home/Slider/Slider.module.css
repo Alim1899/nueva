@@ -14,7 +14,7 @@
 .content {
   width: 100%;
   display: grid;
-  height: 65vh;
+  height: 55vh;
   grid-template-rows: 90% 10%;
   place-content: center;
 }

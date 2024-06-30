@@ -16,7 +16,7 @@ const Project = () => {
   const [project, setProject] = useState(null);
   const [slider, showSlider] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
-
+  const lang = sessionStorage.getItem("lng");
   useEffect(() => {
     const foundProject = projects.find((p) => p[0] === id);
     if (foundProject) {
@@ -68,10 +68,10 @@ const Project = () => {
   return (
     <div className={classes.project}>
       <div className={classes.content}>
-        <header className={classes.header}>{project.header.ge}</header>
-        <p className={classes.description}>{project.description.ge}</p>
+        <header className={classes.header}>{lang==='en'?project.header.en:project.header.ge}</header>
+        <p className={classes.description}>{lang==='en'?project.description.en:project.description.ge}</p>
         <h4 className={classes.date}>
-          {project.date.month.ge}, {project.date.year}{" "}
+        {lang==='en'?project.date.month.en:project.date.month.ge}, {project.date.year}{" "}
         </h4>
         <div className={classes.map}>
           <Leaflet

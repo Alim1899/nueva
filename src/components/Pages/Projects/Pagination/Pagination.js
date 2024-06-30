@@ -32,7 +32,7 @@ if (pageCount<=1) return null
   return (
     <div className={classes.main}>
              <p>
-        {t('projectsPage.pagination.show')} {(currentPage - 1) * numOfItems + 1}-
+         {(currentPage - 1) * numOfItems + 1}-
         {currentPage === pageCount ? count : currentPage * numOfItems} {t('projectsPage.pagination.total')}{" "}
          {count}  {t('projectsPage.pagination.project')}
       </p>

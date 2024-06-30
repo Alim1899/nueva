@@ -19,7 +19,6 @@ const Home = () => {
 
   const toggleServiceListVisibility = () => {
     setIsServiceListVisible((prevVisibility) => !prevVisibility);
-    console.log("Toggled service list visibility:", !isServiceListVisible);
   };
 
   return (

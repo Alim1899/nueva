@@ -120,7 +120,7 @@ answer5:
           galleryHeader: "Gallery",
         },
         pagination: {
-          show: "Show's",
+         
           total: "of",
           project: "Projects",
           prev:"Prev.",
@@ -250,7 +250,7 @@ answer5:
           galleryHeader: "გალერეა",
         },
         pagination: {
-          show: "ჩანს",
+        
           total: "სულ არის",
           project: "პროექტი",
           prev:"წინა",
