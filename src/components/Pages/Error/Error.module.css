@@ -1,7 +1,6 @@
 .main {
-  height: 80vh;
-  min-width: 100%;
-  padding-bottom: 50px;
+  height: var(--content-height);
+  width: 100vw;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -9,14 +8,13 @@
 }
 
 .content {
-  height: 60vh;
+ background-color: var(--navbar-light);
   border-radius: 15px;
   width: clamp(200px,90vw,700px);
   display: grid;
   place-items: center;
 }
 .errors {
-background-color: var(--navbar);
   border-radius: 15px;
   height: 50%;
   width: 98%;
@@ -28,14 +26,14 @@ background-color: var(--navbar);
 
 }
 .errors>h1{
-    font-size: clamp(1.4rem,5vw,2rem);
+    font-size: clamp(1rem,5vw,2rem);
 }
 .button {
   height: clamp(25px, 10vh, 100px);
   width: clamp(200px, 90%, 500px);
   font-size: clamp(0.95rem, 5vw, 2rem);
   border-radius: 15px;
-  background-color: var(--navbar-dark);
+  background-color: var(--dark-background);
   margin-top: 3vh;
   outline: none;
   border: none;

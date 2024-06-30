@@ -13,33 +13,32 @@ const resources = {
         projects: "Projects",
         gallery: "Gallery",
         contact: "Contact",
-        FAQ:"FAQ",
-        address:"67 A.Tsereteli, Kutaisi"
+        FAQ: "FAQ",
+        address: "67 A.Tsereteli, Kutaisi",
       },
       homePage: {
         offers: "We offer:",
         faq: {
-header: "Frequently Asked Questions",
-questions: {
-quest1: "What area does the company's service cover?",
-answer1:
-"The company's service area mainly covers western Georgia, and within specific projects, the company has experience working on projects in eastern Georgia and abroad.",
-quest2: "When do we need to use a rover base?",
-answer2:
-"There are certain areas in Georgia where there is no mobile internet connection and, consequently, no reception of the GeoCors signal. In such cases, a rover base is used within a radius of 5 km to 50 km.",
-quest3: "How is the price for topographic work determined?",
-answer3:
-"The price for topography depends on the terrain, location, and area (from 300 GEL per hectare).",
-quest4: "How is the price for aerial photography determined?",
-answer4:
-"The price for aerial photography depends on the terrain, location, and area (from 100 GEL per hectare).",
-quest5: "How can one get employed at the company?",
-answer5:
-"The company is actively looking for new employees. You can send your CV to ltd.nueva@gmail.com."
-},
-},
+          header: "Frequently Asked Questions",
+          questions: {
+            quest1: "What area does the company's service cover?",
+            answer1:
+              "The company's service area mainly covers western Georgia, and within specific projects, the company has experience working on projects in eastern Georgia and abroad.",
+            quest2: "When do we need to use a rover base?",
+            answer2:
+              "There are certain areas in Georgia where there is no mobile internet connection and, consequently, no reception of the GeoCors signal. In such cases, a rover base is used within a radius of 5 km to 50 km.",
+            quest3: "How is the price for topographic work determined?",
+            answer3:
+              "The price for topography depends on the terrain, location, and area (from 300 GEL per hectare).",
+            quest4: "How is the price for aerial photography determined?",
+            answer4:
+              "The price for aerial photography depends on the terrain, location, and area (from 100 GEL per hectare).",
+            quest5: "How can one get employed at the company?",
+            answer5:
+              "The company is actively looking for new employees. You can send your CV to ltd.nueva@gmail.com.",
+          },
+        },
       },
-      
 
       servicesPage: {
         serviceList: {
@@ -120,11 +119,10 @@ answer5:
           galleryHeader: "Gallery",
         },
         pagination: {
-         
           total: "of",
           project: "Projects",
-          prev:"Prev.",
-          next:"Next"
+          prev: "Prev.",
+          next: "Next",
         },
       },
       contactPage: {
@@ -135,6 +133,10 @@ answer5:
       galleryPage: {
         header: "GALLERY",
       },
+      error:{
+        text:"Something went wrong",
+        return:"Return to Home"
+      }
     },
   },
   ge: {
@@ -147,8 +149,8 @@ answer5:
         gallery: "გალერეა",
         contact: "კონტაქტი",
         project: "პროექტი",
-        FAQ:"FAQ",
-         address:"ა.წერეთლის 67, ქუთაისი"
+        FAQ: "FAQ",
+        address: "ა.წერეთლის 67, ქუთაისი",
       },
       homePage: {
         offers: "ჩვენი სერვისები:",
@@ -167,10 +169,10 @@ answer5:
             quest4: "როგორ განისაზღვრება აერო გადაღების  ფასი?",
             answer4:
               "აერო გადაღების ფასი დამოკიდებულიე რელიეფზე, მდებარეობაზე და ფართობზე (1ჰა-100 დან)",
-              quest5:"როგორაა შესაძლებელი დასაქმება კომპანიაში?",
-              answer5:"კომპანია აქტიურად ეძებს ახალ თანამშრომელბს  შეგიძლიათ CV გამოსაგზავნოთ ltd.nueva@gmail.com"
+            quest5: "როგორაა შესაძლებელი დასაქმება კომპანიაში?",
+            answer5:
+              "კომპანია აქტიურად ეძებს ახალ თანამშრომელბს  შეგიძლიათ CV გამოსაგზავნოთ ltd.nueva@gmail.com",
           },
-          
         },
       },
       servicesPage: {
@@ -250,11 +252,10 @@ answer5:
           galleryHeader: "გალერეა",
         },
         pagination: {
-        
           total: "სულ არის",
           project: "პროექტი",
-          prev:"წინა",
-          next:"შემდეგი"
+          prev: "წინა",
+          next: "შემდეგი",
         },
       },
       contactPage: {
@@ -265,6 +266,10 @@ answer5:
       galleryPage: {
         header: "გალერეა",
       },
+      error:{
+        text:"დაფიქსირდა შეცდომა",
+        return:"მთავარ გვერდზე დაბრუნება"
+      }
     },
   },
 };
