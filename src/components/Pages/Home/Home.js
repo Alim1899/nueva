@@ -10,7 +10,7 @@ import services from "../../../assets/home/services.svg";
 const Home = () => {
   const { t } = useTranslation();
   const [extendedIndex, setExtendedIndex] = useState(null);
-  const [isServiceListVisible, setIsServiceListVisible] = useState(true);
+  const [isServiceListVisible, setIsServiceListVisible] = useState(false);
   const data = ServiceList();
 
   const extend = (index) => {

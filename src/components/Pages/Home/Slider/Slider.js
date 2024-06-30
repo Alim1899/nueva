@@ -18,7 +18,7 @@ const Slider = () => {
   useEffect(() => {
     const timer = setTimeout(slider, 3500);
     return () => clearTimeout(timer);
-  }, [slider]);
+  }, [activeSlide, slider]);
 
   const changeByButtons = (direction) => {
     setActiveSlide(
@@ -31,7 +31,6 @@ const Slider = () => {
       <div className={classes.slider}>
         <img
           alt="Previous slide"
-          aria-label="Previous slide"
           onClick={() => changeByButtons(-1)}
           className={classes.leftArrow}
           src={leftSlide}
@@ -58,7 +57,6 @@ const Slider = () => {
                   className={
                     activeSlide === index ? classes.activeDot : classes.dot
                   }
-                  aria-label={`Slide ${index + 1}`}
                 />
               ))}
             </ul>
@@ -67,7 +65,6 @@ const Slider = () => {
         <img
           onClick={() => changeByButtons(1)}
           alt="Next slide"
-          aria-label="Next slide"
           className={classes.rightArrow}
           src={rightSlide}
         />
