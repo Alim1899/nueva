@@ -1,11 +1,13 @@
 .main {
-  height: var(--content-height)
+ 
   }
   .content {
+    min-height: var(--content-height);
     width: var(--content-width);
     margin: auto;
       color: var(--light-text);
   border-radius: 15px;
+  overflow-y:scroll;
  
 }
 .contentHeader {

@@ -13,7 +13,7 @@
     --header-width: clamp(120px,40vw,400px);
     --content-width:clamp(275px,95%,1500px);
     --header-border-radius:5px;
-    --footer-height:120px;
+    --footer-height:clamp(130px,30vw,200px);
     --content-height:calc(100vh - 2 * var(--navbar-height) - var(--footer-height) - 2px);
   }
   body {

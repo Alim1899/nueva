@@ -8,7 +8,6 @@ import location from "../../assets/navbar/location.svg";
 import globe from "../../assets/navbar/globe.svg";
 import whiteglobe from "../../assets/navbar/whiteglobe.svg";
 
-
 const Navbar = (props) => {
   const { t } = useTranslation();
   const initialLanguage = sessionStorage.getItem("lng") || "ge";
@@ -57,7 +56,11 @@ const Navbar = (props) => {
           <ul className={classes.contactList}>
             <li className={classes.phone}>
               <img className={classes.icon} src={phone} alt="phone"></img>
-              <h4 className={classes.number}><a className={classes.nomberRef} href="tel:+995593065588">593 065 588</a></h4>
+              <h4 className={classes.number}>
+                <a className={classes.nomberRef} href="tel:+995593065588">
+                  593 065 588
+                </a>
+              </h4>
             </li>
             <li className={classes.location}>
               <img className={classes.icon} src={location} alt="location"></img>
@@ -91,11 +94,17 @@ const Navbar = (props) => {
           </ul>
         </div>
       )}
-       {dropDown && (
-<div className={classes.drop}> <ul className={classes.contactList}>
+      {dropDown && (
+        <div className={classes.drop}>
+          {" "}
+          <ul className={classes.contactList}>
             <li className={classes.phone}>
               <img className={classes.icon} src={phone} alt="phone"></img>
-              <h4 className={classes.number}><a className={classes.nomberRef} href="tel:+995593065588">593 065 588</a></h4>
+              <h4 className={classes.number}>
+                <a className={classes.nomberRef} href="tel:+995593065588">
+                  593 065 588
+                </a>
+              </h4>
             </li>
             <li className={classes.location}>
               <img className={classes.icon} src={location} alt="location"></img>
@@ -109,51 +118,59 @@ const Navbar = (props) => {
               <h5 className={classes.language}>{englishLang ? "ქა" : "EN"}</h5>
             </li>
           </ul>
-     <div className={classes.dropDown}>
-    
-          
-    <a href="/"> <img className={classes.logo} alt="logo" src={logo}></img></a>
-       <div className={classes.lines} onClick={showList}>
-         <div className={!showNavbar ? classes.line : classes.close}></div>
-         <div className={!showNavbar ? classes.line : classes.close}></div>
-         <div className={!showNavbar ? classes.line : classes.close}></div>
-       </div>
-       <ul className={showNavbar ? classes.dropMenu : classes.navlinks}>
-     {["about", "services", "projects","FAQ", "gallery", "contact"].map(
-       (path) => (
-         <li
-           key={path}
-           className={
-             window.location.pathname === `/${path}`
-               ? classes.activeItem
-               : classes.listItem
-           }
-         >
-           <a href={`/${path}`}>
-             <h4>{t(`headers.${path}`)}</h4>
-           </a>
-         </li>
-       )
-     )}
-     <li
-              onClick={changeLanguage}
-              className={classes.languages}
-            >
-              <img src={whiteglobe} className={classes.globeIcon} alt="globe"></img>
-              <h5 className={classes.language}>{englishLang ? "ქა" : "EN"}</h5>
-            </li>
-
-   </ul>
-     </div>
-   </div>
- )}
- <div className={classes.logoRow}>
- <a href="/"><img src={logo} className={classes.logo} alt="logo"></img></a> 
-  
- </div>
+          <div className={classes.dropDown}>
+            <a href="/">
+              {" "}
+              <img className={classes.logo} alt="logo" src={logo}></img>
+            </a>
+            <div className={classes.lines} onClick={showList}>
+              <div className={!showNavbar ? classes.line : classes.close}></div>
+              <div className={!showNavbar ? classes.line : classes.close}></div>
+              <div className={!showNavbar ? classes.line : classes.close}></div>
+            </div>
+            <ul className={showNavbar ? classes.dropMenu : classes.navlinks}>
+              {[
+                "about",
+                "services",
+                "projects",
+                "FAQ",
+                "gallery",
+                "contact",
+              ].map((path) => (
+                <li
+                  key={path}
+                  className={
+                    window.location.pathname === `/${path}`
+                      ? classes.activeItem
+                      : classes.listItem
+                  }
+                >
+                  <a href={`/${path}`}>
+                    <h4>{t(`headers.${path}`)}</h4>
+                  </a>
+                </li>
+              ))}
+              <li onClick={changeLanguage} className={classes.languages}>
+                <img
+                  src={whiteglobe}
+                  className={classes.globeIcon}
+                  alt="globe"
+                ></img>
+                <h5 className={classes.language}>
+                  {englishLang ? "ქა" : "EN"}
+                </h5>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+      <div className={classes.logoRow}>
+        <a href="/">
+          <img src={logo} className={classes.logo} alt="logo"></img>
+        </a>
+      </div>
     </div>
   );
 };
 
 export default Navbar;
-
