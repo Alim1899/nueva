@@ -1,5 +1,5 @@
 .main {
-min-height: var(--content-height);
+  min-height: var(--content-height);
   margin: auto;
 }
 
@@ -7,10 +7,10 @@ min-height: var(--content-height);
   width: var(--content-width);
   display: grid;
   margin: auto;
-  grid-template-columns: 30% 70%;
-
+  justify-content: space-between;
+  grid-template-columns: 30% 65%;
 }
-.slider{
+.slider {
   border-radius: 15px;
   background-color: var(--navbar-light);
 }
@@ -18,26 +18,29 @@ min-height: var(--content-height);
   background-color: var(--navbar-light);
   border-radius: 10px;
   overflow-y: auto;
-  width: 25vw;
+  width: clamp(300px,25vw,500px)
 }
 .extend {
   text-align: center;
   padding: 1vw;
-  list-style-type: none;
   background-color: var(--navbar-light);
   z-index: 9999999;
   position: absolute;
-  margin-left: 25vw;
+  margin-left:clamp(300px,25vw,500px);
+
   border-radius: 15px;
-  width: 20vw;
+  width: clamp(300px,25vw,450px)
 }
 
 .extend li {
   color: var(--dark-text);
   font-weight: 900;
-  border-bottom: 1px solid var(--light-text);
+  border-collapse:separate;
   font-size: clamp(0.7rem, 1.3vw, 1.1rem);
+  width: 95%;
+  margin: auto;
 }
+
 .header {
   font-size: clamp(1rem, 2vw, 1.8rem);
   margin: 0;
@@ -60,10 +63,16 @@ min-height: var(--content-height);
 }
 .collapsed {
   display: grid;
-  grid-template-columns: 70% 20%;
-  place-content: center;
+  grid-template-columns: 75% 20%;
+  align-items: center;
   border-bottom: 1px solid var(--light-background);
+  height: 100%;
 }
+.serviceList{
+  display: grid;
+  grid-template-rows: repeat(7,1fr);
+}
+
 
 .serviceHeader {
   font-size: clamp(0.8rem, 1vw, 1.7rem);
@@ -72,10 +81,11 @@ min-height: var(--content-height);
 
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    padding: 0;
-    margin: 0
- 
+  padding: 0;
+  margin: 0;
+  margin-left: 10px
 }
+
 .downArrow,
 .upArrow {
   border: none;
@@ -99,7 +109,9 @@ min-height: var(--content-height);
   cursor: pointer;
 }
 
-@media screen and (max-width: 800px) {
+
+
+@media screen and (max-width: 850px) {
   .content {
     display: flex;
     flex-direction: column;
@@ -109,7 +121,38 @@ min-height: var(--content-height);
     margin: auto;
     margin-bottom: 20px;
   }
+ 
+ 
+  .slider {
+    z-index: 9;
+    width: 90%;
+    margin: auto;
+    border-radius: 15px;
+  }
+  .extend {
+    text-align: center;
+    padding: 1vw;
+    background-color: var(--navbar-light);
+list-style-type: none;
+    position: relative;
+    border-radius: 15px;
+    margin: auto;
+    width: 90vw;
+    max-width: 500px;
+  }
+  
+  .extend li {
+    color: var(--dark-text);
+    font-weight: 900;
+    font-size: clamp(0.8rem, 1.3vw, 1.2rem);
+    width: 100%;
+    margin: 10px;
+    z-index: 9999999;
+
+  }
   .serviceList{
+    display: flex;
+    flex-direction: column;
     position: absolute;
     width: clamp(285px, 95vw, 500px);
     border-radius: 15px;
@@ -119,19 +162,5 @@ min-height: var(--content-height);
   .serviceListHidden {
     display: none;
   }
-  .extend{
-    margin: 0;
-    padding: 0;
-    margin-top: 2.5rem;
-    width: clamp(285px, 95vw, 500px);
-  }
-  .extend>li{
-    text-align: center;
-  }
-  .slider{
-    z-index: 9;
-    width: 90%;
-    margin: auto;
-    border-radius: 15px;
-  }
+ 
 }

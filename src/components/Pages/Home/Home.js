@@ -53,6 +53,16 @@ const Home = () => {
                   >
                   
                     <h3 className={classes.serviceHeader}>{el[0].header}</h3>
+                    <button
+                      className={classes.downArrow}
+                      type="button"
+                    >
+                      <img
+                        className={classes.down}
+                        alt={isExtended ? "Collapse" : "Expand"}
+                        src={isExtended ? up : down}
+                      />
+                    </button>
                     {isExtended && (
                       <ul className={classes.extend}>
                         {el[1].subHeaders.map((item, subIndex) => (
@@ -66,16 +76,7 @@ const Home = () => {
                         ))}
                       </ul>
                   )}
-                    <button
-                      className={classes.downArrow}
-                      type="button"
-                    >
-                      <img
-                        className={classes.down}
-                        alt={isExtended ? "Collapse" : "Expand"}
-                        src={isExtended ? up : down}
-                      />
-                    </button>
+                    
                   </div>
                  
                 </div>
