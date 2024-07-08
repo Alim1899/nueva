@@ -3,7 +3,7 @@ import classes from "./Home.module.css";
 import Slider from "./Slider/Slider";
 import ServiceList from "../Services/ServiceList";
 import up from "../../../assets/home/up.svg";
-import down from "../../../assets/home/down.svg";
+import down from "../../../assets/home/right.svg";
 import { useTranslation } from "react-i18next";
 import services from "../../../assets/home/services.svg";
 
@@ -47,26 +47,14 @@ const Home = () => {
               const isExtended = index === extendedIndex;
               return (
                 <div className={classes.service} key={index}>
-                  <div className={classes.collapsed}>
-                    <a href="/services">
-                      <h3 className={classes.serviceHeader}>{el[0].header}</h3>
-                    </a>
-                    <button
-                      className={classes.downArrow}
-                      type="button"
-                      onClick={() => extend(index)}
-                      aria-expanded={isExtended}
-                    >
-                      <img
-                        className={classes.down}
-                        alt={isExtended ? "Collapse" : "Expand"}
-                        src={isExtended ? up : down}
-                      />
-                    </button>
-                  </div>
-                  {isExtended && (
-                    <div className={classes.extend}>
-                      <ul>
+                  <div
+                    className={classes.collapsed}
+                    onClick={() => extend(index)}
+                  >
+                  
+                    <h3 className={classes.serviceHeader}>{el[0].header}</h3>
+                    {isExtended && (
+                      <ul className={classes.extend}>
                         {el[1].subHeaders.map((item, subIndex) => (
                           <li
                             className={classes.listItem}
@@ -77,15 +65,19 @@ const Home = () => {
                           </li>
                         ))}
                       </ul>
-                      <button
-                        className={classes.upArrow}
-                        onClick={() => extend(index)}
-                        aria-label="Collapse"
-                      >
-                        <img className={classes.up} src={up} alt="Collapse" />
-                      </button>
-                    </div>
                   )}
+                    <button
+                      className={classes.downArrow}
+                      type="button"
+                    >
+                      <img
+                        className={classes.down}
+                        alt={isExtended ? "Collapse" : "Expand"}
+                        src={isExtended ? up : down}
+                      />
+                    </button>
+                  </div>
+                 
                 </div>
               );
             })}
