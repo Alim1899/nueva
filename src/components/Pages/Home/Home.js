@@ -71,7 +71,7 @@ const Home = () => {
                             key={subIndex}
                             onClick={() => extend(index)}
                           >
-                            {item.subhead}
+                           <span>{item.subhead}</span> 
                           </li>
                         ))}
                       </ul>

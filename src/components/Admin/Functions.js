@@ -75,16 +75,20 @@ export const retrieveImage = async (setAllImages) => {
   }
 };
 export const retrieveData = async (setProjects) => {
-  const db = getDatabase(app);
-  const dbRef = ref(db, "projects");
-  const snapshot = await get(dbRef);
-
-  if (snapshot.exists()) {
-    setProjects(Object.entries(snapshot.val()));
-  } else {
-    console.error("cant find");
+  const db = getDatabase();
+  const projectsRef = ref(db, 'projects');
+  try {
+    const snapshot = await get(projectsRef);
+    if (snapshot.exists()) {
+      setProjects(Object.entries(snapshot.val()));
+    } else {
+      console.log("No data available");
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
+
 export const handleLocation = (
   e,
   coords,
