@@ -1,4 +1,3 @@
-// Project.js
 import React, { useState, useEffect } from "react";
 import classes from "./Project.module.css";
 import Leaflet from "../../../Map/Leaflet";
@@ -7,22 +6,27 @@ import enlarge from "../../../../assets/icons/larger.png";
 import marker from "../../../../assets/icons/marker.png";
 import left from "../../../../assets/icons/leftslide.svg";
 import right from "../../../../assets/icons/rightslide.svg";
-import { useProjects } from "./ProjectsContext";
 import { useTranslation } from "react-i18next";
+import { getProjectByIdFromDB } from "./indexedDB";
 const Project = () => {
-  const {t}=useTranslation();
+  const { t } = useTranslation();
   const { id } = useParams();
-  const { projects } = useProjects();
   const [project, setProject] = useState(null);
   const [slider, showSlider] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const lang = sessionStorage.getItem("lng");
+
   useEffect(() => {
-    const foundProject = projects.find((p) => p[0] === id);
-    if (foundProject) {
-      setProject(foundProject[1]);
+    async function fetchProjectFromDB() {
+      try {
+        const projectDetails = await getProjectByIdFromDB(id); 
+        setProject(projectDetails);
+      } catch (error) {
+        console.error("Error fetching project:", error);
+      }
     }
-  }, [id, projects]);
+    fetchProjectFromDB();
+  }, [id]);
 
   if (!project) {
     return (
@@ -37,17 +41,13 @@ const Project = () => {
 
   const leftSlide = () => {
     setActiveSlide((prevIndex) =>
-      prevIndex === 0
-        ? Object.entries(project.images).length - 1
-        : prevIndex - 1
+      prevIndex === 0 ? Object.keys(project.images).length - 1 : prevIndex - 1
     );
   };
 
   const rightSlide = () => {
     setActiveSlide((prevIndex) =>
-      prevIndex === Object.entries(project.images).length - 1
-        ? 0
-        : prevIndex + 1
+      prevIndex === Object.keys(project.images).length - 1 ? 0 : prevIndex + 1
     );
   };
 
@@ -68,14 +68,20 @@ const Project = () => {
   return (
     <div className={classes.project}>
       <div className={classes.content}>
-        <header className={classes.header}>{lang==='en'?project.header.en:project.header.ge}</header>
-        <p className={classes.description}>{lang==='en'?project.description.en:project.description.ge}</p>
+        <header className={classes.header}>
+          {lang === "en" ? project.header.en : project.header.ge}
+        </header>
+        <p className={classes.description}>
+          {lang === "en" ? project.description.en : project.description.ge}
+        </p>
         <h4 className={classes.date}>
-        {lang==='en'?project.date.month.en:project.date.month.ge}, {project.date.year}{" "}
+          {lang === "en"
+            ? project.date.month.en
+            : project.date.month.ge}, {project.date.year}{" "}
         </h4>
         <div className={classes.map}>
           <Leaflet
-            popup="ნენსკრა"
+            popup={lang==='en'?project.location.en:project.location.ge}
             center={project.coords.split(",")}
             zoom={10}
             icon={marker}
@@ -83,26 +89,26 @@ const Project = () => {
           />
         </div>
         <div className={classes.gallery}>
-          <h1 className={classes.sliderHeader}>{t('projectsPage.project.galleryHeader')}</h1>
+          <h1 className={classes.sliderHeader}>
+            {t("projectsPage.project.galleryHeader")}
+          </h1>
           <div className={classes.photos}>
-            {Object.entries(project.images).map((img, index) => {
-              return (
-                <div key={img[1].key} className={classes.imgs}>
+            {Object.keys(project.images).map((key, index) => (
+              <div key={key} className={classes.imgs}>
+                <img
+                  className={classes.img}
+                  alt="project-img"
+                  src={project.images[key].url}
+                ></img>
+                <div className={classes.enlarge}>
                   <img
-                    className={classes.img}
-                    alt="project-img"
-                    src={img[1].url}
+                    src={enlarge}
+                    alt="enlarge"
+                    onClick={() => openSlider(index)}
                   ></img>
-                  <div className={classes.enlarge}>
-                    <img
-                      src={enlarge}
-                      alt="enlarge"
-                      onClick={() => openSlider(index)}
-                    ></img>
-                  </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -116,12 +122,12 @@ const Project = () => {
             />
           </div>
           <div className={classes.slides}>
-            {Object.entries(project.images).map((image) => (
+            {Object.keys(project.images).map((key, index) => (
               <img
-                key={image[0]}
+                key={key}
                 className={classes.contentImg}
-                alt={image[1].key}
-                src={image[1].url}
+                alt={project.images[key].key}
+                src={project.images[key].url}
                 onClick={() => showSlider(false)}
                 style={{
                   transform: `translateX(-${activeSlide * 100}%)`,
