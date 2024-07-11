@@ -15,6 +15,7 @@ import img12 from "../../../assets/photos/gallery/12.jpg";
 import right from '../../../assets/icons/rightslide.svg';
 import left from '../../../assets/icons/leftslide.svg';
 import enlarge from '../../../assets/icons/larger.png';
+import x from '../../../assets/icons/x.svg'
 import { useTranslation } from "react-i18next";
 
 const Gallery = () => {
@@ -87,6 +88,7 @@ const Gallery = () => {
           <div className={classes.slides}>
            
             <img alt="slide" className={classes.activeSlide} src={images[activeSlide]} />
+            <img alt='close' className={classes.close} onClick={()=>showSlider(false)} src={x}></img>
             
           </div>
           </div>
