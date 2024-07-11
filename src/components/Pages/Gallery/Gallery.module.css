@@ -1,4 +1,4 @@
-.main{
+.main {
   min-height: var(--content-height);
   padding-top: 3vh;
 }
@@ -11,34 +11,113 @@
   margin: auto;
   margin-bottom: 20px;
   color: var(--light-text);
-  }
-  .photos{
-  padding: 40px;
-    max-width: var(--content-width);
-    margin:  auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-.img{
-  width: 23%;
-  margin: 1%;
-  width: 23%;
-  height: 300px;
 }
-@media screen and (max-width:1500px) {
-  .img{
+.photos {
+  padding: 40px;
+  max-width: var(--content-width);
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.imgContainer {
+  position: relative;
+  width: 23%; /* Adjust according to your needs */
+  height: 300px; /* Adjust according to your needs */
+  margin: 1%;
+}
+
+.img,
+.enlarge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.enlarge {
+  z-index: 1;
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(133, 127, 127, 0.5); 
+}
+.imgContainer:hover .enlarge {
+  background-color: rgba(253, 248, 248, 0.418);
+  cursor: pointer;
+  opacity: 1;
+  }
+
+.iconL {
+  width: 50%; 
+  height: 50%; 
+}
+
+
+
+.slider {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index:999999999;
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  align-items: center; /* Center items vertically */
+  background-color: rgb(8, 40, 41);
+}
+
+.slides {
+  display: flex;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+}
+
+.slides img {
+max-height: 100%;
+margin: auto;
+}
+
+.leftArrow {
+  grid-column: 1; 
+
+}
+
+.rightArrow {
+  grid-column: 3; 
+}
+.arrow {
+  cursor: pointer;
+  z-index: 1;
+  margin: auto;
+}
+.arrows{
+  height: 100vh;
+  display: flex;
+  background-color: var(--navbar-light);
+}
+.arrows:hover{
+  background-color: rgba(191, 201, 201, 0.623);
+      cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+  .img {
     width: 31%;
   }
 }
-@media screen and (max-width:1000px) {
-  .img{
+@media screen and (max-width: 1000px) {
+  .img {
     width: 48%;
   }
 }
-@media screen and (max-width:700px) {
-  .img{
+@media screen and (max-width: 700px) {
+  .img {
     width: 95%;
   }
 }
