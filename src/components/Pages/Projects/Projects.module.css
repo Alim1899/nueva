@@ -33,7 +33,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 2px 2px 2px 2px rebeccapurple;
   width: 30%;
   overflow: hidden;
   margin: 1%;
@@ -51,40 +50,10 @@
   width: 30px;
 }
 
-.arrow {
-  cursor: pointer;
-  z-index: 1;
-}
-
-.slider {
-  position: relative;
-  display: grid;
-  grid-template-columns: 7% 86% 7%;
-  align-items: center; /* Center items vertically */
-}
-
-.slides {
-  display: flex;
-  overflow-x: hidden;
-}
-
-.slides img {
-  flex: 0 0 100%;
-  box-shadow: 0px 0px 2px 5px var(--dark-text);
-}
-
-.leftArrow {
-  grid-column: 1; /* Position left arrow at the start */
-}
-
-.rightArrow {
-  grid-column: 3; /* Position right arrow at the end */
-}
-
 .projectHeader {
   margin: 0;
   height: 50px;
-  font-size: clamp(0.6rem, 1.5vw, 1.5rem);
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +66,7 @@ color: var(--dark-text);
   height: 50px;
   width: 100%;
   margin: auto;
-  font-size: 1.3rem;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -110,7 +79,6 @@ color: var(--light-text);
 }
 .moreBtn {
   width: 40%;
-  
   margin: auto;
   display: grid;
   place-items: center;
@@ -122,7 +90,8 @@ color: var(--light-text);
   border-radius: 15px;
   background-color: var(--light-background);
   outline: none;
-  border: 1px solid var(--navbar)
+  border: unset;
+  color: var(--light-text);
 }
 
 
@@ -141,18 +110,54 @@ color: var(--light-text);
 }
 
 @media screen and (max-width: 1100px) {
-  
+  .projectList{
+    width: 100%;
+  }
 .project{
   width: 48%;
 }
 
 }
 @media screen and (max-width: 700px) {
-  
+  .projectList{
+    width: 100%;
+  }
   .project{
-    width: 98%;
+    width: 100%;
   }
 }
+
+/* SLIDER */
+.arrow {
+  cursor: pointer;
+  z-index: 1;
+}
+
+.slider {
+  position: relative;
+  display: grid;
+  grid-template-columns: 7% 86% 7%;
+  align-items: center;
+}
+
+.slides {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.slides img {
+  flex: 0 0 100%;
+  box-shadow: 0px 0px 2px 5px var(--dark-text);
+}
+
+.leftArrow {
+  grid-column: 1; /* Position left arrow at the start */
+}
+
+.rightArrow {
+  grid-column: 3; 
+}
+/* ANIMATION */
 .mainAnim{
   height: 60vh;
   width: 100vw;

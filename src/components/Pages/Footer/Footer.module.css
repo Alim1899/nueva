@@ -27,6 +27,7 @@ align-items: center;
   justify-content: center;
   align-items: center;
   color: var(--navbar-light);
+  cursor: pointer;
   }
 .phone>h4,.address{
   margin: 0;

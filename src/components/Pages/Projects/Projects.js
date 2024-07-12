@@ -62,11 +62,12 @@ const Project = ({ project, id }) => {
           <h5>{lang === "en" ? project.location.en : project.location.ge}</h5>
         </div>
 
-        <button type="button" className={classes.moreBtn}>
+        
           <a href={`/project/${id}`} className={classes.toProject}>
-            {t("projectsPage.moreBtn")}
+          <button type="button" className={classes.moreBtn}>
+          {t("projectsPage.moreBtn")}</button>
           </a>
-        </button>
+        
       </div>
     </div>
   );

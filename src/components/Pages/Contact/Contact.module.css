@@ -1,8 +1,8 @@
 .main {
   min-height: var(--content-height);
-  width: 100%;
- padding:3vh 0;
-
+  width: var(--content-width);
+  margin: auto;
+padding-bottom: 4vh;
 }
 
 .header {
@@ -12,12 +12,12 @@
   border-bottom: 1px solid var(--navbar-light);
   width: 40vw;
   margin: auto;
-  margin-bottom: 20px;
+  margin-top: 20px;
   color: var(--light-text);
 }
 
 .contact {
-  width: clamp(275px, 90vw, 1850px);
+  width:var(--content-width);
   margin: auto;
   border-radius: 15px;
   background-color: var(--light-background);
@@ -58,15 +58,18 @@
 }
 
 
-.listItem > a {
+.listItem > a, .listItem {
   display: flex;
   align-items: center;
   color: white;
   text-decoration: none;
-  
+}
+.listItem:hover{
+  opacity: 0.7;
+  cursor: pointer;
 }
 
-.listItem > a > h4 {
+.listItem > a > h4, .listItem>h4 {
   margin-left: 20px;
   margin: 3vh;
   
