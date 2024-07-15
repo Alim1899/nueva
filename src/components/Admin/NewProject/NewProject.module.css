@@ -61,7 +61,7 @@ grid-template-rows: 90% 10%;
   min-width: 120px;
   border-radius: 15px;
   border: 1px solid gold;
-  z-index: 9999;
+  z-index: 99;
 }
 .datePicker{
 width: 100%;
@@ -80,7 +80,7 @@ border: 1px solid rebeccapurple;
   min-width: 60px;
   border-radius: 15px;
   border: 1px solid gold;
-  z-index: 9999;
+  z-index:1;
 }
 .wrap {
   display: flex;

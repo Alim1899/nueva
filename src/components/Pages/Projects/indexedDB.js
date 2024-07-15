@@ -42,7 +42,6 @@ const saveProjectsToDB = async projects => {
   const db = await openDB();
   const transaction = db.transaction(storeName, "readwrite");
   const store = transaction.objectStore(storeName);
-
   projects.forEach((project, index) => {
     if (!project.id) {
       project.id = index; // Assign a unique id if not present

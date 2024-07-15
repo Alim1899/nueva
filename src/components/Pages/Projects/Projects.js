@@ -83,16 +83,18 @@ const Projects = () => {
 
   useEffect(() => {
     const fetchProjects = async () => {
-      // Check if projects are in IndexedDB
+      // Fetch from IndexedDB first
       const cachedData = await getProjectsFromDB();
       if (cachedData.length > 0) {
         setCachedProjects(cachedData);
-        setProjectsLoaded(true); // Set projects as loaded when data is fetched from cache
-      } else if (projects.length > 0) {
-        // Save fetched projects to IndexedDB
+        setProjectsLoaded(true);
+      }
+
+      // Fetch from server and update IndexedDB and state
+      if (projects.length > 0) {
         saveProjectsToDB(projects);
         setCachedProjects(projects);
-        setProjectsLoaded(true); // Set projects as loaded when data is fetched from database
+        setProjectsLoaded(true);
       }
     };
 
